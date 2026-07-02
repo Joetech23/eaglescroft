@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Linkedin, Twitter, Github } from 'lucide-react'
 
-type Member = { name: string; role: string; img: string; tag: string }
+type Member = { name: string; role: string; img: string; tag: string; linkedin?: string }
 
 // Photos coming soon — placeholders for now.
 const team: Member[] = [
-  { name: 'Joshua Obaje Enemaku', role: 'Founder & CTO', tag: 'Full-stack · AI', img: 'https://randomuser.me/api/portraits/men/41.jpg' },
-  { name: 'Benjamin Adama', role: 'Co-founder', tag: 'Strategy · Growth', img: 'https://randomuser.me/api/portraits/men/55.jpg' },
+  { name: 'Benjamin Adama', role: 'Founder', tag: 'Strategy · Growth', img: '/brand/bejamin adama - founder.png', linkedin: 'https://www.linkedin.com/in/benjaminadama/' },
+  { name: 'Joshua Obaje Enemaku', role: 'Co-Founder', tag: 'Full-stack · AI', img: '/brand/Joshua Obaje - cto.png', linkedin: 'https://www.linkedin.com/in/joshua-obaje/' },
 ]
 
 export default function TeamSection() {
@@ -41,15 +41,28 @@ export default function TeamSection() {
               className="group overflow-hidden rounded-[26px] border border-[#e7eaf3] bg-white shadow-soft transition-shadow duration-300 hover:shadow-[0_28px_60px_rgba(0,30,96,0.14)]"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <Image src={m.img} alt={m.name} fill unoptimized sizes="(max-width:1024px) 50vw, 22vw" className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" />
+                <Image
+                  src={m.img}
+                  alt={m.name}
+                  fill
+                  unoptimized
+                  sizes="(max-width:1024px) 50vw, 22vw"
+                  className="object-cover transform transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(0,6,21,0) 55%,rgba(0,6,21,0.72) 100%)' }} />
                 <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-navy">{m.tag}</span>
                 <div className="absolute bottom-3 left-3 right-3 flex translate-y-2 items-center gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  {[Linkedin, Twitter, Github].map((Icon, k) => (
-                    <span key={k} className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy transition-colors hover:bg-gold-400">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                  ))}
+                  {m.linkedin && (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${m.name} on LinkedIn`}
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy transition-colors hover:bg-gold-400"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </div>
               <div className="p-5">
