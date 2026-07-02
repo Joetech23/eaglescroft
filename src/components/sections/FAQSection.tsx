@@ -4,33 +4,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Plus, MessageCircle, ArrowRight } from 'lucide-react'
 import { whatsappLink } from '@/lib/site'
-
-const faqs = [
-  {
-    q: 'How long does a website project take?',
-    a: 'Most marketing sites launch in 2–4 weeks; larger builds like e-commerce or custom platforms typically run 4–8 weeks. You get a clear timeline in your proposal and a live progress view throughout — no surprises.',
-  },
-  {
-    q: 'How much does a project cost?',
-    a: 'Every project is scoped to your goals, so pricing is tailored. As a guide: landing pages start lean, full business sites sit in the mid-range, and platforms/e-commerce scale with complexity. Share your budget in the brief and we design the best plan around it.',
-  },
-  {
-    q: 'Do you work with clients outside Nigeria?',
-    a: 'Absolutely — most of our clients are international. We deliver across Nigeria, the UK, USA and Australia, working async-friendly hours with clear communication so time zones never slow the project down.',
-  },
-  {
-    q: 'What happens after my website launches?',
-    a: 'We don’t disappear. Every launch includes a support window, and you can add ongoing care — hosting, security, updates, SEO and automation — so your site keeps climbing after go-live.',
-  },
-  {
-    q: 'Can you improve my existing website instead of rebuilding?',
-    a: 'Yes. We start with a free audit of speed, SEO and conversion. Sometimes a focused upgrade wins; when a rebuild makes more sense, we’ll show you exactly why with numbers.',
-  },
-  {
-    q: 'What makes Eaglescroft different from other agencies?',
-    a: 'One senior team across engineering, design, and growth — with AI automation built into how we work. You get one accountable partner, faster delivery, and a site engineered to convert, not just to look good.',
-  },
-]
+import { faqs } from '@/lib/faqs'
 
 function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (

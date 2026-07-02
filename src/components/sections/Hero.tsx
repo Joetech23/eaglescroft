@@ -88,8 +88,8 @@ export default function Hero() {
 
           <motion.p custom={2} variants={rise} initial="hidden" animate="show"
             className="mt-7 max-w-[520px] leading-relaxed text-[#48526e]" style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)' }}>
-            High-performance websites, magnetic brands and AI-powered systems — engineered by a
-            senior team across Nigeria, the UK, USA and Australia.
+            Your growth partner — high-performance websites, AI chatbots, automations and CRM
+            systems, engineered by a senior team across Nigeria, the UK, USA and Australia.
           </motion.p>
 
           <motion.div custom={3} variants={rise} initial="hidden" animate="show" className="mt-9 flex flex-wrap gap-3.5">

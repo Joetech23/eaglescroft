@@ -7,6 +7,8 @@ import { projects, getProject, shot } from '@/lib/projects'
 import Section from '@/components/ui/Section'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Button from '@/components/ui/Button'
+import JsonLd from '@/components/seo/JsonLd'
+import { siteConfig } from '@/lib/site'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -25,8 +27,30 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const cs = project.caseStudy
   const hasShot = project.category === 'website' && project.url
 
+  const caseJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: `${project.title} — ${project.industry}`,
+    description: project.description,
+    url: `${siteConfig.url}/portfolio/${project.slug}`,
+    ...(project.url ? { mainEntityOfPage: `https://${project.url}` } : {}),
+    creator: { '@id': `${siteConfig.url}/#organization` },
+    keywords: [project.industry, ...project.stack].join(', '),
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteConfig.url}/portfolio` },
+      { '@type': 'ListItem', position: 3, name: project.title, item: `${siteConfig.url}/portfolio/${project.slug}` },
+    ],
+  }
+
   return (
     <>
+      <JsonLd data={[caseJsonLd, breadcrumbJsonLd]} />
       <section className="relative overflow-hidden bg-brand-deep pb-16 pt-36 text-white md:pt-44">
         <div className="pointer-events-none absolute inset-0 bg-brand-glow" />
         <div className="container-x relative">

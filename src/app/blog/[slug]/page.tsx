@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { posts, getPost, formatDate } from '@/lib/posts'
 import FinalCTA from '@/components/sections/FinalCTA'
+import JsonLd from '@/components/seo/JsonLd'
+import { siteConfig } from '@/lib/site'
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }))
@@ -19,8 +21,36 @@ export default function PostPage({ params }: { params: { slug: string } }) {
   const post = getPost(params.slug)
   if (!post) notFound()
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: 'en',
+    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+    author: { '@type': 'Organization', name: siteConfig.legalName, url: siteConfig.url },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.legalName,
+      logo: { '@type': 'ImageObject', url: `${siteConfig.url}/brand/logo-a.png` },
+    },
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: 'Insights', item: `${siteConfig.url}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${siteConfig.url}/blog/${post.slug}` },
+    ],
+  }
+
   return (
     <>
+      <JsonLd data={[articleJsonLd, breadcrumbJsonLd]} />
       <article className="relative">
         <header className="relative overflow-hidden bg-brand-deep pb-16 pt-36 text-white md:pt-44">
           <div className="pointer-events-none absolute inset-0 bg-brand-glow" />

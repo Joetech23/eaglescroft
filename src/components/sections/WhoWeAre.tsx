@@ -21,12 +21,12 @@ export default function WhoWeAre() {
             <span className="h-px w-[22px] bg-gold-400/60" /> Who we are
           </div>
           <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.2rem)' }}>
-            A global digital agency built to make businesses fly.
+            More than an agency — a serious growth partner.
           </h2>
           <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-[#48526e]">
-            Eaglescroft is a founder-led team delivering high-performance websites, magnetic brands and
-            AI-powered systems for clients across Nigeria, the UK, USA and Australia. We don&rsquo;t just
-            make things look good — we engineer measurable growth.
+            Eaglescroft is a founder-led team partnering with companies across Nigeria, the UK, USA and
+            Australia — websites, brands, AI chatbots, automations and CRM systems that work as one
+            engine. We don&rsquo;t hand over a project and disappear; we stay invested in your growth.
           </p>
 
           <ul className="mt-8 space-y-3.5">
