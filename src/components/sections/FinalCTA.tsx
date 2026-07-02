@@ -3,32 +3,42 @@ import { siteConfig } from '@/lib/site'
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="bg-[#000615] px-7 pb-[100px] pt-[90px]">
-      <div
-        className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[36px]"
-        style={{ background: 'radial-gradient(110% 130% at 18% 10%,#2a3f8f 0%,#001e60 45%,#000a22 100%)', padding: 'clamp(40px,6vw,80px)' }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/eagle-gold.png" alt="" aria-hidden className="pointer-events-none absolute bottom-[-40px] right-[-40px] h-[320px] opacity-[0.12]" />
-        <div className="relative max-w-[640px]">
-          <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-400">
-            <span className="h-px w-[22px] bg-gold-400/50" /> Ready for takeoff
-          </div>
-          <h2 className="mt-5 font-display font-semibold leading-[1.02] tracking-tightest text-white" style={{ fontSize: 'clamp(2.2rem,5vw,3.8rem)' }}>
-            Let&rsquo;s build something<br />that takes flight.
-          </h2>
-          <p className="mt-[22px] max-w-[480px] text-[17px] leading-relaxed text-white/72">
-            Tell us where you want to go. We&rsquo;ll map the route, build the system, and get you climbing — fast.
-          </p>
-          <div className="mt-[38px] flex flex-wrap gap-3.5">
-            <a href="/contact" className="inline-flex items-center gap-2.5 rounded-2xl bg-gold-400 px-7 py-4 text-[15px] font-semibold text-navy shadow-[0_14px_40px_rgba(255,201,64,0.36)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_52px_rgba(255,201,64,0.5)]">
-              Start a Project <ArrowRight className="h-[18px] w-[18px]" />
-            </a>
-            <a href={`tel:${siteConfig.phoneRaw}`} className="inline-flex items-center gap-2.5 rounded-2xl border border-white/20 bg-white/[0.08] px-7 py-4 text-[15px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/[0.15]">
-              <Phone className="h-[17px] w-[17px]" /> {siteConfig.phoneDisplay}
-            </a>
-          </div>
+    <section id="contact" className="section-dark relative overflow-hidden px-7 py-[110px]">
+      <div className="bg-dots-dark pointer-events-none absolute inset-0 opacity-50" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] max-w-full -translate-x-1/2"
+        style={{ background: 'radial-gradient(55% 60% at 50% 0%,rgba(37,99,235,.30),transparent 70%)' }} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/eagle-white.png" alt="" aria-hidden className="pointer-events-none absolute bottom-[-60px] right-[-50px] h-[380px] opacity-[0.06]" />
+
+      <div className="relative mx-auto max-w-[1280px] text-center">
+        <span className="chip-dark">Ready for takeoff</span>
+        <h2 className="mx-auto mt-6 max-w-3xl font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2.2rem,5vw,3.9rem)' }}>
+          Let&rsquo;s build something<br />
+          <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#93c5fd,#2563EB)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
+            that takes flight.
+          </span>
+        </h2>
+        <p className="mx-auto mt-6 max-w-[520px] text-[17px] leading-relaxed text-white/70">
+          Tell us where you want to go. We&rsquo;ll map the route, build the system, and get you climbing — fast.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-[15px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(180deg,#3b76f0,#1d4ed8)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 4px rgba(0,0,0,0.3), 0 14px 34px -8px rgba(37,99,235,0.6)' }}
+          >
+            Start a Project <ArrowRight className="h-[18px] w-[18px]" />
+          </a>
+          <a
+            href={`tel:${siteConfig.phoneRaw}`}
+            className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.06] px-8 py-4 text-[15px] font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/[0.12]"
+          >
+            <Phone className="h-[17px] w-[17px]" /> {siteConfig.phoneDisplay}
+          </a>
         </div>
+        <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35">
+          Free consultation · Reply within 24 hours · Nigeria · UK · USA · Australia
+        </p>
       </div>
     </section>
   )

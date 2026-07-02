@@ -51,7 +51,7 @@ function WaveField() {
   }, [])
 
   const cLow = useMemo(() => new THREE.Color(0x24398f), [])
-  const cHigh = useMemo(() => new THREE.Color(0xffc940), [])
+  const cHigh = useMemo(() => new THREE.Color(0x2563eb), [])
   const tmp = useMemo(() => new THREE.Color(), [])
 
   // Pointer parallax relative to the canvas
@@ -129,7 +129,7 @@ function WaveField() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[dustPositions, 3]} count={PN} />
         </bufferGeometry>
-        <pointsMaterial size={0.05} color={0xffc940} transparent opacity={0.5} sizeAttenuation depthWrite={false} />
+        <pointsMaterial size={0.05} color={0x2563eb} transparent opacity={0.5} sizeAttenuation depthWrite={false} />
       </points>
     </>
   )

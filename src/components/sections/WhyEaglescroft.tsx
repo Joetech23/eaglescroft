@@ -14,7 +14,7 @@ const reasons: { icon: LucideIcon; title: string; body: string }[] = [
 
 export default function WhyEaglescroft() {
   return (
-    <section id="why" className="bg-white px-7 py-[120px]">
+    <section id="why" className="bg-[#f4f6fb] px-7 py-[120px]">
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-[54px] max-w-[620px]">
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
@@ -31,7 +31,7 @@ export default function WhyEaglescroft() {
               <motion.div
                 key={r.title}
                 whileHover={{ y: -4 }}
-                className="rounded-3xl border border-[#eceff7] bg-[#f6f7fb] p-7 transition-all duration-300 hover:bg-white hover:shadow-[0_18px_44px_rgba(0,30,96,0.08)]"
+                className="rounded-3xl border border-navy/[0.07] bg-white p-7 shadow-soft transition-all duration-300 hover:border-gold-400/40 hover:shadow-medium"
               >
                 <div className="mb-[18px] flex h-[46px] w-[46px] items-center justify-center rounded-[13px] bg-navy text-gold-400">
                   <Icon className="h-[21px] w-[21px]" />

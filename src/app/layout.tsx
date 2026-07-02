@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono, Raleway, Marcellus } from 'next/font/google'
+import { Inter, JetBrains_Mono, Raleway, Poppins } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import ContactDock from '@/components/layout/ContactDock'
-import Preloader from '@/components/layout/Preloader'
 import { siteConfig } from '@/lib/site'
 
 const inter = Inter({
@@ -28,11 +27,11 @@ const raleway = Raleway({
   weight: ['400', '500', '600', '700'],
 })
 
-const marcellus = Marcellus({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-marcellus',
+  variable: '--font-poppins',
   display: 'swap',
-  weight: ['400'],
+  weight: ['500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -66,9 +65,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable} ${raleway.variable} ${marcellus.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} ${raleway.variable} ${poppins.variable}`}>
       <body>
-        <Preloader />
         <SmoothScroll />
         <Navbar />
         <main>{children}</main>

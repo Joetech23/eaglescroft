@@ -38,7 +38,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="About Eaglescroft"
-        title={<>We help businesses <span className="text-gold-400">fly online.</span></>}
+        title={<>We help businesses <span className="text-gold-300">fly online.</span></>}
         intro="A global digital agency uniting engineering depth, design sensibility, and commercial strategy to build products that deliver lasting impact."
       />
 

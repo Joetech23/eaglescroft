@@ -17,7 +17,7 @@ export default function BlogPage() {
     <>
       <PageHeader
         eyebrow="Insights"
-        title={<>Ideas that <span className="text-gold-400">drive results.</span></>}
+        title={<>Ideas that <span className="text-gold-300">drive results.</span></>}
         intro="Practical thinking on engineering, design, growth, and AI — from the team building it every day."
       />
 

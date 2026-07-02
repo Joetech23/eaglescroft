@@ -13,23 +13,23 @@ const shots = [
 
 export default function StudioShowcase() {
   return (
-    <section className="relative overflow-hidden bg-[#000615] px-7 py-[120px]">
+    <section className="relative overflow-hidden bg-white px-7 py-[120px]">
       <div className="pointer-events-none absolute right-1/2 top-[-10%] h-[460px] w-[820px] translate-x-1/2"
-        style={{ background: 'radial-gradient(55% 55% at 50% 0%,rgba(66,87,176,.35),transparent 70%)' }} />
+        style={{ background: 'radial-gradient(55% 55% at 50% 0%,rgba(37,99,235,.10),transparent 70%)' }} />
 
       <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-400">
-            <span className="h-px w-[22px] bg-gold-400/50" /> Inside the studio
+          <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-500">
+            <span className="h-px w-[22px] bg-gold-400/60" /> Inside the studio
           </div>
-          <h2 className="mt-[18px] font-display font-semibold leading-[1.04] tracking-tightest text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
+          <h2 className="mt-[18px] font-display font-semibold leading-[1.04] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             One team. Every discipline.
           </h2>
-          <p className="mt-5 max-w-[440px] text-[15.5px] leading-relaxed text-white/65">
+          <p className="mt-5 max-w-[440px] text-[15.5px] leading-relaxed text-[#5a6685]">
             Engineers, designers and strategists working side by side — so your brand, product and growth all pull
             in the same direction, with no gaps between hand-offs.
           </p>
-          <a href="/about" className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/50">
+          <a href="/about" className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-navy/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/60 hover:shadow-soft">
             Meet the studio <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -42,7 +42,7 @@ export default function StudioShowcase() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className={`group relative overflow-hidden rounded-[20px] border border-white/[0.08] ${s.span || ''}`}
+              className={`group relative overflow-hidden rounded-[20px] border border-navy/10 shadow-soft ${s.span || ''}`}
             >
               <Image src={s.src} alt={s.alt} fill unoptimized sizes="(max-width:1024px) 50vw, 30vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(0,6,21,0) 45%,rgba(0,6,21,0.75) 100%)' }} />

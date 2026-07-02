@@ -15,8 +15,8 @@ export default function FlightPath({
   className?: string
   light?: boolean
 }) {
-  const stroke = light ? 'rgba(255,201,64,0.7)' : 'rgba(0,30,96,0.35)'
-  const dot = light ? '#FFC940' : '#001e60'
+  const stroke = light ? 'rgba(37,99,235,0.7)' : 'rgba(0,30,96,0.35)'
+  const dot = light ? '#2563EB' : '#001e60'
 
   return (
     <div className={cn('pointer-events-none w-full', className)} aria-hidden="true">

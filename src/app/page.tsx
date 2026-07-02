@@ -1,30 +1,39 @@
 import Hero from '@/components/sections/Hero'
-import ScrollShowcase from '@/components/sections/ScrollShowcase'
 import TrustLayer from '@/components/sections/TrustLayer'
+import WhoWeAre from '@/components/sections/WhoWeAre'
 import ServicesHover from '@/components/sections/ServicesHover'
+import ScrollShowcase from '@/components/sections/ScrollShowcase'
 import ProcessSection from '@/components/sections/ProcessSection'
 import LivePortfolio from '@/components/sections/LivePortfolio'
 import Metrics from '@/components/sections/Metrics'
+import WhyEaglescroft from '@/components/sections/WhyEaglescroft'
 import StudioShowcase from '@/components/sections/StudioShowcase'
 import TeamSection from '@/components/sections/TeamSection'
-import WhyEaglescroft from '@/components/sections/WhyEaglescroft'
 import TestimonialsCircular from '@/components/sections/TestimonialsCircular'
+import FAQSection from '@/components/sections/FAQSection'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 export default function HomePage() {
   return (
     <>
+      {/* 1. Hook */}
       <Hero />
-      <ScrollShowcase />
       <TrustLayer />
+      {/* 2. Trust: who we are + what we do */}
+      <WhoWeAre />
       <ServicesHover />
-      <ProcessSection />
+      {/* 3. Show, don't tell */}
+      <ScrollShowcase />
       <LivePortfolio />
       <Metrics />
+      {/* 4. How + why us */}
+      <ProcessSection />
+      <WhyEaglescroft />
       <StudioShowcase />
       <TeamSection />
-      <WhyEaglescroft />
+      {/* 5. Social proof + objections + close */}
       <TestimonialsCircular />
+      <FAQSection />
       <FinalCTA />
     </>
   )

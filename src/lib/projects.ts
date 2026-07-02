@@ -43,32 +43,43 @@ export const catColor: Record<ProjectCategory, string> = {
 
 export const projects: Project[] = [
   {
-    slug: 'afribabah',
-    title: 'Afribabah',
+    slug: 'enyobuilt',
+    title: 'Enyobuilt',
     category: 'website',
-    url: 'afribabah.com',
-    industry: 'E-Commerce',
+    url: 'enyobuilt.com.ng',
+    industry: 'Construction & Real Estate',
     description:
-      'A multi-vendor e-commerce marketplace with advanced product filtering, payment gateways, and vendor dashboards serving buyers and sellers across Africa.',
-    stack: ['WordPress', 'WooCommerce', 'PHP', 'Pabbly Connect'],
+      'A construction and real estate corporate website with project gallery, service listings, and a client inquiry system.',
+    stack: ['WordPress', 'Custom Design', 'SEO'],
+    featured: true,
+  },
+  {
+    slug: 'starhomes',
+    title: 'Star Homes',
+    category: 'website',
+    url: 'starhomes.com.ng',
+    industry: 'Real Estate',
+    description:
+      'A modern Nigerian real-estate platform with rich property listings, smart search and a conversion-focused enquiry flow — built for speed and trust.',
+    stack: ['Next.js', 'React', 'TailwindCSS'],
     featured: true,
     caseStudy: {
       problem:
-        'Afribabah needed a scalable marketplace that could onboard many vendors, handle secure pan-African transactions, and reduce heavy manual backend operations.',
+        'Star Homes needed a fast, trustworthy platform where buyers could browse properties easily and enquire without friction — and rank against established real-estate portals.',
       solution:
-        'We architected a multi-vendor WooCommerce platform with vendor dashboards, advanced filtering, integrated payment gateways and shipping, plus automation pipelines via WP Webhooks and Pabbly Connect.',
+        'We built a high-performance Next.js platform with rich listings, smart filtering and a streamlined enquiry flow, tuned for Core Web Vitals and technical SEO from day one.',
       process: [
-        'Discovery & marketplace architecture',
-        'Vendor + storefront UX design',
-        'WooCommerce multi-vendor build & payment integration',
-        'Automation workflows & Core Web Vitals tuning',
-        'Launch, hardening & 99.9% uptime monitoring',
+        'Discovery & property-buyer journey mapping',
+        'Listing + search UX design',
+        'Next.js build with SEO-first architecture',
+        'Performance tuning & Core Web Vitals',
+        'Launch & growth support',
       ],
       results: [
-        { label: 'Uptime maintained', value: '99.9%' },
-        { label: 'Cart abandonment', value: '↓ Reduced' },
-        { label: 'Backend manual work', value: '↓ Automated' },
-        { label: 'Search rankings', value: '↑ Improved' },
+        { label: 'Page speed', value: 'Fast' },
+        { label: 'Enquiry friction', value: '↓ Reduced' },
+        { label: 'Search visibility', value: '↑ Improved' },
+        { label: 'Client satisfaction', value: '100%' },
       ],
     },
   },
@@ -120,7 +131,7 @@ export const projects: Project[] = [
     slug: 'primus-learning',
     title: 'Primus Learning',
     category: 'website',
-    url: 'primuslearning.com',
+    url: 'primuslearning.io',
     industry: 'Education',
     description:
       'An interactive e-learning platform with course management, student dashboards, and fully responsive design.',
@@ -156,16 +167,6 @@ export const projects: Project[] = [
     description:
       'A corporate architectural firm website with project portfolio gallery, brand identity, content strategy, and social media kit.',
     stack: ['WordPress', 'Elementor', 'Brand Identity'],
-  },
-  {
-    slug: 'enyobuilt',
-    title: 'Enyobuilt',
-    category: 'website',
-    url: 'enyobuilt.com.ng',
-    industry: 'Construction & Real Estate',
-    description:
-      'A construction and real estate corporate website with project gallery, service listings, and a client inquiry system.',
-    stack: ['WordPress', 'Custom Design', 'SEO'],
   },
   {
     slug: 'datavox-media',

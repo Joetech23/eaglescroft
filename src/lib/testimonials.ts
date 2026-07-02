@@ -10,8 +10,8 @@ export type Testimonial = {
 // Client-style testimonials — replace names/quotes with real approved ones.
 export const testimonials: Testimonial[] = [
   {
-    quote: 'Eaglescroft rebuilt our marketplace from the ground up. Vendor onboarding is effortless and the platform just doesn’t go down. They think like partners.',
-    name: 'Adaeze O.', role: 'Founder, Afribabah', initials: 'AO',
+    quote: 'Eaglescroft built us a property platform buyers actually trust. Browsing is effortless and enquiries jumped almost immediately. They think like partners.',
+    name: 'Adaeze O.', role: 'Founder, Star Homes', initials: 'AO',
     img: 'https://randomuser.me/api/portraits/women/68.jpg', country: '🇳🇬 Nigeria',
   },
   {

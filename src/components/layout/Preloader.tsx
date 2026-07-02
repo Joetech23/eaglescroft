@@ -23,6 +23,8 @@ export default function Preloader() {
   const flash = useRef<HTMLDivElement>(null)
 
   const finish = () => {
+    // Unlock scroll immediately — never leave the page trapped behind the overlay.
+    document.body.style.overflow = ''
     setDone(true)
     setTimeout(() => setGone(true), 650)
   }
@@ -32,6 +34,8 @@ export default function Preloader() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) { finish(); return }
     document.body.style.overflow = 'hidden'
+    // Failsafe: rAF pauses in background tabs — guarantee completion regardless.
+    const failsafe = setTimeout(finish, DURATION + TAIL + 600)
     const t0 = performance.now()
     let raf = 0
     const tick = (now: number) => {
@@ -60,7 +64,8 @@ export default function Preloader() {
       else finish()
     }
     raf = requestAnimationFrame(tick)
-    return () => { cancelAnimationFrame(raf); document.body.style.overflow = '' }
+    return () => { cancelAnimationFrame(raf); clearTimeout(failsafe); document.body.style.overflow = '' }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => { if (gone) document.body.style.overflow = '' }, [gone])
@@ -95,7 +100,7 @@ export default function Preloader() {
         const sx = cx + (s.x / s.z) * focal, sy = cy + (s.y / s.z) * focal
         const psx = cx + (s.x / pz) * focal, psy = cy + (s.y / pz) * focal
         const alpha = (1 - s.z) * (0.5 + warp * 0.5)
-        ctx.strokeStyle = s.z > 0.6 ? `rgba(255,201,64,${alpha})` : `rgba(220,230,255,${alpha})`
+        ctx.strokeStyle = s.z > 0.6 ? `rgba(37,99,235,${alpha})` : `rgba(220,230,255,${alpha})`
         ctx.lineWidth = Math.max(0.4, (1 - s.z) * 2.2)
         ctx.beginPath(); ctx.moveTo(psx, psy); ctx.lineTo(sx, sy); ctx.stroke()
       }
@@ -128,10 +133,10 @@ export default function Preloader() {
       </div>
 
       <div ref={count} className="pointer-events-none absolute inset-0 z-[4] flex items-center justify-center" style={{ opacity: 0 }}>
-        <span ref={countNum} className="font-display font-bold text-gold-400" style={{ fontSize: 'clamp(8rem,28vw,22rem)', lineHeight: 1, textShadow: '0 0 90px rgba(255,201,64,.55)' }}>3</span>
+        <span ref={countNum} className="font-display font-bold text-gold-400" style={{ fontSize: 'clamp(8rem,28vw,22rem)', lineHeight: 1, textShadow: '0 0 90px rgba(37,99,235,.55)' }}>3</span>
       </div>
 
-      <div ref={flash} className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'radial-gradient(circle at 50% 50%,#fff 0%,#FFE9AE 60%,#FFC940 100%)', opacity: 0 }} />
+      <div ref={flash} className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'radial-gradient(circle at 50% 50%,#fff 0%,#DBEAFE 60%,#2563EB 100%)', opacity: 0 }} />
 
       <button onClick={finish} className="absolute right-6 top-6 z-[7] rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-white/70 backdrop-blur transition-colors hover:bg-white/[0.14] hover:text-white">
         Skip

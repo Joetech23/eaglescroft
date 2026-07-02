@@ -108,7 +108,7 @@ export default function CinematicIntro() {
         const alpha = (1 - s.z) * (0.5 + warp * 0.5)
         // gold near center fading to white outward
         const gold = s.z > 0.6
-        ctx.strokeStyle = gold ? `rgba(255,201,64,${alpha})` : `rgba(220,230,255,${alpha})`
+        ctx.strokeStyle = gold ? `rgba(37,99,235,${alpha})` : `rgba(220,230,255,${alpha})`
         ctx.lineWidth = Math.max(0.4, r)
         ctx.beginPath()
         ctx.moveTo(psx, psy)
@@ -147,10 +147,10 @@ export default function CinematicIntro() {
         </div>
 
         <div ref={count} className="pointer-events-none absolute inset-0 z-[4] flex items-center justify-center" style={{ opacity: 0 }}>
-          <span ref={countNum} className="font-display font-bold text-gold-400" style={{ fontSize: 'clamp(8rem,28vw,24rem)', lineHeight: 1, textShadow: '0 0 90px rgba(255,201,64,.55)' }}>3</span>
+          <span ref={countNum} className="font-display font-bold text-gold-400" style={{ fontSize: 'clamp(8rem,28vw,24rem)', lineHeight: 1, textShadow: '0 0 90px rgba(37,99,235,.55)' }}>3</span>
         </div>
 
-        <div ref={flash} className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'radial-gradient(circle at 50% 50%,#fff 0%,#FFE9AE 60%,#FFC940 100%)', opacity: 0 }} />
+        <div ref={flash} className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'radial-gradient(circle at 50% 50%,#fff 0%,#DBEAFE 60%,#2563EB 100%)', opacity: 0 }} />
 
         <div ref={hint} className="pointer-events-none absolute bottom-8 left-1/2 z-[6] flex -translate-x-1/2 flex-col items-center gap-2">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">Scroll to enter</span>

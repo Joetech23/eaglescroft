@@ -5,9 +5,9 @@ import { CircularTestimonials } from '@/components/ui/circular-testimonials'
 const testimonials = [
   {
     quote:
-      'Eaglescroft rebuilt our marketplace from the ground up. Vendor onboarding is effortless and the platform just doesn’t go down. They think like partners, not vendors.',
+      'Eaglescroft built us a property platform that buyers actually trust. Listings are effortless to browse and enquiries jumped almost immediately. They think like partners, not vendors.',
     name: 'Adaeze Okafor',
-    designation: 'Founder, Afribabah',
+    designation: 'Founder, Star Homes',
     src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
 
 export default function TestimonialsCircular() {
   return (
-    <section id="voices" className="bg-[#f6f7fb] px-7 py-[120px]">
+    <section id="voices" className="bg-white px-7 py-[120px]">
       <div className="mx-auto mb-6 max-w-[1280px] text-center">
         <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
           <span className="h-px w-[22px] bg-navy/40" /> Client voices
@@ -55,7 +55,7 @@ export default function TestimonialsCircular() {
             testimony: '#2a3550',
             arrowBackground: '#001e60',
             arrowForeground: '#ffffff',
-            arrowHoverBackground: '#FFC940',
+            arrowHoverBackground: '#2563EB',
           }}
           fontSizes={{ name: '26px', designation: '16px', quote: '19px' }}
         />

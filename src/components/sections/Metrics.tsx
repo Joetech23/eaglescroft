@@ -6,8 +6,9 @@ export default function Metrics() {
   return (
     <section
       className="relative overflow-hidden px-7 py-20"
-      style={{ background: 'linear-gradient(120deg,#000a22 0%,#001e60 50%,#2a3f8f 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#020a24 0%,#03102f 60%,#041538 100%)' }}
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: 'linear-gradient(90deg,transparent,rgba(37,99,235,0.5),transparent)' }} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/brand/eagle-white.png"
@@ -19,11 +20,14 @@ export default function Metrics() {
         <Stagger className="contents">
           {stats.map((s) => (
             <StaggerItem key={s.label}>
-              <div className="border-l-2 border-gold-400/50 pl-5">
-                <div className="font-display font-semibold leading-none text-white" style={{ fontSize: 'clamp(2.6rem,5vw,3.6rem)' }}>
+              <div className="border-l-2 border-gold-400 pl-5">
+                <div
+                  className="font-display font-semibold leading-none text-transparent"
+                  style={{ fontSize: 'clamp(2.6rem,5vw,3.6rem)', background: 'linear-gradient(180deg,#ffffff 30%,#93c5fd)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}
+                >
                   <Counter value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-2 text-sm font-medium text-white/65">{s.label}</div>
+                <div className="mt-2 text-sm font-medium text-white/60">{s.label}</div>
               </div>
             </StaggerItem>
           ))}

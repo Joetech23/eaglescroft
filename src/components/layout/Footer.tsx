@@ -35,7 +35,7 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.07] bg-[#000615] px-7 pb-10 pt-[60px]">
+    <footer className="border-t border-white/[0.06] bg-[#020a24] px-7 pb-10 pt-[60px]">
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-10 pb-[46px]" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))' }}>
           <div className="max-w-[300px] [grid-column:1/-1] md:[grid-column:auto]">
@@ -55,9 +55,9 @@ export default function Footer() {
                 {col.items.map((it) => {
                   const ext = it.href.startsWith('http') || it.href.startsWith('mailto')
                   return ext ? (
-                    <a key={it.label} href={it.href} className="text-sm text-white/[0.68] transition-colors hover:text-gold-400">{it.label}</a>
+                    <a key={it.label} href={it.href} className="text-sm text-white/65 transition-colors hover:text-gold-300">{it.label}</a>
                   ) : (
-                    <Link key={it.label} href={it.href} className="text-sm text-white/[0.68] transition-colors hover:text-gold-400">{it.label}</Link>
+                    <Link key={it.label} href={it.href} className="text-sm text-white/65 transition-colors hover:text-gold-300">{it.label}</Link>
                   )
                 })}
               </div>

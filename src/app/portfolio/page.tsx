@@ -15,7 +15,7 @@ export default function PortfolioPage() {
     <>
       <PageHeader
         eyebrow="Selected Work"
-        title={<>Work that <span className="text-gold-400">speaks for itself.</span></>}
+        title={<>Work that <span className="text-gold-300">speaks for itself.</span></>}
         intro="Real projects across websites, video, and social — engineered for performance and built to convert."
       />
       <Section>

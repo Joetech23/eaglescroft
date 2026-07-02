@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     'Eaglescroft is a global digital agency building high-performance websites, brands, and AI-powered systems that drive real results — across Nigeria, the UK, USA, and Australia.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://eaglescroft.com.ng',
-  email: 'joshuaenemaku4@gmail.com',
+  email: 'hello@eaglescroft.com.ng',
   phones: ['+234 814 484 8470', '+234 807 348 8126'],
   phoneRaw: '+2348144848470',
   phoneDisplay: '+234 814 484 8470',

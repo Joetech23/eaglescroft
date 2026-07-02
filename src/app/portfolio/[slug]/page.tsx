@@ -30,12 +30,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <section className="relative overflow-hidden bg-brand-deep pb-16 pt-36 text-white md:pt-44">
         <div className="pointer-events-none absolute inset-0 bg-brand-glow" />
         <div className="container-x relative">
-          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold-400">
+          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold-300">
             <ArrowLeft className="h-4 w-4" /> Back to work
           </Link>
           <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-gold-400">{project.industry}</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-gold-300">{project.industry}</span>
               <h1 className="mt-4 text-4xl font-semibold tracking-tightest md:text-6xl">{project.title}</h1>
               <p className="mt-4 max-w-2xl text-base text-white/70 md:text-lg">{project.description}</p>
             </div>

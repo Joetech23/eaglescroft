@@ -23,7 +23,7 @@ const variants: Record<Variant, string> = {
   primary:
     'bg-navy text-white shadow-navy hover:-translate-y-0.5 hover:shadow-large',
   gold:
-    'bg-gold-400 text-navy shadow-gold hover:-translate-y-0.5 hover:bg-gold-300 hover:shadow-[0_12px_40px_rgba(255,201,64,0.5)]',
+    'bg-gold-400 text-navy shadow-gold hover:-translate-y-0.5 hover:bg-gold-300 hover:shadow-[0_12px_40px_rgba(37,99,235,0.5)]',
   ghost:
     'text-navy hover:bg-navy/5',
   outline:

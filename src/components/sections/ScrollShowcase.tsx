@@ -6,7 +6,7 @@ import { shot } from '@/lib/projects'
 
 export default function ScrollShowcase() {
   return (
-    <section className="relative overflow-hidden bg-[#f6f7fb]">
+    <section className="relative overflow-hidden bg-white">
       <div className="-mb-40 md:-mb-72">
         <ContainerScroll
           titleComponent={
@@ -24,8 +24,8 @@ export default function ScrollShowcase() {
           }
         >
           <img
-            src={shot('afribabah.com')}
-            alt="A live Eaglescroft project"
+            src={shot('starhomes.com.ng')}
+            alt="Star Homes — a live Eaglescroft project"
             className="mx-auto h-full w-full rounded-2xl object-cover object-left-top"
             draggable={false}
           />

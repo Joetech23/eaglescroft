@@ -23,7 +23,7 @@ export default function ContactDock() {
     { label: 'Chat on WhatsApp', icon: WhatsAppIcon, color: '#25D366', onClick: () => window.open(whatsappLink, '_blank') },
     { label: 'Call us', icon: Phone, color: '#2a3f8f', onClick: () => { window.location.href = `tel:${siteConfig.phoneRaw}` } },
     { label: 'Email us', icon: Mail, color: '#001e60', onClick: () => { window.location.href = `mailto:${siteConfig.email}` } },
-    { label: 'AI Assistant', icon: Bot, color: '#FFC940', onClick: () => { setChat(true); setOpen(false) } },
+    { label: 'AI Assistant', icon: Bot, color: '#2563EB', onClick: () => { setChat(true); setOpen(false) } },
   ]
 
   return (
@@ -54,7 +54,7 @@ export default function ContactDock() {
                   </span>
                   <span
                     className="flex h-12 w-12 items-center justify-center rounded-full text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform group-hover:scale-110"
-                    style={{ background: a.color, color: a.color === '#FFC940' ? '#001e60' : '#fff' }}
+                    style={{ background: a.color, color: '#fff' }}
                   >
                     <Icon className="h-[22px] w-[22px]" />
                   </span>
@@ -71,7 +71,7 @@ export default function ContactDock() {
           onClick={() => setOpen((v) => !v)}
           whileTap={{ scale: 0.92 }}
           aria-label={open ? 'Close contact menu' : 'Open contact menu'}
-          className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gold-400 text-navy shadow-[0_12px_34px_rgba(255,201,64,0.5)]"
+          className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gold-400 text-white shadow-[0_12px_34px_rgba(37,99,235,0.5)]"
         >
           {!open && (
             <span className="absolute inset-0 animate-ping rounded-full bg-gold-400 opacity-30" />

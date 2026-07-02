@@ -30,16 +30,17 @@ const config: Config = {
           500: '#2a3f8f',
           600: '#1f2f70',
         },
-        // Strategic accent — yellow for CTA energy & highlights
+        // Strategic accent — royal blue for CTAs & highlights (token kept as `gold` for
+        // class continuity; values are blue). `gold-400` is the primary accent everywhere.
         gold: {
-          DEFAULT: '#FFC940',
-          50:  '#fff8e6',
-          100: '#ffeebf',
-          200: '#ffe08a',
-          300: '#ffd35c',
-          400: '#FFC940',
-          500: '#f5b800',
-          600: '#cc9800',
+          DEFAULT: '#2563EB',
+          50:  '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#2563EB',
+          500: '#1d4ed8',
+          600: '#1e40af',
         },
         // shadcn-style tokens (for imported 21st.dev components)
         border: 'var(--border)',
@@ -53,7 +54,7 @@ const config: Config = {
       fontFamily: {
         sans:    ['var(--font-raleway)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
         body:    ['var(--font-raleway)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-marcellus)', '"Clash Display"', 'Georgia', 'serif'],
+        display: ['var(--font-poppins)', 'var(--font-raleway)', 'system-ui', 'sans-serif'],
         mono:    ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       letterSpacing: {
@@ -74,8 +75,8 @@ const config: Config = {
         float:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
         shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
         glowPulse: {
-          '0%,100%': { boxShadow: '0 0 0 0 rgba(255,201,64,0.45)' },
-          '50%':     { boxShadow: '0 0 36px 4px rgba(255,201,64,0.30)' },
+          '0%,100%': { boxShadow: '0 0 0 0 rgba(37,99,235,0.45)' },
+          '50%':     { boxShadow: '0 0 36px 4px rgba(37,99,235,0.30)' },
         },
         marquee: {
           from: { transform: 'translateX(0)' },
@@ -92,11 +93,16 @@ const config: Config = {
         'brand-glow':      'radial-gradient(60% 60% at 50% 0%, rgba(66,87,176,0.35) 0%, rgba(0,30,96,0) 70%)',
       },
       boxShadow: {
-        'soft':   '0 2px 24px rgba(0, 30, 96, 0.07)',
-        'medium': '0 10px 40px rgba(0, 30, 96, 0.12)',
-        'large':  '0 24px 70px rgba(0, 30, 96, 0.20)',
-        'gold':   '0 8px 30px rgba(255, 201, 64, 0.35)',
-        'navy':   '0 12px 40px rgba(0, 30, 96, 0.30)',
+        // Layered, navy-tinted elevation scale — reads as depth, not blur.
+        'soft':   '0 1px 2px rgba(9,30,66,0.06), 0 3px 10px rgba(9,30,66,0.05), 0 14px 28px -10px rgba(9,30,66,0.10)',
+        'medium': '0 2px 4px rgba(9,30,66,0.05), 0 10px 22px -6px rgba(9,30,66,0.12), 0 28px 52px -14px rgba(9,30,66,0.16)',
+        'large':  '0 4px 8px rgba(9,30,66,0.06), 0 18px 36px -10px rgba(9,30,66,0.16), 0 52px 90px -20px rgba(9,30,66,0.22)',
+        // Accent CTA: blue glow + crisp contact shadow + inner top highlight.
+        'gold':   'inset 0 1px 0 rgba(255,255,255,0.22), 0 2px 4px rgba(37,99,235,0.22), 0 10px 24px -6px rgba(37,99,235,0.45)',
+        // Primary navy CTA: same treatment in brand navy.
+        'navy':   'inset 0 1px 0 rgba(255,255,255,0.14), 0 2px 4px rgba(0,30,96,0.20), 0 12px 28px -8px rgba(0,30,96,0.45)',
+        // Cards sitting on dark navy sections.
+        'dark-card': '0 1px 0 rgba(255,255,255,0.04) inset, 0 20px 50px -12px rgba(0,0,0,0.55)',
       },
       borderRadius: {
         '2xl': '1.25rem',

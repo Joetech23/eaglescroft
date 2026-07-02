@@ -15,7 +15,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Get in Touch"
-        title={<>Let’s build something <span className="text-gold-400">exceptional.</span></>}
+        title={<>Let’s build something <span className="text-gold-300">exceptional.</span></>}
         intro="Tell us about your project. We respond within 24 hours and love an ambitious brief."
       />
 

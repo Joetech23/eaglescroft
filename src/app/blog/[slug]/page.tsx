@@ -25,11 +25,11 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         <header className="relative overflow-hidden bg-brand-deep pb-16 pt-36 text-white md:pt-44">
           <div className="pointer-events-none absolute inset-0 bg-brand-glow" />
           <div className="container-x relative max-w-3xl">
-            <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold-400">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold-300">
               <ArrowLeft className="h-4 w-4" /> All insights
             </Link>
             <div className="mt-7 flex items-center gap-3 text-xs text-white/60">
-              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold text-gold-400">{post.category}</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold text-gold-300">{post.category}</span>
               <span>{formatDate(post.date)}</span>
               <span>·</span>
               <span>{post.readTime}</span>

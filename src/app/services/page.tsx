@@ -17,7 +17,7 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Our Services"
-        title={<>Everything you need to <span className="text-gold-400">win online.</span></>}
+        title={<>Everything you need to <span className="text-gold-300">win online.</span></>}
         intro="Seven disciplines, one accountable partner. We engineer, design, and grow — so your business performs at every touchpoint."
       />
 

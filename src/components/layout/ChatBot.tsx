@@ -60,7 +60,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
         </div>
         <div className="flex-1">
           <div className="font-display text-[15px] font-semibold text-white">Aero · Eaglescroft</div>
-          <div className="font-mono text-[10px] uppercase tracking-wider text-gold-400">Online · replies instantly</div>
+          <div className="font-mono text-[10px] uppercase tracking-wider text-gold-300">Online · replies instantly</div>
         </div>
         <button onClick={onClose} aria-label="Close chat" className="rounded-full p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white">
           <X className="h-5 w-5" />
@@ -75,7 +75,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
               <div
                 className={`max-w-[82%] whitespace-pre-line rounded-2xl px-3.5 py-2.5 text-[13.5px] leading-relaxed ${
                   m.from === 'user'
-                    ? 'rounded-br-md bg-gold-400 font-medium text-navy'
+                    ? 'rounded-br-md bg-gold-400 font-medium text-white'
                     : 'rounded-bl-md bg-white/[0.07] text-white/90'
                 }`}
               >
@@ -88,7 +88,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
                   <button
                     key={q}
                     onClick={() => send(q)}
-                    className="rounded-full border border-gold-400/40 bg-gold-400/10 px-3 py-1.5 text-[12px] font-medium text-gold-400 transition-colors hover:bg-gold-400/20"
+                    className="rounded-full border border-gold-400/40 bg-gold-400/10 px-3 py-1.5 text-[12px] font-medium text-gold-300 transition-colors hover:bg-gold-400/20"
                   >
                     {q}
                   </button>
@@ -120,7 +120,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
           placeholder="Type a message…"
           className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/35 outline-none focus:border-gold-400/50"
         />
-        <button type="submit" aria-label="Send" className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gold-400 text-navy transition-transform hover:scale-105">
+        <button type="submit" aria-label="Send" className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gold-400 text-white transition-transform hover:scale-105">
           <Send className="h-4 w-4" />
         </button>
       </form>

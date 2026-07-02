@@ -20,9 +20,10 @@ export default function ServicesHover() {
   return (
     <HoverSlider
       id="services"
-      className="place-content-center bg-white px-6 py-[120px] text-navy md:px-12"
+      className="relative place-content-center overflow-hidden bg-[#f4f6fb] px-6 py-[120px] text-navy md:px-12"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="bg-dots pointer-events-none absolute inset-0 opacity-50" style={{ maskImage: 'linear-gradient(180deg,black,transparent 80%)', WebkitMaskImage: 'linear-gradient(180deg,black,transparent 80%)' }} />
+      <div className="relative mx-auto max-w-[1280px]">
         <h3 className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-500">/ our services</h3>
         <p className="mb-10 max-w-xl font-display text-2xl font-semibold tracking-tightest text-navy md:text-3xl">
           Hover a craft to see it in motion.
@@ -31,12 +32,14 @@ export default function ServicesHover() {
         <div className="flex flex-wrap items-center justify-between gap-8 md:gap-12">
           <div className="flex flex-col space-y-1.5 md:space-y-3">
             {SLIDES.map((slide, index) => (
-              <TextStaggerHover
-                key={slide.id}
-                index={index}
-                className="cursor-pointer font-display text-3xl font-bold uppercase tracking-tighter text-navy md:text-5xl"
-                text={slide.title}
-              />
+              <div key={slide.id} className="flex items-baseline gap-3 md:gap-4">
+                <span className="font-mono text-sm font-medium text-gold-500">{`0${index + 1}`}</span>
+                <TextStaggerHover
+                  index={index}
+                  className="cursor-pointer font-display text-3xl font-bold uppercase tracking-tighter text-navy md:text-5xl"
+                  text={slide.title}
+                />
+              </div>
             ))}
           </div>
 
