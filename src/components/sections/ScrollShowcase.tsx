@@ -15,7 +15,7 @@ export default function ScrollShowcase() {
                 <span className="h-px w-[22px] bg-navy/40" /> Built to perform
               </div>
               <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,5vw,3.6rem)' }}>
-                Websites that look the part —<br />
+                Solutions that look the part —<br />
                 <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#001e60,#2a3f8f)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
                   and pull their weight.
                 </span>

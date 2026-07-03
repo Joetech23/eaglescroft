@@ -75,21 +75,21 @@ export default function Hero() {
           <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
             className="mt-6 font-display font-semibold text-navy"
             style={{ fontSize: 'clamp(2.5rem,5.6vw,4.5rem)', lineHeight: 1.02, letterSpacing: '-0.03em' }}>
-            We build websites that{' '}
+            Digital solutions that{' '}
             <span className="relative inline-block text-transparent" style={{ background: 'linear-gradient(100deg,#1d4ed8,#2563EB 60%,#3b82f6)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
-              win customers
+              grow your business
               <svg viewBox="0 0 320 22" preserveAspectRatio="none" className="absolute -bottom-1.5 left-0 h-3.5 w-full overflow-visible">
                 <motion.path d="M3 17 C 90 9, 210 4, 317 4" fill="none" stroke="#2563EB" strokeWidth="3" strokeLinecap="round"
                   initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.9, duration: 1.1, ease: [0.22, 1, 0.36, 1] }} />
               </svg>
             </span>
-            , not just visits.
+            .
           </motion.h1>
 
           <motion.p custom={2} variants={rise} initial="hidden" animate="show"
-            className="mt-7 max-w-[520px] leading-relaxed text-[#48526e]" style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)' }}>
-            Your growth partner — high-performance websites, AI chatbots, automations and CRM
-            systems, engineered by a senior team across Nigeria, the UK, USA and Australia.
+            className="mt-7 max-w-[540px] leading-relaxed text-[#48526e]" style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)' }}>
+            From websites and branding to AI chatbots, automations, funnels and CRM systems — one
+            senior team partnering with businesses across Nigeria, the UK, USA and Australia.
           </motion.p>
 
           <motion.div custom={3} variants={rise} initial="hidden" animate="show" className="mt-9 flex flex-wrap gap-3.5">
@@ -129,7 +129,7 @@ export default function Hero() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl font-semibold text-navy">12+</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-navy/45">sites shipped</span>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-navy/45">projects delivered</span>
             </div>
           </motion.div>
         </div>

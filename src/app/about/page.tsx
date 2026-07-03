@@ -58,8 +58,9 @@ export default function AboutPage() {
                 challenges into scalable, user-centric products.
               </p>
               <p>
-                From multi-vendor marketplaces to healthcare platforms and luxury brands, we’ve shipped
-                12+ websites across 9+ industries — always on time, always built to perform.
+                From e-commerce platforms and healthcare systems to AI chatbots, automations and full
+                CRM setups, we’ve delivered 12+ digital solutions across 9+ industries — always on
+                time, always built to perform.
               </p>
             </div>
           </div>

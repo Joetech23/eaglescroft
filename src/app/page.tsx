@@ -19,9 +19,9 @@ import { faqs } from '@/lib/faqs'
 import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Eaglescroft — Web Design, AI Chatbots, Automation & CRM Agency in Nigeria' },
+  title: { absolute: 'Eaglescroft — Digital Solutions for Businesses: Web, AI, Automation & CRM' },
   description:
-    'Eaglescroft is a growth partner, not just a web agency. We build high-performance websites, AI chatbots, automations, GoHighLevel funnels and CRM systems for businesses in Nigeria, the UK, USA and Australia.',
+    'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, GoHighLevel funnels, CRM systems, video and SEO — partnering with companies in Nigeria, the UK, USA and Australia.',
 }
 
 const faqJsonLd = {
@@ -39,7 +39,7 @@ const homeJsonLd = {
   '@type': 'WebPage',
   '@id': `${siteConfig.url}/#webpage`,
   url: siteConfig.url,
-  name: 'Eaglescroft — Web Design, AI Chatbots, Automation & CRM Agency',
+  name: 'Eaglescroft — Digital Solutions for Business Growth',
   isPartOf: { '@id': `${siteConfig.url}/#website` },
   about: { '@id': `${siteConfig.url}/#organization` },
   inLanguage: 'en',

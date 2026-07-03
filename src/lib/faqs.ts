@@ -2,8 +2,8 @@ export type Faq = { q: string; a: string }
 
 export const faqs: Faq[] = [
   {
-    q: 'How long does a website project take?',
-    a: 'Most marketing sites launch in 2–4 weeks; larger builds like e-commerce or custom platforms typically run 4–8 weeks. You get a clear timeline in your proposal and a live progress view throughout — no surprises.',
+    q: 'How long does a typical project take?',
+    a: 'Most websites and funnels launch in 2–4 weeks; larger solutions like e-commerce, custom platforms or full automation systems typically run 4–8 weeks. You get a clear timeline in your proposal and a live progress view throughout — no surprises.',
   },
   {
     q: 'How much does a project cost?',

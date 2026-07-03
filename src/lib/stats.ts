@@ -1,7 +1,7 @@
 export type Stat = { value: number; suffix: string; label: string }
 
 export const stats: Stat[] = [
-  { value: 12, suffix: '+', label: 'Websites Delivered' },
+  { value: 12, suffix: '+', label: 'Projects Delivered' },
   { value: 9, suffix: '+', label: 'Industries Served' },
   { value: 6, suffix: '+', label: 'Countries Reached' },
   { value: 99, suffix: '%', label: 'Client Satisfaction' },
