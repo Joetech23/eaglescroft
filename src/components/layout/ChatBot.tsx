@@ -26,6 +26,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
     if (label === 'Email us') { window.location.href = `mailto:${siteConfig.email}`; return true }
     if (label === 'Open contact form' || label === 'Request an audit') { window.location.href = '/contact'; return true }
     if (label === 'See our work') { window.location.href = '/portfolio'; return true }
+    if (label === 'See pricing') { window.location.href = '/pricing'; return true }
     return false
   }
 

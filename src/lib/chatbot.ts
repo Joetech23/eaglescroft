@@ -51,10 +51,10 @@ export function getReply(raw: string): Reply {
       quick: ['Request an audit', 'Start a project', 'Chat on WhatsApp'],
     }
 
-  if (has('price', 'cost', 'budget', 'how much', 'timeline', 'how long', 'when'))
+  if (has('price', 'cost', 'budget', 'how much', 'pricing', 'rate', 'timeline', 'how long', 'when'))
     return {
-      text: "Every project is scoped to your goals, but as a guide: landing sites start small, full builds typically run 2–6 weeks. Share your budget range in the brief and we'll tailor a plan.",
-      quick: ['Open contact form', 'Chat on WhatsApp', 'Start a project'],
+      text: "We publish clear pricing for every service — websites from ₦120k, CRM systems from ₦150k, automation from ₦100k and video from ₦10k per clip. Most projects launch in 2–6 weeks. Want the full breakdown?",
+      quick: ['See pricing', 'Open contact form', 'Chat on WhatsApp'],
     }
 
   if (has('human', 'person', 'call', 'phone', 'talk', 'speak', 'agent'))

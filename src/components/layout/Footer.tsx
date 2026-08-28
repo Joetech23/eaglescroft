@@ -14,6 +14,15 @@ const cols = [
     ],
   },
   {
+    title: 'Pricing',
+    items: [
+      { label: 'Website Pricing', href: '/pricing/websites' },
+      { label: 'CRM Pricing', href: '/pricing/crm' },
+      { label: 'Automation Pricing', href: '/pricing/automation' },
+      { label: 'Video Pricing', href: '/pricing/video' },
+    ],
+  },
+  {
     title: 'Company',
     items: [
       { label: 'Work', href: '/portfolio' },
