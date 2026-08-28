@@ -7,7 +7,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How much does a project cost?',
-    a: 'We publish full pricing for every service. Websites run ₦120,000–₦3,000,000+, CRM systems ₦150,000–₦8,000,000+, automation ₦100,000–₦5,000,000+, and video from ₦10,000 per clip. Your exact figure is confirmed in a free consultation — see the pricing page for the complete breakdown.',
+    a: 'We publish full pricing for every service. Websites start at ₦180,000, CRM systems from ₦299,000, automation from ₦299,000, and video from ₦35,000 per clip. Your exact figure is confirmed in a free consultation — see the pricing page for the complete breakdown.',
   },
   {
     q: 'Do you work with clients outside Nigeria?',

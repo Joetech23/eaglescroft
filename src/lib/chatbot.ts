@@ -53,7 +53,7 @@ export function getReply(raw: string): Reply {
 
   if (has('price', 'cost', 'budget', 'how much', 'pricing', 'rate', 'timeline', 'how long', 'when'))
     return {
-      text: "We publish clear pricing for every service — websites from ₦120k, CRM systems from ₦150k, automation from ₦100k and video from ₦10k per clip. Most projects launch in 2–6 weeks. Want the full breakdown?",
+      text: "We publish clear pricing for every service — websites from ₦180k, CRM systems from ₦299k, automation from ₦299k and video from ₦35k per clip. Most projects launch in 2–6 weeks. Want the full breakdown?",
       quick: ['See pricing', 'Open contact form', 'Chat on WhatsApp'],
     }
 

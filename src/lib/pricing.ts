@@ -41,7 +41,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic Website',
         level: 'basic',
-        price: '₦120,000 – ₦250,000',
+        price: '₦180,000',
         billing: 'one-time',
         tagline: 'Get online properly, fast.',
         features: [
@@ -56,7 +56,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Website',
         level: 'business',
-        price: '₦300,000 – ₦800,000',
+        price: '₦280,000',
         billing: 'one-time',
         tagline: 'The serious growth website.',
         popular: true,
@@ -74,9 +74,9 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Premium / Custom Website',
         level: 'premium',
-        price: '₦900,000 – ₦3,000,000+',
-        billing: 'one-time',
-        tagline: 'A full web platform, built your way.',
+        price: '₦350,000+',
+        billing: 'one-time · scoped to features',
+        tagline: 'Priced on your features and business customisation.',
         features: [
           'Fully custom design (UI/UX)',
           '10–30 pages or more',
@@ -90,7 +90,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Website Maintenance',
-      price: '₦20,000 – ₦100,000',
+      price: '₦60,000 – ₦100,000',
       note: 'per month · hosting, security, updates & fixes',
     },
   },
@@ -108,7 +108,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic CRM Setup',
         level: 'basic',
-        price: '₦150,000 – ₦400,000',
+        price: '₦299,000',
         billing: 'one-time',
         tagline: 'Stop losing leads in your inbox.',
         features: [
@@ -122,7 +122,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business CRM System',
         level: 'business',
-        price: '₦500,000 – ₦1,500,000',
+        price: '₦599,000',
         billing: 'one-time',
         tagline: 'Your whole sales process, in one place.',
         popular: true,
@@ -139,7 +139,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Advanced / Custom CRM',
         level: 'premium',
-        price: '₦2,000,000 – ₦8,000,000+',
+        price: '₦1,500,000 – ₦2,500,000+',
         billing: 'one-time',
         tagline: 'SaaS-level CRM, built around your business.',
         features: [
@@ -154,7 +154,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'CRM Maintenance',
-      price: '₦50,000 – ₦300,000',
+      price: '₦100,000 – ₦200,000',
       note: 'per month · support, improvements & monitoring',
     },
   },
@@ -172,7 +172,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic Automation',
         level: 'basic',
-        price: '₦100,000 – ₦300,000',
+        price: '₦299,000',
         billing: 'setup',
         tagline: 'Never miss a follow-up again.',
         features: [
@@ -185,7 +185,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Automation System',
         level: 'business',
-        price: '₦400,000 – ₦1,200,000',
+        price: '₦450,000',
         billing: 'setup',
         tagline: 'A full funnel that runs itself.',
         popular: true,
@@ -201,7 +201,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Advanced Business Automation',
         level: 'premium',
-        price: '₦1,500,000 – ₦5,000,000+',
+        price: '₦1,299,000 – ₦3,000,000',
         billing: 'setup',
         tagline: 'Automate the whole operation.',
         features: [
@@ -216,7 +216,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Automation Support',
-      price: '₦50,000 – ₦250,000',
+      price: '₦250,000',
       note: 'per month · monitoring, tuning & new workflows',
     },
   },
@@ -234,7 +234,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Social Media Videos',
         level: 'basic',
-        price: '₦10,000 – ₦30,000',
+        price: '₦35,000',
         billing: 'per video',
         tagline: 'Short-form content that performs.',
         features: [
@@ -247,7 +247,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Promo Videos',
         level: 'business',
-        price: '₦40,000 – ₦120,000',
+        price: '₦99,000',
         billing: 'per video',
         tagline: 'Tell your brand story properly.',
         popular: true,
@@ -262,7 +262,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Premium Video Production',
         level: 'premium',
-        price: '₦150,000 – ₦500,000+',
+        price: '₦250,000 – ₦499,000',
         billing: 'per video',
         tagline: 'A commercial worth running.',
         features: [
@@ -277,7 +277,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Monthly Content Package',
-      price: '₦100,000 – ₦600,000',
+      price: '₦250,000 – ₦600,000',
       note: 'per month · 4–20 videos depending on plan',
     },
   },
