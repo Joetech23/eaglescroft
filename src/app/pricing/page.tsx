@@ -46,8 +46,8 @@ export default function PricingPage() {
       <JsonLd data={pricingJsonLd} />
       <PageHeader
         eyebrow="Pricing"
-        title={<>Clear pricing for <span className="text-gold-300">every solution.</span></>}
-        intro="No guesswork, no hidden fees. Pick the service you need, see exactly what it costs, and book a free consultation to lock in your scope."
+        title={<>Digital solutions, <span className="text-gold-300">priced with clarity.</span></>}
+        intro="From websites and CRM platforms to automation, content and digital experiences — explore our solutions and pricing."
       />
       <Section className="pb-8">
         <PricingTabs initial="websites" />
