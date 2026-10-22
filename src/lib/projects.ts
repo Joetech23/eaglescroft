@@ -84,6 +84,17 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: 'spirit-of-excellence-tuition',
+    title: 'Spirit of Excellence Tuition',
+    category: 'website',
+    url: 'soetuition.com',
+    industry: 'Education (UK)',
+    description:
+      'A UK primary tutoring platform for Reception to Year 6 and 11+ preparation, with an integrated digital resource shop, parent portal and secure checkout.',
+    stack: ['Next.js', 'Supabase', 'Stripe'],
+    featured: true,
+  },
+  {
     slug: 'lrvlc',
     title: 'LRVLC',
     category: 'website',

@@ -6,7 +6,7 @@ export const siteConfig = {
     'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, funnels, CRM systems, video and SEO — partnering with companies across Nigeria, the UK, USA, and Australia.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://eaglescroft.com.ng',
   email: 'hello@eaglescroft.com.ng',
-  phones: ['+234 814 484 8470', '+234 807 348 8126'],
+  phones: ['+234 814 484 8470', '+234 816 780 8866'],
   phoneRaw: '+2348144848470',
   phoneDisplay: '+234 814 484 8470',
   whatsapp: '2348144848470',
