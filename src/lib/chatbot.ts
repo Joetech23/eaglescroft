@@ -1,6 +1,8 @@
 // Lightweight rule-based assistant — no backend required.
 // Matches the user's message against intents and returns a reply + quick replies.
 
+import { startingPrice } from './pricing'
+
 export type Reply = { text: string; quick?: string[] }
 
 const services = [
@@ -53,7 +55,7 @@ export function getReply(raw: string): Reply {
 
   if (has('price', 'cost', 'budget', 'how much', 'pricing', 'rate', 'timeline', 'how long', 'when'))
     return {
-      text: "We publish clear pricing for every service — websites from ₦180k, CRM systems from ₦299k, automation from ₦299k and video from ₦35k per clip. Most projects launch in 2–6 weeks. Want the full breakdown?",
+      text: `We publish clear pricing for every service — websites from ${startingPrice('websites', true)}, CRM systems from ${startingPrice('crm', true)}, automation from ${startingPrice('automation', true)} and video from ${startingPrice('video', true)} per clip. Most projects launch in 2–6 weeks. Want the full breakdown?`,
       quick: ['See pricing', 'Open contact form', 'Chat on WhatsApp'],
     }
 

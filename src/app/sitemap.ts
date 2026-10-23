@@ -4,11 +4,12 @@ import { projects } from '@/lib/projects'
 import { posts } from '@/lib/posts'
 import { portfolioCategories } from '@/lib/categories'
 import { pricingCategories } from '@/lib/pricing'
+import { products } from '@/lib/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url
 
-  const staticRoutes = ['', '/about', '/services', '/pricing', '/portfolio', '/blog', '/contact'].map((r) => ({
+  const staticRoutes = ['', '/about', '/services', '/pricing', '/products', '/portfolio', '/blog', '/contact'].map((r) => ({
     url: `${base}${r}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -29,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  const productRoutes = products.map((p) => ({
+    url: `${base}/products/${p.slug}`,
+    lastModified: new Date(p.progressUpdatedAt),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }))
+
   const projectRoutes = projects.map((p) => ({
     url: `${base}/portfolio/${p.slug}`,
     lastModified: new Date(),
@@ -43,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
-  return [...staticRoutes, ...pricingRoutes, ...categoryRoutes, ...projectRoutes, ...postRoutes]
+  return [...staticRoutes, ...pricingRoutes, ...productRoutes, ...categoryRoutes, ...projectRoutes, ...postRoutes]
 }

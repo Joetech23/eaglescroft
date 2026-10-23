@@ -1,9 +1,21 @@
 import { Monitor, Database, Workflow, Clapperboard, type LucideIcon } from 'lucide-react'
 
+export type Currency = 'USD' | 'NGN'
+
+/** Structured price — every display string, chatbot line, FAQ and JSON-LD offer derives from this. */
+export type Price = {
+  currency: Currency
+  min: number
+  /** upper bound of a range ("$X – $Y") */
+  max?: number
+  /** open-ended ("$X+") — scoped to features */
+  open?: boolean
+}
+
 export type PricingTier = {
   name: string
   level: 'basic' | 'business' | 'premium'
-  price: string
+  price: Price
   billing: string
   tagline: string
   features: string[]
@@ -12,7 +24,7 @@ export type PricingTier = {
 
 export type Retainer = {
   label: string
-  price: string
+  price: Price
   note: string
 }
 
@@ -26,6 +38,9 @@ export type PricingCategory = {
   tiers: PricingTier[]
   retainer?: Retainer
 }
+
+/** Currency every published price is quoted in. */
+export const CURRENCY = 'NGN' as Currency
 
 export const pricingCategories: PricingCategory[] = [
   /* ------------------------------- WEBSITES ------------------------------- */
@@ -41,7 +56,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic Website',
         level: 'basic',
-        price: '₦180,000',
+        price: { currency: CURRENCY, min: 180_000 },
         billing: 'one-time',
         tagline: 'Get online properly, fast.',
         features: [
@@ -56,7 +71,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Website',
         level: 'business',
-        price: '₦280,000',
+        price: { currency: CURRENCY, min: 280_000 },
         billing: 'one-time',
         tagline: 'The serious growth website.',
         popular: true,
@@ -74,7 +89,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Premium / Custom Website',
         level: 'premium',
-        price: '₦350,000+',
+        price: { currency: CURRENCY, min: 350_000, open: true },
         billing: 'one-time · scoped to features',
         tagline: 'Priced on your features and business customisation.',
         features: [
@@ -90,7 +105,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Website Maintenance',
-      price: '₦60,000 – ₦100,000',
+      price: { currency: CURRENCY, min: 60_000, max: 100_000 },
       note: 'per month · hosting, security, updates & fixes',
     },
   },
@@ -108,7 +123,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic CRM Setup',
         level: 'basic',
-        price: '₦299,000',
+        price: { currency: CURRENCY, min: 299_000 },
         billing: 'one-time',
         tagline: 'Stop losing leads in your inbox.',
         features: [
@@ -122,7 +137,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business CRM System',
         level: 'business',
-        price: '₦599,000',
+        price: { currency: CURRENCY, min: 599_000 },
         billing: 'one-time',
         tagline: 'Your whole sales process, in one place.',
         popular: true,
@@ -139,7 +154,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Advanced / Custom CRM',
         level: 'premium',
-        price: '₦1,500,000 – ₦2,500,000+',
+        price: { currency: CURRENCY, min: 1_500_000, max: 2_500_000, open: true },
         billing: 'one-time',
         tagline: 'SaaS-level CRM, built around your business.',
         features: [
@@ -154,7 +169,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'CRM Maintenance',
-      price: '₦100,000 – ₦200,000',
+      price: { currency: CURRENCY, min: 100_000, max: 200_000 },
       note: 'per month · support, improvements & monitoring',
     },
   },
@@ -172,7 +187,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Basic Automation',
         level: 'basic',
-        price: '₦299,000',
+        price: { currency: CURRENCY, min: 299_000 },
         billing: 'setup',
         tagline: 'Never miss a follow-up again.',
         features: [
@@ -185,7 +200,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Automation System',
         level: 'business',
-        price: '₦450,000',
+        price: { currency: CURRENCY, min: 450_000 },
         billing: 'setup',
         tagline: 'A full funnel that runs itself.',
         popular: true,
@@ -201,7 +216,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Advanced Business Automation',
         level: 'premium',
-        price: '₦1,299,000 – ₦3,000,000',
+        price: { currency: CURRENCY, min: 1_299_000, max: 3_000_000 },
         billing: 'setup',
         tagline: 'Automate the whole operation.',
         features: [
@@ -216,7 +231,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Automation Support',
-      price: '₦250,000',
+      price: { currency: CURRENCY, min: 250_000 },
       note: 'per month · monitoring, tuning & new workflows',
     },
   },
@@ -234,7 +249,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Social Media Videos',
         level: 'basic',
-        price: '₦35,000',
+        price: { currency: CURRENCY, min: 35_000 },
         billing: 'per video',
         tagline: 'Short-form content that performs.',
         features: [
@@ -247,7 +262,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Business Promo Videos',
         level: 'business',
-        price: '₦99,000',
+        price: { currency: CURRENCY, min: 99_000 },
         billing: 'per video',
         tagline: 'Tell your brand story properly.',
         popular: true,
@@ -262,7 +277,7 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: 'Premium Video Production',
         level: 'premium',
-        price: '₦250,000 – ₦499,000',
+        price: { currency: CURRENCY, min: 250_000, max: 499_000 },
         billing: 'per video',
         tagline: 'A commercial worth running.',
         features: [
@@ -277,7 +292,7 @@ export const pricingCategories: PricingCategory[] = [
     ],
     retainer: {
       label: 'Monthly Content Package',
-      price: '₦250,000 – ₦600,000',
+      price: { currency: CURRENCY, min: 250_000, max: 600_000 },
       note: 'per month · 4–20 videos depending on plan',
     },
   },
@@ -285,4 +300,53 @@ export const pricingCategories: PricingCategory[] = [
 
 export function getPricingCategory(slug: string) {
   return pricingCategories.find((c) => c.slug === slug)
+}
+
+const SYMBOL: Record<Currency, string> = { USD: '$', NGN: '₦' }
+
+/** Plain-English name of the published currency, for copy and metadata. */
+export const currencyName = CURRENCY === 'USD' ? 'US dollars' : 'Naira'
+
+/** 180000 → "₦180,000"; compact → "₦180k" / "$1.5m". */
+export function formatAmount(amount: number, currency: Currency = CURRENCY, compact = false) {
+  const sym = SYMBOL[currency]
+  if (!compact) return `${sym}${amount.toLocaleString('en-US')}`
+  if (amount >= 1_000_000) return `${sym}${+(amount / 1_000_000).toFixed(1)}m`
+  if (amount >= 1_000) return `${sym}${+(amount / 1_000).toFixed(1)}k`
+  return `${sym}${amount}`
+}
+
+/** Display string for a tier or retainer: "$X", "$X+", "$X – $Y" or "$X – $Y+". */
+export function formatPrice(price: Price) {
+  const lo = formatAmount(price.min, price.currency)
+  const range = price.max ? `${lo} – ${formatAmount(price.max, price.currency)}` : lo
+  return price.open ? `${range}+` : range
+}
+
+/** Entry price of a category, e.g. startingPrice('websites') → "₦180,000". */
+export function startingPrice(slug: string, compact = false) {
+  const tier = getPricingCategory(slug)?.tiers[0]
+  return tier ? formatAmount(tier.price.min, tier.price.currency, compact) : ''
+}
+
+/** Footer note under the pricing tables, worded for the published currency. */
+export const currencyNote =
+  CURRENCY === 'USD'
+    ? 'All prices in US dollars · Final quote confirmed after a free consultation · Local-currency invoicing available on request'
+    : 'All prices in Naira · Final quote confirmed after a free consultation · International clients billed in USD/GBP equivalent'
+
+/** schema.org Offer fields — numeric price for fixed tiers, min/max for ranges. */
+export function offerPriceJsonLd(price: Price, billing: string) {
+  const fixed = !price.max && !price.open
+  return {
+    priceCurrency: price.currency,
+    ...(fixed ? { price: price.min } : {}),
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: price.currency,
+      ...(fixed ? { price: price.min } : { minPrice: price.min }),
+      ...(price.max ? { maxPrice: price.max } : {}),
+      description: `${formatPrice(price)} (${billing})`,
+    },
+  }
 }

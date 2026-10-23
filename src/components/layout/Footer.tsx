@@ -26,6 +26,7 @@ const cols = [
     title: 'Company',
     items: [
       { label: 'Work', href: '/portfolio' },
+      { label: 'Products', href: '/products' },
       { label: 'Why Eaglescroft', href: '/about' },
       { label: 'Insights', href: '/blog' },
       { label: 'Contact', href: '/contact' },

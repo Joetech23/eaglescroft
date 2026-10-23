@@ -5,13 +5,13 @@ import PricingTabs from '@/components/pricing/PricingTabs'
 import PricingAssurance from '@/components/pricing/PricingAssurance'
 import FinalCTA from '@/components/sections/FinalCTA'
 import JsonLd from '@/components/seo/JsonLd'
-import { pricingCategories } from '@/lib/pricing'
+import { pricingCategories, offerPriceJsonLd, currencyName } from '@/lib/pricing'
 import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Pricing — Websites, CRM, Automation & Video',
   description:
-    'Transparent Eaglescroft pricing for website design, CRM development, business automation and video production. Clear packages in Naira, with a free consultation before every quote.',
+    `Transparent Eaglescroft pricing for website design, CRM development, business automation and video production. Clear packages in ${currencyName}, with a free consultation before every quote.`,
   alternates: { canonical: '/pricing' },
 }
 
@@ -29,12 +29,7 @@ const pricingJsonLd = {
       '@type': 'Offer',
       name: t.name,
       description: t.features.join('; '),
-      priceCurrency: 'NGN',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        priceCurrency: 'NGN',
-        description: `${t.price} (${t.billing})`,
-      },
+      ...offerPriceJsonLd(t.price, t.billing),
       itemOffered: { '@type': 'Service', name: `${c.label} — ${t.name}`, provider: { '@id': `${siteConfig.url}/#organization` } },
     })),
   })),

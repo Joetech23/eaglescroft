@@ -6,7 +6,7 @@ import PricingTabs from '@/components/pricing/PricingTabs'
 import PricingAssurance from '@/components/pricing/PricingAssurance'
 import FinalCTA from '@/components/sections/FinalCTA'
 import JsonLd from '@/components/seo/JsonLd'
-import { pricingCategories, getPricingCategory } from '@/lib/pricing'
+import { pricingCategories, getPricingCategory, offerPriceJsonLd } from '@/lib/pricing'
 import { siteConfig } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -43,12 +43,7 @@ export default function PricingCategoryPage({ params }: { params: { category: st
         '@type': 'Offer',
         name: t.name,
         description: t.features.join('; '),
-        priceCurrency: 'NGN',
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'NGN',
-          description: `${t.price} (${t.billing})`,
-        },
+        ...offerPriceJsonLd(t.price, t.billing),
       })),
     },
   }

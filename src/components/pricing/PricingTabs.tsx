@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, ArrowRight, Link2, CheckCheck, Sparkles } from 'lucide-react'
-import { pricingCategories, type PricingTier } from '@/lib/pricing'
+import { pricingCategories, formatPrice, currencyNote, type PricingTier } from '@/lib/pricing'
 import { whatsappLink } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -52,7 +52,7 @@ function TierCard({ tier, index }: { tier: PricingTier; index: number }) {
                 : {}),
             }}
           >
-            {tier.price}
+            {formatPrice(tier.price)}
           </div>
           <div className={cn('mt-2 font-mono text-[11px] uppercase tracking-wider', isPremium ? 'text-white/45' : 'text-navy/45')}>
             {tier.billing}
@@ -195,7 +195,7 @@ export default function PricingTabs({ initial = 'websites' }: { initial?: string
               <div className="mt-1 text-[13.5px] text-navy/55">{current.retainer.note}</div>
             </div>
             <div className="flex items-center gap-5">
-              <div className="font-display text-xl font-semibold text-navy">{current.retainer.price}</div>
+              <div className="font-display text-xl font-semibold text-navy">{formatPrice(current.retainer.price)}</div>
               <a
                 href={whatsappLink}
                 target="_blank"
@@ -210,7 +210,7 @@ export default function PricingTabs({ initial = 'websites' }: { initial?: string
       )}
 
       <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-navy/40">
-        All prices in Naira · Final quote confirmed after a free consultation · International clients billed in USD/GBP equivalent
+        {currencyNote}
       </p>
     </div>
   )

@@ -1,3 +1,5 @@
+import { startingPrice } from './pricing'
+
 export type Faq = { q: string; a: string }
 
 export const faqs: Faq[] = [
@@ -7,7 +9,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How much does a project cost?',
-    a: 'We publish full pricing for every service. Websites start at ₦180,000, CRM systems from ₦299,000, automation from ₦299,000, and video from ₦35,000 per clip. Your exact figure is confirmed in a free consultation — see the pricing page for the complete breakdown.',
+    a: `We publish full pricing for every service. Websites start at ${startingPrice('websites')}, CRM systems from ${startingPrice('crm')}, automation from ${startingPrice('automation')}, and video from ${startingPrice('video')} per clip. Your exact figure is confirmed in a free consultation — see the pricing page for the complete breakdown.`,
   },
   {
     q: 'Do you work with clients outside Nigeria?',

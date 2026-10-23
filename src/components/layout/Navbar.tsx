@@ -14,6 +14,7 @@ const links = [
   { label: 'Services', href: '/services' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Work', href: '/portfolio' },
+  { label: 'Products', href: '/products' },
   { label: 'About', href: '/about' },
   { label: 'Insights', href: '/blog' },
   { label: 'Contact', href: '/contact' },

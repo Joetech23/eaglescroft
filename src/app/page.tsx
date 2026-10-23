@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/sections/Hero'
-import SolutionsShowcase from '@/components/sections/SolutionsShowcase'
+import MotionReel from '@/components/sections/MotionReel'
 import TrustLayer from '@/components/sections/TrustLayer'
 import WhoWeAre from '@/components/sections/WhoWeAre'
 import ServicesHover from '@/components/sections/ServicesHover'
@@ -52,8 +52,8 @@ export default function HomePage() {
       {/* 1. Hook */}
       <Hero />
       <TrustLayer />
-      {/* 2. Growth systems — we partner, not just build */}
-      <SolutionsShowcase />
+      {/* 2. What we ship — motion, SEO, social, CRM, AI */}
+      <MotionReel />
       {/* 3. Trust: who we are + what we do */}
       <WhoWeAre />
       <ServicesHover />
