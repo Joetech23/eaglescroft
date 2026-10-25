@@ -26,7 +26,8 @@ export default function PageHeader({
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.08 }}
-          className="mx-auto mt-6 max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl">
+          className="mx-auto mt-6 max-w-4xl font-display font-semibold leading-[1.05] tracking-tight text-white"
+          style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
           {title}
         </motion.h1>
         {intro && (

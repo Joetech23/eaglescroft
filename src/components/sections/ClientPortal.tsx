@@ -30,16 +30,16 @@ export default function ClientPortal() {
         {/* copy */}
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="chip-dark"><Lock className="h-3.5 w-3.5" /> Client Portal</span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#febc2e]/40 bg-[#febc2e]/10 px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[#fcd34d]">
+            <span className="chip-dark">Client Portal</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold-300/40 bg-gold-300/10 px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-gold-300">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#febc2e] opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#febc2e]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-300 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-300" />
               </span>
               Coming soon
             </span>
           </div>
-          <h2 id="portal-heading" className="mt-6 font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.4vw,3.2rem)' }}>
+          <h2 id="portal-heading" className="mt-6 font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             Your whole project,{' '}
             <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#93c5fd,#3b82f6)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
               in one place.

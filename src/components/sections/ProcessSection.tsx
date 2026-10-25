@@ -47,7 +47,7 @@ export default function ProcessSection() {
         {/* steps */}
         <div>
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
-            <span className="h-px w-[22px] bg-navy/40" /> How we work
+            <span aria-hidden className="flight-marker" /> How we work
           </div>
           <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             From idea to lift-off.

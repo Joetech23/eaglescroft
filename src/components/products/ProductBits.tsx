@@ -4,7 +4,7 @@ import { statusLabel, featureStatusLabel, type ProductStatus, type FeatureStatus
 const statusStyle: Record<ProductStatus, string> = {
   live: 'border-[#28c840]/40 bg-[#28c840]/10 text-[#178a3c]',
   beta: 'border-gold-400/40 bg-gold-400/10 text-gold-600',
-  building: 'border-amber-500/40 bg-amber-500/10 text-amber-700',
+  building: 'border-[#2A3F8F]/30 bg-[#2A3F8F]/10 text-[#2A3F8F]',
   concept: 'border-navy/15 bg-navy/[0.04] text-navy/60',
 }
 
@@ -19,7 +19,7 @@ export function StatusPill({ status, className }: { status: ProductStatus; class
 
 const featureStyle: Record<FeatureStatus, string> = {
   shipped: 'bg-[#28c840]/10 text-[#178a3c]',
-  building: 'bg-amber-500/10 text-amber-700',
+  building: 'bg-[#2A3F8F]/10 text-[#2A3F8F]',
   planned: 'bg-navy/[0.05] text-navy/50',
 }
 

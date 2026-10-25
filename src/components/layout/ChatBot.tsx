@@ -60,7 +60,7 @@ export default function ChatBot({ onClose }: { onClose: () => void }) {
           <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#001e60] bg-[#28c840]" />
         </div>
         <div className="flex-1">
-          <div className="font-display text-[15px] font-semibold text-white">Aero · Eaglescroft</div>
+          <div className="font-display text-[15px] font-semibold text-white">Aero · EAGLESCROFT</div>
           <div className="font-mono text-[10px] uppercase tracking-wider text-gold-300">Online · replies instantly</div>
         </div>
         <button onClick={onClose} aria-label="Close chat" className="rounded-full p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white">

@@ -22,7 +22,7 @@ export const whyChooseUs = [
   },
   {
     title: 'Global Reach',
-    body: 'Trusted by clients across Nigeria, the UK, USA, and Australia — we operate at a global standard, on local time.',
+    body: 'Trusted by businesses worldwide — we operate at a global standard, on local time.',
   },
   {
     title: 'SEO & ROI Focus',

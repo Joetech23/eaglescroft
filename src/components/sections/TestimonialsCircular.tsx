@@ -38,9 +38,9 @@ export default function TestimonialsCircular() {
     <section id="voices" className="bg-white px-7 py-[120px]">
       <div className="mx-auto mb-6 max-w-[1280px] text-center">
         <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
-          <span className="h-px w-[22px] bg-navy/40" /> Client voices
+          <span aria-hidden className="flight-marker" /> Client voices
         </div>
-        <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.3rem)' }}>
+        <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
           Trusted across four continents.
         </h2>
       </div>

@@ -18,14 +18,14 @@ export default function WhoWeAre() {
         {/* copy */}
         <div>
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-600">
-            <span className="h-px w-[22px] bg-gold-400/60" /> Who we are
+            <span aria-hidden className="flight-marker" /> Who we are
           </div>
-          <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.2rem)' }}>
+          <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             More than an agency — a serious growth partner.
           </h2>
           <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-[#48526e]">
-            Eaglescroft is a founder-led team partnering with companies across Nigeria, the UK, USA and
-            Australia — websites, brands, AI chatbots, automations and CRM systems that work as one
+            Eaglescroft is a founder-led team, based in Lagos and partnering with businesses worldwide —
+            websites, brands, AI chatbots, automations and CRM systems that work as one
             engine. We don&rsquo;t hand over a project and disappear; we stay invested in your growth.
           </p>
 

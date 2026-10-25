@@ -44,9 +44,9 @@ export default function FAQSection() {
         {/* heading + CTA card */}
         <div>
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-600">
-            <span className="h-px w-[22px] bg-gold-400/60" /> FAQs
+            <span aria-hidden className="flight-marker" /> FAQs
           </div>
-          <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.2rem)' }}>
+          <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             Answers before<br />you even ask.
           </h2>
           <p className="mt-4 max-w-[400px] text-[15.5px] leading-relaxed text-[#5a6685]">

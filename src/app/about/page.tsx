@@ -10,14 +10,14 @@ import { countries } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Eaglescroft is a global digital agency founded by Joshua Obaje Enemaku, uniting full-stack engineering, design, and strategy across Nigeria, the UK, USA, and Australia.',
+    'Eaglescroft is a global digital agency founded by Joshua Obaje Enemaku, uniting full-stack engineering, design, and strategy for businesses worldwide from its base in Lagos.',
 }
 
 const values = [
   { icon: Target, title: 'Results First', body: 'Every pixel and line of code serves a measurable business outcome.' },
   { icon: Layers, title: 'Craft & Depth', body: 'Engineering rigour meets genuine design taste — no shortcuts.' },
   { icon: Rocket, title: 'Built to Scale', body: 'Architecture that grows with you, from startup to enterprise.' },
-  { icon: Globe, title: 'Global Standard', body: 'We deliver world-class work from Abuja to the rest of the world.' },
+  { icon: Globe, title: 'Global Standard', body: 'We deliver world-class work from Lagos to the rest of the world.' },
 ]
 
 const skills = [
@@ -28,7 +28,7 @@ const skills = [
 
 const timeline = [
   { year: '2021', title: 'Eaglescroft Founded', body: 'Launched as a results-driven digital consulting agency.' },
-  { year: '2023', title: 'Going Global', body: 'Expanded delivery across Nigeria, the UK, USA, and Australia.' },
+  { year: '2023', title: 'Going Global', body: 'Expanded delivery to clients worldwide.' },
   { year: '2025', title: 'AI & Scale', body: 'Engineering AI automation pipelines and serving clients in 6+ countries.' },
   { year: 'Today', title: '12+ Sites, 9+ Industries', body: 'Delivering high-performance products with 99% client satisfaction.' },
 ]
@@ -84,7 +84,7 @@ export default function AboutPage() {
       {/* Timeline */}
       <Section className="bg-navy-50/40">
         <div className="container-x">
-          <SectionHeading eyebrow="The Journey" title="From Abuja to the world" center />
+          <SectionHeading eyebrow="The Journey" title="From Lagos to the world." center />
           <Stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-4">
             {timeline.map((t) => (
               <StaggerItem key={t.year}>
@@ -103,7 +103,7 @@ export default function AboutPage() {
       <Section>
         <div className="container-x grid gap-14 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="Capabilities" title="A deep, modern toolkit" />
+            <SectionHeading eyebrow="Capabilities" title="A deep, modern toolkit." />
             <div className="mt-8 flex flex-wrap gap-3">
               {skills.map((s) => (
                 <span key={s} className="rounded-full border border-navy/10 bg-navy-50 px-4 py-2 text-sm font-medium text-navy/75">
@@ -113,7 +113,11 @@ export default function AboutPage() {
             </div>
           </div>
           <div>
-            <SectionHeading eyebrow="Global Presence" title="Operating across 4 countries" />
+            <SectionHeading
+              eyebrow="Global Presence"
+              title="Lagos to the world."
+              intro="We're based in Lagos and work with businesses wherever they are. Clients so far span:"
+            />
             <div className="mt-8 grid grid-cols-2 gap-4">
               {countries.map((c) => (
                 <div key={c} className="flex items-center gap-3 rounded-2xl border border-navy/10 bg-white p-5 shadow-soft">
@@ -121,6 +125,10 @@ export default function AboutPage() {
                   <span className="font-medium text-navy">{c}</span>
                 </div>
               ))}
+              <div className="col-span-2 flex items-center gap-3 rounded-2xl border border-gold-400/30 bg-gold-400/[0.06] p-5">
+                <Globe className="h-5 w-5 text-gold-500" />
+                <span className="font-medium text-navy">…and businesses across the globe</span>
+              </div>
             </div>
           </div>
         </div>

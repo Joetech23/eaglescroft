@@ -69,12 +69,12 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
             </span>
-            Global Digital Agency · 4 Regions
+            Global Digital Agency<span className="hidden sm:inline"> · Lagos to the World</span>
           </motion.div>
 
           <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
             className="mt-6 font-display font-semibold text-navy"
-            style={{ fontSize: 'clamp(2.5rem,5.6vw,4.5rem)', lineHeight: 1.02, letterSpacing: '-0.03em' }}>
+            style={{ fontSize: 'clamp(2.25rem,4.8vw,3.5rem)', lineHeight: 1.04, letterSpacing: '-0.03em' }}>
             Digital solutions that{' '}
             <span className="relative inline-block text-transparent" style={{ background: 'linear-gradient(100deg,#1d4ed8,#2563EB 60%,#3b82f6)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
               grow your business
@@ -89,7 +89,7 @@ export default function Hero() {
           <motion.p custom={2} variants={rise} initial="hidden" animate="show"
             className="mt-7 max-w-[540px] leading-relaxed text-[#48526e]" style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)' }}>
             From websites and branding to AI chatbots, automations, funnels and CRM systems — one
-            senior team partnering with businesses across Nigeria, the UK, USA and Australia.
+            senior team partnering with ambitious businesses across the globe.
           </motion.p>
 
           <motion.div custom={3} variants={rise} initial="hidden" animate="show" className="mt-9 flex flex-wrap gap-3.5">

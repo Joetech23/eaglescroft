@@ -60,7 +60,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-gold-300">{project.industry}</span>
-              <h1 className="mt-4 text-4xl font-semibold tracking-tightest md:text-6xl">{project.title}</h1>
+              <h1 className="mt-4 font-display font-semibold tracking-tight" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>{project.title}</h1>
               <p className="mt-4 max-w-2xl text-base text-white/70 md:text-lg">{project.description}</p>
             </div>
             {project.url && (

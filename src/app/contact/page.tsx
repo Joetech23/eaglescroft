@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Clock, CalendarCheck } from 'lucide-react'
 import PageHeader from '@/components/sections/PageHeader'
 import Section from '@/components/ui/Section'
 import ContactForm from '@/components/sections/ContactForm'
-import { siteConfig, countries } from '@/lib/site'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -25,7 +25,7 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-semibold text-navy">Talk to us directly</h2>
             <p className="mt-3 text-sm leading-relaxed text-navy/60">
-              Prefer email or a call? Reach out any time — we work across {countries.length} countries and flexible time zones.
+              Prefer email or a call? Reach out any time — we work with businesses worldwide, across flexible time zones.
             </p>
 
             <div className="mt-8 space-y-4">

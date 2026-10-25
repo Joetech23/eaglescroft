@@ -11,7 +11,7 @@ const services = [
 ]
 
 export const greeting: Reply = {
-  text: "Hi 👋 I'm Aero, Eaglescroft's assistant. I can tell you about our services, pricing, timelines, or get you booked in. What are you working on?",
+  text: "Hi, I'm Aero, Eaglescroft's assistant. I can tell you about our services, pricing, timelines, or get you booked in. What are you working on?",
   quick: ['Start a project', 'Your services', 'Pricing & timelines', 'Talk to a human'],
 }
 
@@ -66,13 +66,13 @@ export function getReply(raw: string): Reply {
     }
 
   if (has('whatsapp', 'wa'))
-    return { text: "Tap below and we'll continue on WhatsApp 👇", quick: ['Chat on WhatsApp'] }
+    return { text: "Tap below and we'll continue on WhatsApp.", quick: ['Chat on WhatsApp'] }
 
   if (has('email', 'mail'))
-    return { text: "You can reach us by email any time 👇", quick: ['Email us'] }
+    return { text: "You can reach us by email any time.", quick: ['Email us'] }
 
   if (has('thank', 'thanks', 'cheers', 'great', 'awesome', 'cool'))
-    return { text: "Anytime! 🦅 Anything else I can help with?", quick: ['Start a project', 'Your services', 'Talk to a human'] }
+    return { text: "Anytime. Anything else I can help with?", quick: ['Start a project', 'Your services', 'Talk to a human'] }
 
   return {
     text: "Good question! I can help with services, pricing, timelines, or connecting you with the team. What would be most useful?",

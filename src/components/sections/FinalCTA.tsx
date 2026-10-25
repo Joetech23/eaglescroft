@@ -12,7 +12,7 @@ export default function FinalCTA() {
 
       <div className="relative mx-auto max-w-[1280px] text-center">
         <span className="chip-dark">Ready for takeoff</span>
-        <h2 className="mx-auto mt-6 max-w-3xl font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2.2rem,5vw,3.9rem)' }}>
+        <h2 className="mx-auto mt-6 max-w-3xl font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
           Let&rsquo;s build something<br />
           <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#93c5fd,#2563EB)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
             that takes flight.
@@ -37,7 +37,7 @@ export default function FinalCTA() {
           </a>
         </div>
         <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35">
-          Free consultation · Reply within 24 hours · Nigeria · UK · USA · Australia
+          Free consultation · Reply within 24 hours · Lagos to the world
         </p>
       </div>
     </section>

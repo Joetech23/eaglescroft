@@ -7,7 +7,7 @@ const reasons: { icon: LucideIcon; title: string; body: string }[] = [
   { icon: Code2, title: 'Engineering Depth', body: 'Full-stack mastery across Next.js, React, Node and WordPress — systems that scale, not just sites that look good.' },
   { icon: PenTool, title: 'Design Sensibility', body: 'Pixel-perfect, conversion-focused interfaces where aesthetics meet measurable performance.' },
   { icon: Cpu, title: 'AI & Automation', body: 'Chatbots, AI agent pipelines and automation workflows that cut overhead and unlock growth.' },
-  { icon: Globe, title: 'Global Reach', body: 'Trusted across Nigeria, the UK, USA and Australia — global standard, on local time.' },
+  { icon: Globe, title: 'Global Reach', body: 'Trusted by businesses worldwide — global standard, on local time.' },
   { icon: LineChart, title: 'SEO & ROI Focus', body: 'Technical SEO and Core Web Vitals baked into every build, so your investment compounds.' },
   { icon: Workflow, title: 'End-to-End', body: 'From discovery to deployment and support — one accountable partner across the whole journey.' },
 ]
@@ -18,9 +18,9 @@ export default function WhyEaglescroft() {
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-[54px] max-w-[620px]">
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
-            <span className="h-px w-[22px] bg-navy/40" /> Why Eaglescroft
+            <span aria-hidden className="flight-marker" /> Why Eaglescroft
           </div>
-          <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.3rem)' }}>
+          <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             A partner, not a vendor.
           </h2>
         </div>

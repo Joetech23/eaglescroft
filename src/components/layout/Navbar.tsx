@@ -60,7 +60,7 @@ export default function Navbar() {
           {/* logo */}
           <Link href="/" className="flex items-center gap-2.5" aria-label={siteConfig.name}>
             <Image src="/brand/eagle-gold.png" alt="" width={30} height={30} priority className="h-[26px] w-auto object-contain" />
-            <span className="font-display text-[19px] font-semibold tracking-tight text-navy">Eaglescroft</span>
+            <span className="font-display text-[17px] font-semibold tracking-[0.14em] text-navy">EAGLESCROFT</span>
           </Link>
 
           {/* links */}

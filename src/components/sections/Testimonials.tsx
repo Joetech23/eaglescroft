@@ -8,9 +8,9 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-12 max-w-[620px]">
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
-            <span className="h-px w-[22px] bg-navy/40" /> Client voices
+            <span aria-hidden className="flight-marker" /> Client voices
           </div>
-          <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.3rem)' }}>
+          <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             Trusted across four continents.
           </h2>
         </div>

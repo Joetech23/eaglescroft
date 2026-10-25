@@ -64,7 +64,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
               <span>·</span>
               <span>{post.readTime}</span>
             </div>
-            <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tightest md:text-5xl">{post.title}</h1>
+            <h1 className="mt-5 font-display font-semibold leading-tight tracking-tight" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>{post.title}</h1>
           </div>
         </header>
 

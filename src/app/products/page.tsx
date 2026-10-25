@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Check, Handshake } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import PageHeader from '@/components/sections/PageHeader'
 import Section from '@/components/ui/Section'
 import FinalCTA from '@/components/sections/FinalCTA'
@@ -96,7 +96,7 @@ export default function ProductsPage() {
             <div className="bg-dots-dark pointer-events-none absolute inset-0 opacity-50" />
             <div className="relative grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
               <div>
-                <span className="chip-dark"><Handshake className="h-3.5 w-3.5" /> Partnerships</span>
+                <span className="chip-dark">Partnerships</span>
                 <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-white md:text-4xl">
                   Build, pilot or distribute with us.
                 </h2>

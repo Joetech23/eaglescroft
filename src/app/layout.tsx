@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Inter, JetBrains_Mono, Raleway, Poppins } from 'next/font/google'
+import { Inter, JetBrains_Mono, Raleway, Sora } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import ContactDock from '@/components/layout/ContactDock'
 import JsonLd from '@/components/seo/JsonLd'
-import { siteConfig, countries } from '@/lib/site'
+import { siteConfig } from '@/lib/site'
 import { services } from '@/lib/services'
 
 /** Google Tag Manager container */
@@ -33,9 +33,9 @@ const raleway = Raleway({
   weight: ['400', '500', '600', '700'],
 })
 
-const poppins = Poppins({
+const sora = Sora({
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-sora',
   display: 'swap',
   weight: ['500', '600', '700'],
 })
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    'digital agency Nigeria', 'web design Nigeria', 'web design Abuja', 'website development company',
+    'digital agency Nigeria', 'web design Nigeria', 'web design Lagos', 'global digital agency', 'website development company',
     'Next.js development agency', 'UI/UX design', 'branding agency', 'technical SEO agency',
     'AI chatbot solutions', 'AI chatbot for business', 'business automation agency',
     'GoHighLevel expert', 'GoHighLevel setup', 'sales funnels', 'funnel builder',
@@ -111,12 +111,11 @@ const orgJsonLd = {
   telephone: siteConfig.phoneRaw,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Asokoro',
-    addressLocality: 'Abuja',
-    addressRegion: 'FCT',
+    addressLocality: 'Lagos',
+    addressRegion: 'Lagos',
     addressCountry: 'NG',
   },
-  areaServed: countries.map((c) => ({ '@type': 'Country', name: c })),
+  areaServed: 'Worldwide',
   foundingDate: '2021',
   founder: [
     { '@type': 'Person', name: 'Joshua Obaje Enemaku', jobTitle: 'Founder & CTO' },
@@ -145,7 +144,7 @@ const websiteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable} ${raleway.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} ${raleway.variable} ${sora.variable}`}>
       <body>
         {/* Google Tag Manager (noscript) */}
         <noscript>

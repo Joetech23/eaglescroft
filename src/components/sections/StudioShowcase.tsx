@@ -20,7 +20,7 @@ export default function StudioShowcase() {
       <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-500">
-            <span className="h-px w-[22px] bg-gold-400/60" /> Inside the studio
+            <span aria-hidden className="flight-marker" /> Inside the studio
           </div>
           <h2 className="mt-[18px] font-display font-semibold leading-[1.04] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
             One team. Every discipline.

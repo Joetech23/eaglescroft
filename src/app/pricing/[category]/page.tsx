@@ -35,7 +35,7 @@ export default function PricingCategoryPage({ params }: { params: { category: st
     description: cat.description,
     url: `${siteConfig.url}/pricing/${cat.slug}`,
     provider: { '@id': `${siteConfig.url}/#organization` },
-    areaServed: ['Nigeria', 'United Kingdom', 'United States', 'Australia'],
+    areaServed: 'Worldwide',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${cat.label} packages`,

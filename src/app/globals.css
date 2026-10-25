@@ -7,7 +7,9 @@
 :root {
   --font-inter: 'Inter', system-ui, sans-serif;
   --font-raleway: 'Raleway', system-ui, sans-serif;
-  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-sora: 'Sora', system-ui, sans-serif;
+  /* Flight marker: the HUD flight-path symbol that leads every eyebrow (brand, Oct 2026). */
+  --flight-marker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 18' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='15' cy='11' r='4.6'/%3E%3Cpath d='M1.5 11H10.2M19.8 11H28.5M15 6.4V1.6'/%3E%3C/svg%3E");
   --primary: #2563EB;
   --primary-foreground: #ffffff;
 
@@ -40,7 +42,7 @@ body {
 
 @layer base {
   h1, h2, h3, h4 {
-    font-family: var(--font-poppins), var(--font-raleway), system-ui, sans-serif;
+    font-family: var(--font-sora), var(--font-raleway), system-ui, sans-serif;
     letter-spacing: -0.02em;
   }
   ::selection {
@@ -102,6 +104,21 @@ body {
   }
   .chip-dark {
     @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-gold-300 backdrop-blur;
+  }
+  /* Flight marker, in the label's colour. Text-only chips/eyebrows get it automatically;
+     chips that carry their own live dot (the "pulse" variant) keep the dot instead. */
+  .flight-marker,
+  .chip:not(:has(*))::before,
+  .chip-dark:not(:has(*))::before,
+  .eyebrow:not(:has(*))::before {
+    content: '';
+    display: inline-block;
+    flex: none;
+    width: 1.75em;
+    height: 1.05em;
+    background: currentColor;
+    -webkit-mask: var(--flight-marker) center / contain no-repeat;
+            mask: var(--flight-marker) center / contain no-repeat;
   }
 }
 

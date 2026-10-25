@@ -22,7 +22,7 @@ import { siteConfig } from '@/lib/site'
 export const metadata: Metadata = {
   title: { absolute: 'Eaglescroft — Digital Solutions for Businesses: Web, AI, Automation & CRM' },
   description:
-    'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, GoHighLevel funnels, CRM systems, video and SEO — partnering with companies in Nigeria, the UK, USA and Australia.',
+    'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, GoHighLevel funnels, CRM systems, video and SEO — a global agency based in Lagos, working with businesses worldwide.',
 }
 
 const faqJsonLd = {

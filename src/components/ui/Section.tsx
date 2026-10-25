@@ -36,11 +36,14 @@ export function SectionHeading({
     <div className={cn(center && 'mx-auto text-center', 'max-w-3xl', className)}>
       {eyebrow && (
         <span className={cn('eyebrow', light && 'text-gold-400/90', center && 'justify-center')}>
-          <span aria-hidden className="text-gold-500">↗</span>
+          <span aria-hidden className="flight-marker" />
           {eyebrow}
         </span>
       )}
-      <h2 className={cn('mt-4 text-3xl font-semibold leading-[1.1] md:text-5xl', light ? 'text-white' : 'text-navy')}>
+      <h2
+        className={cn('mt-4 font-display font-semibold leading-[1.08] tracking-tight', light ? 'text-white' : 'text-navy')}
+        style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}
+      >
         {title}
       </h2>
       {intro && (

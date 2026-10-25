@@ -13,7 +13,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Do you work with clients outside Nigeria?',
-    a: 'Absolutely — most of our clients are international. We deliver across Nigeria, the UK, USA and Australia, working async-friendly hours with clear communication so time zones never slow the project down.',
+    a: 'Absolutely — most of our clients are international. We work with businesses worldwide — clients so far span Nigeria, the UK, the USA, Australia and beyond — working async-friendly hours with clear communication so time zones never slow the project down.',
   },
   {
     q: 'Can you set up AI chatbots, automations and CRM systems?',

@@ -24,7 +24,7 @@ export default function ServicesHover() {
     >
       <div className="bg-dots pointer-events-none absolute inset-0 opacity-50" style={{ maskImage: 'linear-gradient(180deg,black,transparent 80%)', WebkitMaskImage: 'linear-gradient(180deg,black,transparent 80%)' }} />
       <div className="relative mx-auto max-w-[1280px]">
-        <h3 className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-500">/ our services</h3>
+        <h3 className="mb-2 inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-500"><span aria-hidden className="flight-marker" /> Our services</h3>
         <p className="mb-10 max-w-xl font-display text-2xl font-semibold tracking-tightest text-navy md:text-3xl">
           Hover a craft to see it in motion.
         </p>

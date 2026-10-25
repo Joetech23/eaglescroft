@@ -7,7 +7,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Selected work by Eaglescroft — websites, video editing, and social media campaigns delivered for clients across 9+ industries and 4+ countries.',
+    'Selected work by Eaglescroft — websites, video editing, and social media campaigns delivered for clients across 9+ industries for businesses worldwide.',
 }
 
 export default function PortfolioPage() {

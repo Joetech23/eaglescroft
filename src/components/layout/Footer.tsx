@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="max-w-[300px] [grid-column:1/-1] md:[grid-column:auto]">
             <div className="mb-4 flex items-center gap-2.5">
               <Image src="/brand/eagle-white.png" alt="" width={30} height={30} className="h-7 w-auto object-contain" />
-              <span className="font-display text-[20px] font-semibold text-white">Eaglescroft</span>
+              <span className="font-display text-[18px] font-semibold tracking-[0.14em] text-white">EAGLESCROFT</span>
             </div>
             <p className="text-[13.5px] leading-relaxed text-white/50">
               We help businesses fly online — complete digital solutions: websites, branding, AI, automation and growth systems.
@@ -76,9 +76,9 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.07] pt-[26px]">
-          <div className="font-mono text-xs text-white/40">© {new Date().getFullYear()} Eaglescroft Limited — Asokoro, Abuja, Nigeria</div>
+          <div className="font-mono text-xs text-white/40">© {new Date().getFullYear()} Eaglescroft Limited — Lagos, Nigeria</div>
           <div className="flex gap-[18px] font-mono text-[11px] uppercase tracking-[0.1em] text-white/40">
-            <span>Nigeria</span><span>·</span><span>UK</span><span>·</span><span>USA</span><span>·</span><span>Australia</span>
+            <span>Lagos</span><span>·</span><span>To the world</span>
           </div>
         </div>
       </div>

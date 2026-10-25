@@ -18,7 +18,7 @@ export default function LivePortfolio() {
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="chip-dark">Selected work</span>
-            <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.3rem)' }}>
+            <h2 className="mt-[18px] font-display font-semibold leading-[1.02] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
               Live previews, real results.
             </h2>
           </div>

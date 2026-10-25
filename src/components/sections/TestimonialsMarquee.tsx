@@ -37,9 +37,9 @@ export default function TestimonialsMarquee() {
     >
       <div className="mx-auto mb-12 max-w-[1280px] text-center">
         <div className="inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold-400">
-          <span className="h-px w-[22px] bg-gold-400/50" /> Client voices
+          <span aria-hidden className="flight-marker" /> Client voices
         </div>
-        <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tightest text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.3rem)' }}>
+        <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tightest text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
           Trusted across four continents.
         </h2>
       </div>

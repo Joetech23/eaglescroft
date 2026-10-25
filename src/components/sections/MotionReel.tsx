@@ -161,7 +161,7 @@ export default function MotionReel() {
           {/* header */}
           <div className="mb-12 max-w-[780px]">
             <span className="chip-dark">What we&rsquo;re shipping</span>
-            <h2 id="reel-heading" className="mt-5 font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.6vw,3.4rem)' }}>
+            <h2 id="reel-heading" className="mt-5 font-display font-semibold leading-[1.05] tracking-tight text-white" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
               From motion graphics{' '}
               <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#93c5fd,#3b82f6)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
                 to AI automation.
