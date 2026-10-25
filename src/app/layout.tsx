@@ -118,8 +118,8 @@ const orgJsonLd = {
   areaServed: 'Worldwide',
   foundingDate: '2021',
   founder: [
-    { '@type': 'Person', name: 'Joshua Obaje Enemaku', jobTitle: 'Founder & CTO' },
-    { '@type': 'Person', name: 'Benjamin Adama', jobTitle: 'Co-founder' },
+    { '@type': 'Person', name: 'Benjamin Adama', jobTitle: 'Co-founder & CEO' },
+    { '@type': 'Person', name: 'Joshua Obaje Enemaku', jobTitle: 'Co-founder & CTO' },
   ],
   sameAs: ['https://www.linkedin.com/', 'https://instagram.com/', 'https://x.com/'],
   hasOfferCatalog: {

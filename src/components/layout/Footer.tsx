@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { MapPin, Mail, Phone } from 'lucide-react'
 import { siteConfig } from '@/lib/site'
 
 const cols = [
@@ -76,10 +77,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.07] pt-[26px]">
-          <div className="font-mono text-xs text-white/40">© {new Date().getFullYear()} Eaglescroft Limited — Lagos, Nigeria</div>
-          <div className="flex gap-[18px] font-mono text-[11px] uppercase tracking-[0.1em] text-white/40">
-            <span>Lagos</span><span>·</span><span>To the world</span>
-          </div>
+          <div className="font-mono text-xs text-white/40">© {new Date().getFullYear()} Eaglescroft Limited</div>
+          <address className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] not-italic text-white/55">
+            <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-gold-300" /> {siteConfig.location}</span>
+            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-1.5 transition-colors hover:text-gold-300"><Mail className="h-3.5 w-3.5 text-gold-300" /> {siteConfig.email}</a>
+            <a href={`tel:${siteConfig.phoneRaw}`} className="inline-flex items-center gap-1.5 transition-colors hover:text-gold-300"><Phone className="h-3.5 w-3.5 text-gold-300" /> {siteConfig.phoneDisplay}</a>
+          </address>
         </div>
       </div>
     </footer>

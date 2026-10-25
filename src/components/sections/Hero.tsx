@@ -69,7 +69,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
             </span>
-            Global Digital Agency<span className="hidden sm:inline"> · Lagos to the World</span>
+            Global Digital Agency
           </motion.div>
 
           <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
@@ -126,10 +126,6 @@ export default function Hero() {
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl font-semibold text-navy">99%</span>
               <span className="font-mono text-[11px] uppercase tracking-wider text-navy/45">satisfaction</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl font-semibold text-navy">12+</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-navy/45">projects delivered</span>
             </div>
           </motion.div>
         </div>

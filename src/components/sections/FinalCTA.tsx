@@ -37,7 +37,7 @@ export default function FinalCTA() {
           </a>
         </div>
         <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35">
-          Free consultation · Reply within 24 hours · Lagos to the world
+          Free consultation · Reply within 24 hours
         </p>
       </div>
     </section>

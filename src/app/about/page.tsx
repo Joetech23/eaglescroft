@@ -10,14 +10,14 @@ import { countries } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Eaglescroft is a global digital agency founded by Joshua Obaje Enemaku, uniting full-stack engineering, design, and strategy for businesses worldwide from its base in Lagos.',
+    'Eaglescroft is a global digital agency founded by Benjamin Adama and Joshua Obaje Enemaku, uniting full-stack engineering, design, and strategy for businesses worldwide.',
 }
 
 const values = [
   { icon: Target, title: 'Results First', body: 'Every pixel and line of code serves a measurable business outcome.' },
   { icon: Layers, title: 'Craft & Depth', body: 'Engineering rigour meets genuine design taste — no shortcuts.' },
   { icon: Rocket, title: 'Built to Scale', body: 'Architecture that grows with you, from startup to enterprise.' },
-  { icon: Globe, title: 'Global Standard', body: 'We deliver world-class work from Lagos to the rest of the world.' },
+  { icon: Globe, title: 'Global Standard', body: 'We deliver world-class work for businesses around the globe.' },
 ]
 
 const skills = [
@@ -30,7 +30,7 @@ const timeline = [
   { year: '2021', title: 'Eaglescroft Founded', body: 'Launched as a results-driven digital consulting agency.' },
   { year: '2023', title: 'Going Global', body: 'Expanded delivery to clients worldwide.' },
   { year: '2025', title: 'AI & Scale', body: 'Engineering AI automation pipelines and serving clients in 6+ countries.' },
-  { year: 'Today', title: '12+ Sites, 9+ Industries', body: 'Delivering high-performance products with 99% client satisfaction.' },
+  { year: 'Today', title: 'Still climbing', body: 'Delivering high-performance products across 9+ industries with 99% client satisfaction.' },
 ]
 
 export default function AboutPage() {
@@ -48,9 +48,10 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our Story" title="Founder-led. Engineering-driven." />
             <div className="mt-6 space-y-5 text-base leading-relaxed text-navy/70">
               <p>
-                Eaglescroft was founded by <strong className="text-navy">Joshua Obaje Enemaku</strong>, a
-                multi-disciplinary technologist and entrepreneur, on a simple belief: businesses deserve
-                digital products that are as strategic as they are beautiful.
+                Eaglescroft was founded by <strong className="text-navy">Benjamin Adama</strong> (CEO) and{' '}
+                <strong className="text-navy">Joshua Obaje Enemaku</strong> (CTO) on a simple belief: businesses
+                deserve digital products that are as strategic as they are beautiful. Benjamin leads strategy
+                and growth; Joshua, a multi-disciplinary technologist, leads engineering and AI.
               </p>
               <p>
                 With 4+ years delivering high-performance solutions for clients across four continents,
@@ -59,7 +60,7 @@ export default function AboutPage() {
               </p>
               <p>
                 From e-commerce platforms and healthcare systems to AI chatbots, automations and full
-                CRM setups, we’ve delivered 12+ digital solutions across 9+ industries — always on
+                CRM setups, we’ve delivered digital solutions across 9+ industries — always on
                 time, always built to perform.
               </p>
             </div>
@@ -84,7 +85,7 @@ export default function AboutPage() {
       {/* Timeline */}
       <Section className="bg-navy-50/40">
         <div className="container-x">
-          <SectionHeading eyebrow="The Journey" title="From Lagos to the world." center />
+          <SectionHeading eyebrow="The Journey" title="How we got here." center />
           <Stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-4">
             {timeline.map((t) => (
               <StaggerItem key={t.year}>
@@ -115,8 +116,8 @@ export default function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="Global Presence"
-              title="Lagos to the world."
-              intro="We're based in Lagos and work with businesses wherever they are. Clients so far span:"
+              title="Working worldwide."
+              intro="We work with businesses wherever they are. Clients so far span:"
             />
             <div className="mt-8 grid grid-cols-2 gap-4">
               {countries.map((c) => (

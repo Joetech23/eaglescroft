@@ -122,8 +122,8 @@ export function MotionMock() {
 
 export function SeoMock() {
   const results = [
-    { domain: 'eaglescroft.com.ng', title: 'Web Design Agency in Lagos — Fast, SEO-Ready Sites', ours: true },
-    { domain: 'directory.example', title: 'Web Design Companies in Lagos — Listings' },
+    { domain: 'eaglescroft.com.ng', title: 'Web Design Agency — Fast, SEO-Ready Business Sites', ours: true },
+    { domain: 'directory.example', title: 'Top Web Design Agencies — 2026 Listings' },
     { domain: 'blog.example', title: 'How to Choose a Web Designer in Nigeria' },
   ]
   const chart = 'M0,70 L30,66 L60,68 L90,58 L120,52 L150,44 L180,34 L210,26 L240,14 L270,8'
@@ -131,7 +131,7 @@ export function SeoMock() {
     <div className="flex h-full flex-col justify-center gap-3 p-5 sm:p-6">
       <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-2">
         <Search className="h-3.5 w-3.5 text-white/50" />
-        <span className="truncate text-[12px] text-white/80">web design agency lagos</span>
+        <span className="truncate text-[12px] text-white/80">web design agency</span>
       </div>
 
       <div className="flex flex-col gap-2">

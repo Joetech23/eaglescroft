@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: 'Eaglescroft Limited',
   tagline: 'We Help Businesses Fly Online',
   description:
-    'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, funnels, CRM systems, video and SEO — a global agency based in Lagos, working with businesses worldwide.',
+    'Eaglescroft creates complete digital solutions for businesses — websites, branding, AI chatbots, automations, funnels, CRM systems, video and SEO — a global agency working with businesses worldwide.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://eaglescroft.com.ng',
   email: 'hello@eaglescroft.com.ng',
   phones: ['+234 814 484 8470', '+234 816 780 8866'],

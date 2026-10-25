@@ -7,8 +7,8 @@ import { Linkedin, Twitter, Github } from 'lucide-react'
 type Member = { name: string; role: string; img: string; tag: string; linkedin?: string }
 
 const team: Member[] = [
-  { name: 'Benjamin Adama', role: 'Founder', tag: 'Strategy · Growth', img: '/brand/team-benjamin.png', linkedin: 'https://www.linkedin.com/in/benjaminadama/' },
-  { name: 'Joshua Obaje Enemaku', role: 'Co-Founder', tag: 'Full-stack · AI', img: '/brand/team-joshua.png', linkedin: 'https://www.linkedin.com/in/joshua-obaje/' },
+  { name: 'Benjamin Adama', role: 'Co-founder & CEO', tag: 'Strategy · Growth', img: '/brand/team-benjamin.png', linkedin: 'https://www.linkedin.com/in/benjaminadama/' },
+  { name: 'Joshua Obaje Enemaku', role: 'Co-founder & CTO', tag: 'Full-stack · AI', img: '/brand/team-joshua.png', linkedin: 'https://www.linkedin.com/in/joshua-obaje/' },
 ]
 
 export default function TeamSection() {

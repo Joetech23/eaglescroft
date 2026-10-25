@@ -24,7 +24,7 @@ export default function WhoWeAre() {
             More than an agency — a serious growth partner.
           </h2>
           <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-[#48526e]">
-            Eaglescroft is a founder-led team, based in Lagos and partnering with businesses worldwide —
+            Eaglescroft is a founder-led team partnering with businesses worldwide —
             websites, brands, AI chatbots, automations and CRM systems that work as one
             engine. We don&rsquo;t hand over a project and disappear; we stay invested in your growth.
           </p>
