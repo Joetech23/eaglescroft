@@ -6,6 +6,7 @@ import WhoWeAre from '@/components/sections/WhoWeAre'
 import ServicesHover from '@/components/sections/ServicesHover'
 import ScrollShowcase from '@/components/sections/ScrollShowcase'
 import ProcessSection from '@/components/sections/ProcessSection'
+import ClientPortal from '@/components/sections/ClientPortal'
 import LivePortfolio from '@/components/sections/LivePortfolio'
 import Metrics from '@/components/sections/Metrics'
 import WhyEaglescroft from '@/components/sections/WhyEaglescroft'
@@ -63,6 +64,7 @@ export default function HomePage() {
       <Metrics />
       {/* 5. How + why us */}
       <ProcessSection />
+      <ClientPortal />
       <WhyEaglescroft />
       <StudioShowcase />
       <TeamSection />

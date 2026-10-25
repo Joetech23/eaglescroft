@@ -75,7 +75,16 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       {/* Hero preview */}
       <div className="container-x -mt-8 md:-mt-12">
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-navy-50 shadow-large">
-          {hasShot ? (
+          {project.video ? (
+            <video
+              className="aspect-video w-full bg-black"
+              src={project.video.src}
+              poster={project.video.poster}
+              controls
+              playsInline
+              preload="metadata"
+            />
+          ) : hasShot ? (
             <Image
               src={shot(project.url)}
               alt={project.title}

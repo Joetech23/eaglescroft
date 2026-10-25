@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import Link from 'next/link'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
-import { Clapperboard, Search, Megaphone, Users, Bot, ArrowRight, type LucideIcon } from 'lucide-react'
+import { Clapperboard, Search, Megaphone, Users, Bot, ArrowRight, Play, type LucideIcon } from 'lucide-react'
 import { MotionMock, SeoMock, SmmMock, CrmMock, ChatbotMock } from '@/components/reel/mocks'
 
 /* ---------------------------------- data --------------------------------- */
@@ -19,8 +19,10 @@ type Slide = {
   href: string
   cta: string
   panel: () => JSX.Element
-  /** Real footage beats a mock for motion work — drop a ≤1.5MB loop in /public/reel and set it here. */
-  video?: { src: string; poster: string }
+  /** Real footage beats a mock for motion work — when set, it replaces `panel`. */
+  video?: { src: string; poster: string; length: string }
+  /** how long the slide stays up (defaults to ROTATE_MS) */
+  ms?: number
 }
 
 const slides: Slide[] = [
@@ -29,12 +31,14 @@ const slides: Slide[] = [
     icon: Clapperboard,
     tab: 'Motion graphics',
     title: 'Motion graphics for SaaS',
-    desc: 'Launch films, feature explainers and product demos — we animate your UI into stories that make people sign up.',
+    desc: 'Launch films, feature explainers and product demos — we animate your UI into stories that make people sign up. This is our own brand film.',
     tags: ['Launch films', 'Product demos', 'UI animation'],
-    window: 'Motion studio · SaaS launch film',
-    href: '/services#video-motion',
-    cta: 'See motion & video',
+    window: 'Eaglescroft · “Take Flight” brand film',
+    href: '/portfolio/eaglescroft-take-flight',
+    cta: 'Watch the full film',
     panel: MotionMock,
+    video: { src: '/reel/eaglescroft-advert.mp4', poster: '/reel/eaglescroft-advert-poster.jpg', length: '0:47' },
+    ms: 12000,
   },
   {
     key: 'seo',
@@ -95,6 +99,7 @@ export default function MotionReel() {
   const [active, setActive] = useState(0)
   const [held, setHeld] = useState(false) // hover or keyboard focus
   const [hidden, setHidden] = useState(false)
+  const [watching, setWatching] = useState(false) // brand film playing with sound
   const reduced = useReducedMotion()
   const tabs = useRef<(HTMLButtonElement | null)[]>([])
   const rail = useRef<HTMLDivElement>(null)
@@ -115,7 +120,7 @@ export default function MotionReel() {
     r.scrollTo({ left, behavior: 'smooth' })
   }, [active])
 
-  const paused = held || hidden
+  const paused = held || hidden || watching
   const slide = slides[active]
   const Panel = slide.panel
 
@@ -231,17 +236,7 @@ export default function MotionReel() {
                   className="absolute inset-0"
                 >
                   {slide.video ? (
-                    <video
-                      className="h-full w-full object-cover"
-                      src={slide.video.src}
-                      poster={slide.video.poster}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay
-                      preload="none"
-                      aria-label={slide.title}
-                    />
+                    <ReelVideo {...slide.video} title={slide.title} onWatchChange={setWatching} />
                   ) : (
                     <Panel />
                   )}
@@ -282,7 +277,7 @@ export default function MotionReel() {
                       aria-hidden
                       onAnimationEnd={onProgressEnd}
                       className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold-400"
-                      style={{ animation: `reel-progress ${ROTATE_MS}ms linear forwards`, animationPlayState: paused ? 'paused' : 'running' }}
+                      style={{ animation: `reel-progress ${s.ms ?? ROTATE_MS}ms linear forwards`, animationPlayState: paused ? 'paused' : 'running' }}
                     />
                   )}
                 </button>
@@ -292,5 +287,93 @@ export default function MotionReel() {
         </div>
       </MotionConfig>
     </section>
+  )
+}
+
+/* ------------------------------- brand film ------------------------------- */
+
+function ReelVideo({
+  src, poster, length, title, onWatchChange,
+}: {
+  src: string
+  poster: string
+  length: string
+  title: string
+  onWatchChange: (watching: boolean) => void
+}) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const [withSound, setWithSound] = useState(false)
+
+  // Muted preview only starts near the viewport; until then (or if the observer never fires) the poster shows.
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) v.play().catch(() => {})
+        else if (v.muted) v.pause()
+      },
+      { rootMargin: '200px' },
+    )
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+
+  // Leaving the slide always releases the reel.
+  useEffect(() => () => onWatchChange(false), [onWatchChange])
+
+  const watch = () => {
+    const v = ref.current
+    if (!v) return
+    v.currentTime = 0
+    v.muted = false
+    v.loop = false
+    v.controls = true
+    v.play().catch(() => {})
+    setWithSound(true)
+    onWatchChange(true)
+  }
+
+  const done = () => {
+    const v = ref.current
+    if (!v) return
+    v.muted = true
+    v.loop = true
+    v.controls = false
+    v.play().catch(() => {})
+    setWithSound(false)
+    onWatchChange(false)
+  }
+
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-[#020a24]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={poster} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-2xl" />
+      <video
+        ref={ref}
+        className="relative h-full w-full object-contain"
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        onEnded={done}
+        aria-label={title}
+      />
+      {!withSound && (
+        <button
+          type="button"
+          onClick={watch}
+          className="group absolute bottom-4 left-4 inline-flex items-center gap-2.5 rounded-full bg-white/95 py-2 pl-2 pr-4 text-[13px] font-semibold text-navy shadow-large backdrop-blur transition-transform hover:-translate-y-0.5"
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-400 text-white shadow-gold transition-transform group-hover:scale-110">
+            <Play className="h-3.5 w-3.5 translate-x-px fill-white" />
+          </span>
+          Watch with sound
+          <span className="font-mono text-[11px] text-navy/45">{length}</span>
+        </button>
+      )}
+    </div>
   )
 }

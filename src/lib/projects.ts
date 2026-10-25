@@ -9,6 +9,8 @@ export type Project = {
   description: string
   stack: string[]
   featured?: boolean
+  /** self-hosted film for video projects (in /public) */
+  video?: { src: string; poster: string }
   // Case study (optional — populated for flagship projects)
   caseStudy?: {
     problem: string
@@ -42,17 +44,118 @@ export const catColor: Record<ProjectCategory, string> = {
 }
 
 export const projects: Project[] = [
+  // ── Top sites (featured, in display order) ──
   {
-    slug: 'enyobuilt',
-    title: 'Enyobuilt',
+    slug: 'aehobbs',
+    title: 'A E Hobbs Pharmacy',
     category: 'website',
-    url: 'enyobuilt.com.ng',
-    industry: 'Construction & Real Estate',
+    url: 'aehobbsltd.com',
+    industry: 'Healthcare · Pharmacy (UK)',
     description:
-      'A construction and real estate corporate website with project gallery, service listings, and a client inquiry system.',
-    stack: ['WordPress', 'Custom Design', 'SEO'],
+      'Royal Tunbridge Wells’ independent pharmacy, trusted since 1895 — rebuilt as a modern platform for NHS prescriptions, Pharmacy First, the travel clinic and vaccinations, all one tap away.',
+    stack: ['Next.js', 'TailwindCSS', 'Technical SEO'],
     featured: true,
   },
+  {
+    slug: 'spirit-of-excellence-tuition',
+    title: 'Spirit of Excellence Tuition',
+    category: 'website',
+    url: 'soetuition.com',
+    industry: 'Education (UK)',
+    description:
+      'A UK primary tutoring platform for Reception to Year 6 and 11+ preparation, with an integrated digital resource shop, parent portal and secure checkout.',
+    stack: ['Next.js', 'Supabase', 'Stripe'],
+    featured: true,
+  },
+  {
+    slug: 'careaccess',
+    title: 'CareAccess Nigeria',
+    category: 'website',
+    url: 'careaccess.ng',
+    industry: 'Healthcare',
+    description:
+      'A healthcare access platform connecting patients to medical services across Nigeria, with a scalable Node.js API and Next.js frontend.',
+    stack: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
+    featured: true,
+  },
+  {
+    slug: 'lrvlc',
+    title: 'LRVLC',
+    category: 'website',
+    url: 'lrvlc.com',
+    industry: 'Technology',
+    description:
+      'A modern Next.js web application with SSR/SSG optimisation, high-performance architecture, and a seamless user experience.',
+    stack: ['Next.js', 'React', 'TailwindCSS', 'REST API'],
+    featured: true,
+  },
+  {
+    slug: 'techbridge-digital',
+    title: 'TechBridge Digital',
+    category: 'website',
+    url: 'techbridgedigital.co.uk',
+    industry: 'IT Consultancy (UK)',
+    description:
+      'A London IT consultancy site for AWS cloud architecture, cyber security, penetration testing, data & AI and managed IT — positioned to win public-sector and finance clients.',
+    stack: ['Next.js', 'TailwindCSS', 'Technical SEO'],
+    featured: true,
+  },
+  {
+    slug: 'learn-tech-hub',
+    title: 'Learn Tech Hub',
+    category: 'website',
+    url: 'lth.dgclgroup.com',
+    industry: 'EdTech · Cloud Training (UK)',
+    description:
+      'A tech-training platform for DGCL Digital Cloud Academy — narrated AWS cloud lessons with a free start, structured course modules and enquiry-led enrolment.',
+    stack: ['Next.js', 'Supabase', 'LMS'],
+    featured: true,
+  },
+  {
+    slug: 'mrhabs-mc',
+    title: 'Mr. Habs MC',
+    category: 'website',
+    url: 'mrhabsmc.com',
+    industry: 'Personal Brand',
+    description:
+      'A personal brand website for a professional entertainer with event booking, media galleries, and conversion-optimised CTAs.',
+    stack: ['WordPress', 'Custom Theme', 'SEO'],
+    featured: true,
+  },
+  {
+    slug: 'care-best-initiative',
+    title: 'Care Best Initiative',
+    category: 'website',
+    url: 'cbi.ngo',
+    industry: 'NGO · Humanitarian',
+    description:
+      'A national NGO platform presenting healthcare, clean water, education, nutrition and protection programmes reaching 1.5M+ lives across 10 Nigerian states.',
+    stack: ['Next.js', 'TailwindCSS', 'Donor-ready content'],
+    featured: true,
+  },
+  {
+    slug: 'p4-studio',
+    title: 'P4 Studio Limited',
+    category: 'website',
+    url: 'p4studioltd.com',
+    industry: 'Architecture',
+    description:
+      'A corporate architectural firm website with project portfolio gallery, brand identity, content strategy, and social media kit.',
+    stack: ['WordPress', 'Elementor', 'Brand Identity'],
+    featured: true,
+  },
+  {
+    slug: 'arcmarshal',
+    title: 'Arcmarshal Dzine Koncept',
+    category: 'website',
+    url: 'arcmarshaldzine.com',
+    industry: 'Design & Construction',
+    description:
+      'A design and construction company site for Abuja — residential, commercial and industrial projects, renovations and interior finishing, built to turn bold ideas into enquiries.',
+    stack: ['Next.js', 'TailwindCSS', 'SEO'],
+    featured: true,
+  },
+  // ── Nigeria (.com.ng) ──
   {
     slug: 'starhomes',
     title: 'Star Homes',
@@ -84,26 +187,26 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'spirit-of-excellence-tuition',
-    title: 'Spirit of Excellence Tuition',
+    slug: 'skyflix-media',
+    title: 'Skyflix Media',
     category: 'website',
-    url: 'soetuition.com',
-    industry: 'Education (UK)',
+    url: 'skyflixmedia.com.ng',
+    industry: 'Media & Production',
     description:
-      'A UK primary tutoring platform for Reception to Year 6 and 11+ preparation, with an integrated digital resource shop, parent portal and secure checkout.',
-    stack: ['Next.js', 'Supabase', 'Stripe'],
+      'A production house site for photography, videography, livestreaming and broadcast work — with an Academy enrolment flow for aspiring creators.',
+    stack: ['Next.js', 'Resend', 'Google Sheets'],
     featured: true,
   },
+  // ── More websites ──
   {
-    slug: 'lrvlc',
-    title: 'LRVLC',
+    slug: 'enyobuilt',
+    title: 'Enyobuilt',
     category: 'website',
-    url: 'lrvlc.com',
-    industry: 'Technology',
+    url: 'enyobuilt.com.ng',
+    industry: 'Construction & Real Estate',
     description:
-      'A modern Next.js web application with SSR/SSG optimisation, high-performance architecture, and a seamless user experience.',
-    stack: ['Next.js', 'React', 'TailwindCSS', 'REST API'],
-    featured: true,
+      'A construction and real estate corporate website with project gallery, service listings, and a client inquiry system.',
+    stack: ['WordPress', 'Custom Design', 'SEO'],
   },
   {
     slug: 'oval-sports',
@@ -114,7 +217,6 @@ export const projects: Project[] = [
     description:
       'A sports equipment e-commerce store for the Australian market with full WooCommerce setup, international shipping, and currency localisation.',
     stack: ['WordPress', 'WooCommerce', 'PHP'],
-    featured: true,
   },
   {
     slug: 'heritage-hospitals',
@@ -125,7 +227,6 @@ export const projects: Project[] = [
     description:
       'A healthcare website with appointment booking, detailed service pages, and a patient resource hub — designed to build trust and streamline care.',
     stack: ['WordPress', 'PHP', 'Custom Plugins', 'Booking System'],
-    featured: true,
   },
   {
     slug: 'dash-limo',
@@ -136,7 +237,6 @@ export const projects: Project[] = [
     description:
       'A luxury transportation booking site with premium UI/UX, fleet showcase, and a mobile-first online reservation system.',
     stack: ['WordPress', 'Elementor', 'Custom Booking'],
-    featured: true,
   },
   {
     slug: 'primus-learning',
@@ -149,17 +249,6 @@ export const projects: Project[] = [
     stack: ['React.js', 'JavaScript', 'CSS3', 'REST API'],
   },
   {
-    slug: 'careaccess',
-    title: 'CareAccess Nigeria',
-    category: 'website',
-    url: 'careaccess.ng',
-    industry: 'Healthcare',
-    description:
-      'A healthcare access platform connecting patients to medical services across Nigeria, with a scalable Node.js API and Next.js frontend.',
-    stack: ['Next.js', 'Node.js', 'Express.js', 'MongoDB'],
-    featured: true,
-  },
-  {
     slug: 'distinct-news',
     title: 'Distinct News',
     category: 'website',
@@ -168,16 +257,6 @@ export const projects: Project[] = [
     description:
       'A high-volume Nigerian news platform with SEO-rich architecture, category organisation, and a monetisation-ready ad system.',
     stack: ['WordPress', 'PHP', 'Technical SEO'],
-  },
-  {
-    slug: 'p4-studio',
-    title: 'P4 Studio Limited',
-    category: 'website',
-    url: 'p4studioltd.com',
-    industry: 'Architecture',
-    description:
-      'A corporate architectural firm website with project portfolio gallery, brand identity, content strategy, and social media kit.',
-    stack: ['WordPress', 'Elementor', 'Brand Identity'],
   },
   {
     slug: 'datavox-media',
@@ -189,24 +268,16 @@ export const projects: Project[] = [
       'A media and communications agency website showcasing services and brand stories with authority-signalling design.',
     stack: ['WordPress', 'Agency Design', 'SEO'],
   },
-  {
-    slug: 'mrhabs-mc',
-    title: 'Mr. Habs MC',
-    category: 'website',
-    url: 'mrhabsmc.com',
-    industry: 'Personal Brand',
-    description:
-      'A personal brand website for a professional entertainer with event booking, media galleries, and conversion-optimised CTAs.',
-    stack: ['WordPress', 'Custom Theme', 'SEO'],
-  },
   // ── Video editing (placeholders to replace with real reels) ──
   {
-    slug: 'brand-promo-reel',
-    title: 'Brand Promo Reel',
+    slug: 'eaglescroft-take-flight',
+    title: 'Eaglescroft — “Take Flight”',
     category: 'video',
-    industry: 'Motion Design',
-    description: 'A cinematic brand promo with motion graphics and sound design. Sample reel — replace with your real video.',
-    stack: ['Premiere Pro', 'After Effects', 'Motion Design'],
+    industry: 'Motion Graphics · Brand Film',
+    description:
+      'Our own 47-second brand film: kinetic type, animated product UI, CRM and AI systems in motion and a closing logo reveal — the SaaS-style motion work we make for clients.',
+    stack: ['Motion Graphics', 'Kinetic Typography', 'Voiceover & Sound'],
+    video: { src: '/reel/eaglescroft-advert.mp4', poster: '/reel/eaglescroft-advert-poster.jpg' },
   },
   {
     slug: 'product-explainer',

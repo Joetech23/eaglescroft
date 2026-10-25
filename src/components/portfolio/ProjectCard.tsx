@@ -40,7 +40,23 @@ export default function ProjectCard({ project, priority }: { project: Project; p
         >
           {/* Preview */}
           <div className="relative aspect-[16/11] overflow-hidden bg-navy-50">
-            {hasShot ? (
+            {project.video ? (
+              <>
+                <Image
+                  src={project.video.poster}
+                  alt={project.title}
+                  fill
+                  priority={priority}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 flex items-center justify-center bg-navy/20">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gold-400 text-navy shadow-gold transition-transform group-hover:scale-110">
+                    <Play className="h-6 w-6 translate-x-0.5 fill-navy" />
+                  </span>
+                </span>
+              </>
+            ) : hasShot ? (
               <Image
                 src={shot(project.url)}
                 alt={project.title}
