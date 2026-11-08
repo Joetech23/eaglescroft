@@ -66,7 +66,7 @@ export default function LivePortfolio() {
                         loading="lazy"
                         className={
                           p.image
-                            ? 'absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105'
+                            ? 'absolute inset-0 h-full w-full object-cover object-left-top transition-transform duration-700 group-hover:scale-105'
                             : 'absolute inset-0 h-auto w-full object-cover object-top transition-transform duration-[3000ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-[calc(100%-238px)]'
                         }
                       />

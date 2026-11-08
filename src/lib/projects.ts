@@ -48,6 +48,33 @@ export const catColor: Record<ProjectCategory, string> = {
 }
 
 export const projects: Project[] = [
+  // ── Latest work ──
+  {
+    slug: 'angelus-capital-partners',
+    title: 'Angelus Capital Partners',
+    category: 'website',
+    url: 'angeluscapitalpartners.com',
+    industry: 'Finance · Investment Advisory',
+    description:
+      'A corporate site for a financial advisory, capital solutions and investment management firm — three integrated platforms, sector transactions, leadership and insights, built to earn institutional trust.',
+    stack: ['WordPress', 'Custom Design', 'SEO'],
+    featured: true,
+    image: '/portfolio/angelus-home.webp',
+    gallery: ['/portfolio/angelus-ticker.webp', '/portfolio/angelus-glance.webp'],
+  },
+  {
+    slug: 'fasttrack-removals',
+    title: 'FastTrack Team Logistics',
+    category: 'website',
+    url: 'fstremoval.co.uk',
+    industry: 'Removals & Logistics (UK)',
+    description:
+      'A removals, storage and pallet-delivery site for London and the South East — a two-minute postcode quote flow, WhatsApp photo quotes and live move tracking.',
+    stack: ['Custom Build', 'Quote Flow', 'Local SEO'],
+    featured: true,
+    image: '/portfolio/fasttrack-home.webp',
+    gallery: ['/portfolio/fasttrack-areas.webp'],
+  },
   // ── Top sites (featured, in display order) ──
   {
     slug: 'aehobbs',
@@ -161,28 +188,6 @@ export const projects: Project[] = [
     description:
       'A design and construction company site for Abuja — residential, commercial and industrial projects, renovations and interior finishing, built to turn bold ideas into enquiries.',
     stack: ['Next.js', 'TailwindCSS', 'SEO'],
-    featured: true,
-  },
-  {
-    slug: 'angelus-capital-partners',
-    title: 'Angelus Capital Partners',
-    category: 'website',
-    url: 'angeluscapitalpartners.com',
-    industry: 'Finance · Investment Advisory',
-    description:
-      'A corporate site for a financial advisory, capital solutions and investment management firm — three integrated platforms, sector transactions, leadership and insights, built to earn institutional trust.',
-    stack: ['WordPress', 'Custom Design', 'SEO'],
-    featured: true,
-  },
-  {
-    slug: 'fasttrack-removals',
-    title: 'FastTrack Team Logistics',
-    category: 'website',
-    url: 'fstremoval.co.uk',
-    industry: 'Removals & Logistics (UK)',
-    description:
-      'A removals, storage and pallet-delivery site for London and the South East — a two-minute postcode quote flow, WhatsApp photo quotes and live move tracking.',
-    stack: ['Custom Build', 'Quote Flow', 'Local SEO'],
     featured: true,
   },
   // ── Nigeria (.com.ng) ──

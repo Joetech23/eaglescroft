@@ -64,7 +64,7 @@ export default function ProjectCard({ project, priority }: { project: Project; p
                 unoptimized
                 priority={priority}
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className={`object-cover ${project.image ? 'object-left-top' : 'object-top'} transition-transform duration-700 group-hover:scale-105`}
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-brand-deep">
