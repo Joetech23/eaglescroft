@@ -155,6 +155,28 @@ export const projects: Project[] = [
     stack: ['Next.js', 'TailwindCSS', 'SEO'],
     featured: true,
   },
+  {
+    slug: 'angelus-capital-partners',
+    title: 'Angelus Capital Partners',
+    category: 'website',
+    url: 'angeluscapitalpartners.com',
+    industry: 'Finance · Investment Advisory',
+    description:
+      'A corporate site for a financial advisory, capital solutions and investment management firm — three integrated platforms, sector transactions, leadership and insights, built to earn institutional trust.',
+    stack: ['WordPress', 'Custom Design', 'SEO'],
+    featured: true,
+  },
+  {
+    slug: 'fasttrack-removals',
+    title: 'FastTrack Team Logistics',
+    category: 'website',
+    url: 'fstremoval.co.uk',
+    industry: 'Removals & Logistics (UK)',
+    description:
+      'A removals, storage and pallet-delivery site for London and the South East — a two-minute postcode quote flow, WhatsApp photo quotes and live move tracking.',
+    stack: ['Custom Build', 'Quote Flow', 'Local SEO'],
+    featured: true,
+  },
   // ── Nigeria (.com.ng) ──
   {
     slug: 'starhomes',
