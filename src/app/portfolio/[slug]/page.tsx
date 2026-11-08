@@ -86,7 +86,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             />
           ) : hasShot ? (
             <Image
-              src={shot(project.url)}
+              src={project.image ?? shot(project.url)}
               alt={project.title}
               width={1600}
               height={1000}
@@ -99,6 +99,21 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </div>
           )}
         </div>
+
+        {project.gallery?.length ? (
+          <div className="mt-6">
+            <div className="mb-3 inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-navy/55">
+              <span aria-hidden className="flight-marker" /> More screens
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {project.gallery.map((src, i) => (
+                <div key={src} className="overflow-hidden rounded-[24px] border border-navy/10 bg-white shadow-medium">
+                  <Image src={src} alt={`${project.title} — screen ${i + 2}`} width={1600} height={1000} unoptimized className="h-auto w-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <Section>

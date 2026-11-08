@@ -9,6 +9,10 @@ export type Project = {
   description: string
   stack: string[]
   featured?: boolean
+  /** our own screenshot (in /public) — used instead of the live capture when a site can't be captured */
+  image?: string
+  /** extra screenshots shown on the project page */
+  gallery?: string[]
   /** self-hosted film for video projects (in /public) */
   video?: { src: string; poster: string }
   // Case study (optional — populated for flagship projects)
@@ -83,11 +87,13 @@ export const projects: Project[] = [
     title: 'LRVLC',
     category: 'website',
     url: 'lrvlc.com',
-    industry: 'Technology',
+    industry: 'Recruitment & Care (UK)',
     description:
-      'A modern Next.js web application with SSR/SSG optimisation, high-performance architecture, and a seamless user experience.',
-    stack: ['Next.js', 'React', 'TailwindCSS', 'REST API'],
+      'A UK site for Lineup Recruitment and Vine Lodge Care — healthcare staffing and personalised home care under one brand, with division pages, live proof points and call-first enquiry.',
+    stack: ['Next.js', 'React', 'TailwindCSS'],
     featured: true,
+    image: '/portfolio/lrvlc-home.webp',
+    gallery: ['/portfolio/lrvlc-stats.webp'],
   },
   {
     slug: 'techbridge-digital',
@@ -107,9 +113,11 @@ export const projects: Project[] = [
     url: 'lth.dgclgroup.com',
     industry: 'EdTech · Cloud Training (UK)',
     description:
-      'A tech-training platform for DGCL Digital Cloud Academy — narrated AWS cloud lessons with a free start, structured course modules and enquiry-led enrolment.',
+      'A learning platform for DGCL Digital Cloud Academy — four tech courses, 140 narrated AWS lessons with a free start, and a learner dashboard with progress, points and weekly goals.',
     stack: ['Next.js', 'Supabase', 'LMS'],
     featured: true,
+    image: '/portfolio/lth-home.webp',
+    gallery: ['/portfolio/lth-courses.webp', '/portfolio/lth-dashboard.webp'],
   },
   {
     slug: 'mrhabs-mc',

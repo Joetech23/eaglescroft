@@ -58,7 +58,7 @@ export default function ProjectCard({ project, priority }: { project: Project; p
               </>
             ) : hasShot ? (
               <Image
-                src={shot(project.url)}
+                src={project.image ?? shot(project.url)}
                 alt={project.title}
                 fill
                 unoptimized

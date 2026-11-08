@@ -61,10 +61,14 @@ export default function LivePortfolio() {
                     {hasPreview ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={shotTall(p.url)}
+                        src={p.image ?? shotTall(p.url)}
                         alt={p.title}
                         loading="lazy"
-                        className="absolute inset-0 h-auto w-full object-cover object-top transition-transform duration-[3000ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-[calc(100%-238px)]"
+                        className={
+                          p.image
+                            ? 'absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105'
+                            : 'absolute inset-0 h-auto w-full object-cover object-top transition-transform duration-[3000ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-[calc(100%-238px)]'
+                        }
                       />
                     ) : (
                       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5"
