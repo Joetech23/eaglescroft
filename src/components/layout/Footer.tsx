@@ -28,6 +28,7 @@ const cols = [
     items: [
       { label: 'Work', href: '/portfolio' },
       { label: 'Products', href: '/products' },
+      { label: 'Client portal', href: '/portal/login' },
       { label: 'Why Eaglescroft', href: '/about' },
       { label: 'Insights', href: '/blog' },
       { label: 'Contact', href: '/contact' },

@@ -1,7 +1,11 @@
 import Button from '@/components/ui/Button'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 
 export default function NotFound() {
   return (
+    <>
+    <Navbar />
     <section className="flex min-h-[80svh] items-center justify-center bg-brand-deep text-center text-white">
       <div className="container-x">
         <p className="text-7xl font-semibold text-gold-400 md:text-9xl">404</p>
@@ -15,5 +19,7 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   )
 }

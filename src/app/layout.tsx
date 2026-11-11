@@ -2,10 +2,6 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Inter, JetBrains_Mono, Raleway, Sora } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import SmoothScroll from '@/components/layout/SmoothScroll'
-import ContactDock from '@/components/layout/ContactDock'
 import JsonLd from '@/components/seo/JsonLd'
 import { siteConfig } from '@/lib/site'
 import { services } from '@/lib/services'
@@ -164,11 +160,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
         <JsonLd data={[orgJsonLd, websiteJsonLd]} />
-        <SmoothScroll />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ContactDock />
+        {children}
       </body>
     </html>
   )
