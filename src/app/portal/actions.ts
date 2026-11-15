@@ -10,6 +10,8 @@ import { getViewer } from '@/lib/portal/session'
 import { getTemplate } from '@/lib/portal/templates'
 import { invoiceBalance } from '@/lib/portal/format'
 import { initializeTransaction, paystackEnabled } from '@/lib/portal/paystack'
+import { notify, projectAudience, projectTeam } from '@/lib/portal/notify'
+import { displayName } from '@/lib/portal/people'
 import type { Invoice } from '@/lib/portal/types'
 
 const LOGIN_EMAIL_COOKIE = 'es_portal_login'
@@ -64,8 +66,8 @@ export async function signOut() {
 /* ─── Brief ─────────────────────────────────────────────────────────────── */
 
 export async function submitBrief(projectId: string, formData: FormData) {
-  const { supabase } = await getViewer()
-  const { data: project } = await supabase.from('projects').select('service').eq('id', projectId).single()
+  const { supabase, user, profile } = await getViewer()
+  const { data: project } = await supabase.from('projects').select('service, title').eq('id', projectId).single()
   if (!project) redirect('/portal')
 
   const template = getTemplate(project.service)
@@ -79,6 +81,7 @@ export async function submitBrief(projectId: string, formData: FormData) {
     .update({ brief, brief_submitted_at: new Date().toISOString() })
     .eq('id', projectId)
   if (error) redirect(`/portal/projects/${projectId}?error=brief`)
+  await notify({ userIds: await projectTeam(projectId, user.id), kind: 'project', title: `${displayName(profile)} submitted the brief`, body: project.title, link: `/admin/projects/${projectId}` })
 
   revalidatePath(`/portal/projects/${projectId}`)
   redirect(`/portal/projects/${projectId}?saved=brief#brief`)
@@ -92,7 +95,7 @@ const ticketSchema = z.object({
 })
 
 export async function createTicket(projectId: string, formData: FormData) {
-  const { supabase, user } = await getViewer()
+  const { supabase, user, profile } = await getViewer()
   const parsed = ticketSchema.safeParse({ title: formData.get('title'), body: formData.get('body') })
   if (!parsed.success) redirect(`/portal/projects/${projectId}?error=ticket#tickets`)
 
@@ -114,16 +117,24 @@ export async function createTicket(projectId: string, formData: FormData) {
     .select('id')
     .single()
   if (error || !ticket) redirect(`/portal/projects/${projectId}?error=ticket#tickets`)
+  await notify({
+    userIds: await projectTeam(projectId, user.id),
+    kind: 'ticket',
+    title: `${displayName(profile)} raised ${isRevision ? 'a revision request' : 'a ticket'}`,
+    body: parsed.data.title,
+    link: `/portal/projects/${projectId}/tickets/${ticket.id}`,
+  })
 
   revalidatePath(`/portal/projects/${projectId}`)
   redirect(`/portal/projects/${projectId}/tickets/${ticket.id}`)
 }
 
 export async function postTicketMessage(projectId: string, ticketId: string, formData: FormData) {
-  const { supabase, user } = await getViewer()
+  const { supabase, user, profile } = await getViewer()
   const body = String(formData.get('body') || '').trim().slice(0, 6000)
   if (body.length < 1) redirect(`/portal/projects/${projectId}/tickets/${ticketId}`)
   await supabase.from('ticket_messages').insert({ ticket_id: ticketId, author_id: user.id, body })
+  await notify({ userIds: await projectAudience(projectId, user.id), kind: 'ticket', title: `${displayName(profile)} replied to a ticket`, body: body.slice(0, 180), link: `/portal/projects/${projectId}/tickets/${ticketId}` })
   revalidatePath(`/portal/projects/${projectId}/tickets/${ticketId}`)
   redirect(`/portal/projects/${projectId}/tickets/${ticketId}#latest`)
 }
@@ -131,7 +142,7 @@ export async function postTicketMessage(projectId: string, ticketId: string, for
 /* ─── Final review ──────────────────────────────────────────────────────── */
 
 export async function submitReview(projectId: string, formData: FormData) {
-  const { supabase, user } = await getViewer()
+  const { supabase, user, profile } = await getViewer()
   const rating = Number(formData.get('rating'))
   if (!(rating >= 1 && rating <= 5)) redirect(`/portal/projects/${projectId}?error=review#review`)
   const comment = String(formData.get('comment') || '').trim().slice(0, 3000) || null
@@ -141,6 +152,7 @@ export async function submitReview(projectId: string, formData: FormData) {
     ? await supabase.from('reviews').update({ rating, comment }).eq('id', existing.id)
     : await supabase.from('reviews').insert({ project_id: projectId, author_id: user.id, rating, comment })
   if (error) redirect(`/portal/projects/${projectId}?error=review#review`)
+  await notify({ userIds: await projectTeam(projectId, user.id), kind: 'project', title: `${displayName(profile)} left a ${rating}-star review`, body: comment ?? undefined, link: `/admin/projects/${projectId}` })
 
   revalidatePath(`/portal/projects/${projectId}`)
   redirect(`/portal/projects/${projectId}?saved=review#review`)

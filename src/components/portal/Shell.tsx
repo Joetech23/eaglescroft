@@ -1,53 +1,61 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { LogOut } from 'lucide-react'
-import NavLinks, { type NavItem } from './NavLinks'
-import { signOut } from '@/app/portal/actions'
+import { DesktopSidebar, MobileTabBar, type AppLink } from './AppNav'
+import NotificationBell from './NotificationBell'
+import Avatar from './Avatar'
+import { PwaRegister } from './Pwa'
+import { displayName, roleLine } from '@/lib/portal/people'
 import type { Profile } from '@/lib/portal/types'
 
-/** App chrome for the client portal and admin: navy sidebar on desktop, compact top bar on mobile. */
+/**
+ * App chrome shared by clients and the team: floating sidebar on desktop, top bar + bottom tab bar on
+ * phones (installable as a PWA), live notification bell everywhere.
+ */
 export default function Shell({
-  profile, nav, area, children,
+  profile, links, unreadNotifications, children,
 }: {
   profile: Profile
-  nav: NavItem[]
-  area: 'Client portal' | 'Admin'
+  links: AppLink[]
+  unreadNotifications: number
   children: React.ReactNode
 }) {
-  const name = profile.full_name || profile.email
+  const name = displayName(profile)
   return (
-    <div className="min-h-screen bg-[#f4f6fb] lg:flex">
-      <aside className="section-dark relative flex flex-col print:hidden text-white lg:sticky lg:top-0 lg:h-screen lg:w-[260px] lg:flex-none">
-        <div className="flex items-center justify-between gap-3 px-5 py-4 lg:block lg:px-6 lg:pt-7">
-          <Link href={profile.role === 'admin' && area === 'Admin' ? '/admin' : '/portal'} className="flex items-center gap-2.5">
-            <Image src="/brand/eagle-white.png" alt="" width={30} height={30} className="h-7 w-auto object-contain" />
-            <span className="font-display text-[16px] font-semibold tracking-[0.14em]">EAGLESCROFT</span>
-          </Link>
-          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-gold-300 lg:mt-3">{area}</div>
-        </div>
+    <div className="relative min-h-[100dvh] bg-[#f4f6fb]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] print:hidden"
+        style={{ background: 'radial-gradient(120% 90% at 80% 0%, #ffffff 0%, #eef2fb 42%, #dfe7f7 100%)', maskImage: 'linear-gradient(180deg,black 55%,transparent)', WebkitMaskImage: 'linear-gradient(180deg,black 55%,transparent)' }}
+      />
+      <div className="relative mx-auto flex max-w-[1480px] gap-6 lg:p-5">
+        <DesktopSidebar links={links} name={name} roleLine={roleLine(profile)} />
 
-        <NavLinks items={nav} />
-
-        <div className="mt-auto hidden border-t border-white/10 px-6 py-5 lg:block">
-          <div className="truncate text-[14px] font-semibold">{name}</div>
-          <div className="truncate text-[12px] text-white/50">{profile.company || profile.email}</div>
-          <form action={signOut} className="mt-3">
-            <button className="inline-flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white">
-              <LogOut className="h-4 w-4" /> Sign out
-            </button>
-          </form>
+        <div className="min-w-0 flex-1">
+          <header
+            className="sticky top-0 z-30 flex items-center justify-between gap-3 bg-[#f4f6fb]/80 px-4 py-3 backdrop-blur sm:px-6 lg:static lg:bg-transparent lg:px-2 lg:pb-0 lg:pt-1 lg:backdrop-blur-0 print:hidden"
+            style={{ paddingTop: 'max(env(safe-area-inset-top), 12px)' }}
+          >
+            <Link href="/portal" className="flex items-center gap-2 lg:hidden">
+              <Image src="/brand/eagle-gold.png" alt="" width={28} height={28} className="h-6 w-auto object-contain" />
+              <span className="font-display text-[14px] font-semibold tracking-[0.14em] text-navy">EAGLESCROFT</span>
+            </Link>
+            <div className="hidden lg:block" />
+            <div className="flex items-center gap-2.5">
+              <NotificationBell userId={profile.id} initialUnread={unreadNotifications} />
+              <Link href="/portal/settings" className="flex items-center gap-2.5 rounded-full border border-navy/10 bg-white py-1 pl-1 pr-1 shadow-soft transition-colors hover:border-navy/25 sm:pr-4">
+                <Avatar person={profile} size="sm" />
+                <span className="hidden min-w-0 sm:block">
+                  <span className="block max-w-[160px] truncate text-[13px] font-semibold leading-tight text-navy">{name}</span>
+                  <span className="block max-w-[160px] truncate text-[11px] leading-tight text-navy/50">{roleLine(profile)}</span>
+                </span>
+              </Link>
+            </div>
+          </header>
+          <main className="px-4 pb-32 pt-4 sm:px-6 lg:px-2 lg:pb-10 lg:pt-6 print:p-0">{children}</main>
         </div>
-      </aside>
-
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center justify-between gap-3 border-b border-navy/[0.07] bg-white px-5 py-3 lg:hidden print:hidden">
-          <span className="truncate text-[13px] font-semibold text-navy">{name}</span>
-          <form action={signOut}>
-            <button className="inline-flex items-center gap-1.5 text-[13px] text-navy/60"><LogOut className="h-4 w-4" /> Sign out</button>
-          </form>
-        </div>
-        <main className="mx-auto max-w-[1180px] px-5 py-8 sm:px-8 lg:py-10 print:p-0">{children}</main>
       </div>
+      <MobileTabBar links={links} />
+      <PwaRegister />
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { requireAdmin } from '@/lib/portal/session'
+import { requireTeam } from '@/lib/portal/session'
 import { serviceLabel } from '@/lib/portal/templates'
 import { formatDate, formatMoney, invoiceBalance, projectStatusLabel, timeAgo } from '@/lib/portal/format'
 import { Badge, ButtonLink, Card, Empty, PageHeader, ProgressBar, Stat, statusTone } from '@/components/portal/ui'
 import type { Currency, Invoice, Profile, Project, Ticket } from '@/lib/portal/types'
 
 export default async function AdminHome() {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const [{ data: ps }, { data: cs }, { data: ts }, { data: is }] = await Promise.all([
     supabase.from('projects').select('*').order('updated_at', { ascending: false }),
     supabase.from('profiles').select('*').eq('role', 'client'),

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { CheckCircle2, Circle, CircleDot, Download, FileText, MessageSquare, Star, Target } from 'lucide-react'
+import { CheckCircle2, Circle, CircleDot, Download, FileText, MessageSquare, MessagesSquare, Star, Target } from 'lucide-react'
+import TaskBoard, { NewTaskForm } from '@/components/portal/TaskBoard'
+import { personSelect } from '@/lib/portal/people'
+import { cn } from '@/lib/utils'
 import { getViewer } from '@/lib/portal/session'
 import { getTemplate, serviceLabel } from '@/lib/portal/templates'
 import {
@@ -13,7 +16,7 @@ import SubmitButton from '@/components/portal/SubmitButton'
 import {
   Badge, Card, Empty, Field, Notice, PageHeader, ProgressBar, inputClass, invoiceTone, statusTone, ticketTone,
 } from '@/components/portal/ui'
-import type { Invoice, Milestone, Project, ProjectDocument, ProjectUpdate, Review, Ticket } from '@/lib/portal/types'
+import type { Invoice, Milestone, Person, Project, ProjectDocument, ProjectUpdate, Review, Task, Ticket } from '@/lib/portal/types'
 
 export const metadata: Metadata = { title: 'Project' }
 
@@ -27,7 +30,8 @@ const notices: Record<string, { tone: 'green' | 'red'; text: string }> = {
 }
 
 export default async function ProjectPage({ params, searchParams }: { params: { id: string }; searchParams: Record<string, string> }) {
-  const { supabase, user } = await getViewer()
+  const { supabase, user, isTeam } = await getViewer()
+  const tab = searchParams.tab === 'tasks' ? 'tasks' : 'overview'
 
   const { data: projectRow } = await supabase.from('projects').select('*').eq('id', params.id).maybeSingle()
   if (!projectRow) notFound()
@@ -58,13 +62,32 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
   const notice = Object.entries(searchParams).map(([k, v]) => notices[`${k}=${v}`]).find(Boolean)
   const googleReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL
 
+  let tasks: Task[] = []
+  let people = new Map<string, Person>()
+  if (tab === 'tasks') {
+    const [{ data: t }, { data: team }, { data: client }] = await Promise.all([
+      supabase.from('tasks').select('*').eq('project_id', project.id).order('sort'),
+      supabase.from('profiles').select(personSelect).in('role', ['admin', 'staff']),
+      supabase.from('profiles').select(personSelect).eq('id', project.client_id),
+    ])
+    tasks = (t ?? []) as Task[]
+    people = new Map(([...(team ?? []), ...(client ?? [])] as Person[]).map((p) => [p.id, p]))
+  }
+
   return (
     <>
       <PageHeader
         eyebrow={serviceLabel(project.service)}
         title={project.title}
         intro={project.summary ?? undefined}
-        actions={<Badge tone={statusTone[project.status]}>{projectStatusLabel[project.status]}</Badge>}
+        actions={
+          <>
+            <Badge tone={statusTone[project.status]}>{projectStatusLabel[project.status]}</Badge>
+            <Link href={`/portal/messages/${project.id}`} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-[#3b76f0] to-[#1d4ed8] px-4 py-2 text-sm font-semibold text-white shadow-gold">
+              <MessagesSquare className="h-4 w-4" /> Message the team
+            </Link>
+          </>
+        }
       />
 
       {notice && <div className="mb-6"><Notice tone={notice.tone}>{notice.text}</Notice></div>}
@@ -83,6 +106,19 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
         <ProgressBar value={project.progress} className="mt-4 h-2.5" />
       </div>
 
+      <nav className="mb-6 flex gap-1 overflow-x-auto rounded-full border border-navy/[0.07] bg-white p-1 shadow-soft [scrollbar-width:none] sm:inline-flex">
+        {([['overview', 'Overview'], ['tasks', 'Tasks']] as const).map(([key, label]) => (
+          <Link key={key} href={`/portal/projects/${project.id}${key === 'tasks' ? '?tab=tasks' : ''}`} className={cn('flex-none rounded-full px-5 py-2 text-[13.5px] font-semibold', tab === key ? 'bg-navy text-white' : 'text-navy/60 hover:text-navy')}>{label}</Link>
+        ))}
+        <Link href={`/portal/messages/${project.id}`} className="flex-none rounded-full px-5 py-2 text-[13.5px] font-semibold text-navy/60 hover:text-navy">Chat</Link>
+      </nav>
+
+      {tab === 'tasks' ? (
+        <div className="space-y-5">
+          <NewTaskForm projects={[{ id: project.id, title: project.title }]} assignees={Array.from(people.values())} isTeam={isTeam} back={`/portal/projects/${project.id}?tab=tasks`} fixedProjectId={project.id} />
+          <TaskBoard tasks={tasks} people={people} viewerId={user.id} isTeam={isTeam} />
+        </div>
+      ) : (
       <div className="grid gap-6 xl:grid-cols-[1.55fr_1fr]">
         <div className="min-w-0 space-y-6">
           {(project.goals.length > 0 || project.features.length > 0) && (
@@ -337,6 +373,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
           </Card>
         </div>
       </div>
+      )}
     </>
   )
 }

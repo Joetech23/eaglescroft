@@ -1,29 +1,28 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Shell from '@/components/portal/Shell'
 import PortalSoon from '@/components/portal/PortalSoon'
-import type { NavItem } from '@/components/portal/NavLinks'
 import { portalConfigured } from '@/lib/portal/supabase'
 import { getViewer } from '@/lib/portal/session'
+import { buildNav } from '@/lib/portal/nav'
 
 export const metadata: Metadata = {
-  title: { default: 'Client portal', template: '%s — Client portal' },
+  title: { default: 'Client portal', template: '%s — Eaglescroft portal' },
   robots: { index: false, follow: false },
+  manifest: '/portal.webmanifest',
+  appleWebApp: { capable: true, title: 'Eaglescroft', statusBarStyle: 'default' },
+  icons: { apple: '/pwa/apple-touch-icon.png' },
 }
+
+export const viewport: Viewport = { themeColor: '#001e60', viewportFit: 'cover' }
 
 export const dynamic = 'force-dynamic'
 
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
   if (!portalConfigured) return <PortalSoon />
-  const { profile } = await getViewer()
-
-  const nav: NavItem[] = [
-    { href: '/portal', label: 'Dashboard', icon: 'LayoutDashboard', exact: true },
-    { href: '/portal/billing', label: 'Billing', icon: 'Receipt' },
-    ...(profile.role === 'admin' ? [{ href: '/admin', label: 'Admin', icon: 'ArrowLeftRight' } as NavItem] : []),
-  ]
-
+  const { supabase, profile, isTeam } = await getViewer()
+  const { links, unreadNotifications } = await buildNav(supabase, profile, isTeam)
   return (
-    <Shell profile={profile} nav={nav} area="Client portal">
+    <Shell profile={profile} links={links} unreadNotifications={unreadNotifications}>
       {children}
     </Shell>
   )

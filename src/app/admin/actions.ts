@@ -4,7 +4,9 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { randomUUID } from 'crypto'
 import { z } from 'zod'
-import { requireAdmin } from '@/lib/portal/session'
+import { requireAdmin, requireTeam } from '@/lib/portal/session'
+import { notify } from '@/lib/portal/notify'
+import { personSelect } from '@/lib/portal/people'
 import { createAnonClient, createServiceClient } from '@/lib/portal/supabase'
 import { getTemplate } from '@/lib/portal/templates'
 import { addDays, toMinor } from '@/lib/portal/format'
@@ -29,7 +31,7 @@ const parseLines = (text: string) => text.split('\n').map((l) => l.trim()).filte
 /* ─── Clients ───────────────────────────────────────────────────────────── */
 
 export async function createClientAccount(formData: FormData) {
-  await requireAdmin()
+  await requireTeam()
   const email = z.string().trim().toLowerCase().email().safeParse(formData.get('email'))
   if (!email.success) redirect('/admin/clients?error=email')
 
@@ -51,7 +53,7 @@ export async function createClientAccount(formData: FormData) {
 /* ─── Projects ──────────────────────────────────────────────────────────── */
 
 export async function createProject(formData: FormData) {
-  const { supabase, user } = await requireAdmin()
+  const { supabase, user } = await requireTeam()
   const template = getTemplate(str(formData, 'service'))
   const clientId = str(formData, 'client_id')
   const title = str(formData, 'title')
@@ -114,11 +116,12 @@ export async function createProject(formData: FormData) {
       })
     }
   }
+  await notify({ userIds: [clientId], kind: 'project', title: `Your project is set up: ${title}`, body: 'Open your portal to see the timeline and complete your brief.', link: `/portal/projects/${project.id}`, emailAlways: true })
   redirect(`/admin/projects/${project.id}?saved=created`)
 }
 
 export async function updateProject(projectId: string, formData: FormData) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const retainer = toMinor(str(formData, 'retainer'))
   const { error } = await supabase
     .from('projects')
@@ -144,7 +147,7 @@ export async function updateProject(projectId: string, formData: FormData) {
 /* ─── Timeline ──────────────────────────────────────────────────────────── */
 
 export async function addMilestone(projectId: string, formData: FormData) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const title = str(formData, 'title')
   if (title) {
     const { count } = await supabase.from('milestones').select('id', { count: 'exact', head: true }).eq('project_id', projectId)
@@ -155,23 +158,27 @@ export async function addMilestone(projectId: string, formData: FormData) {
 }
 
 export async function setMilestoneStatus(projectId: string, milestoneId: string, status: MilestoneStatus) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   await supabase.from('milestones').update({ status }).eq('id', milestoneId)
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#timeline`)
 }
 
 export async function deleteMilestone(projectId: string, milestoneId: string) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   await supabase.from('milestones').delete().eq('id', milestoneId)
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#timeline`)
 }
 
 export async function postUpdate(projectId: string, formData: FormData) {
-  const { supabase, user } = await requireAdmin()
+  const { supabase, user } = await requireTeam()
   const body = str(formData, 'body').slice(0, 4000)
-  if (body) await supabase.from('project_updates').insert({ project_id: projectId, author_id: user.id, body })
+  if (body) {
+    await supabase.from('project_updates').insert({ project_id: projectId, author_id: user.id, body })
+    const { data: p } = await supabase.from('projects').select('client_id, title').eq('id', projectId).single()
+    if (p) await notify({ userIds: [p.client_id], kind: 'update', title: `New update · ${p.title}`, body: body.slice(0, 180), link: `/portal/projects/${projectId}` })
+  }
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#updates`)
 }
@@ -179,8 +186,9 @@ export async function postUpdate(projectId: string, formData: FormData) {
 /* ─── Tickets ───────────────────────────────────────────────────────────── */
 
 export async function setTicketStatus(projectId: string, ticketId: string, status: TicketStatus) {
-  const { supabase } = await requireAdmin()
-  await supabase.from('tickets').update({ status }).eq('id', ticketId)
+  const { supabase } = await requireTeam()
+  const { data: t } = await supabase.from('tickets').update({ status }).eq('id', ticketId).select('author_id, title').single()
+  if (t?.author_id && status === 'resolved') await notify({ userIds: [t.author_id], kind: 'ticket', title: `Resolved: ${t.title}`, link: `/portal/projects/${projectId}/tickets/${ticketId}` })
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#tickets`)
 }
@@ -214,6 +222,7 @@ export async function createInvoice(projectId: string, formData: FormData) {
   if (error || !inv) redirect(`/admin/projects/${projectId}?error=invoice#billing`)
 
   await supabase.from('invoice_items').insert(items.map((it, i) => ({ ...it, invoice_id: inv.id, quantity: 1, sort: i })))
+  if (send) await notifyInvoice(inv.id)
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}?saved=invoice#billing`)
 }
@@ -224,6 +233,7 @@ export async function setInvoiceStatus(projectId: string, invoiceId: string, sta
     .from('invoices')
     .update(status === 'sent' ? { status, issued_at: new Date().toISOString() } : { status })
     .eq('id', invoiceId)
+  if (status === 'sent') await notifyInvoice(invoiceId)
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#billing`)
 }
@@ -241,6 +251,8 @@ export async function recordManualPayment(projectId: string, invoiceId: string, 
       reference: str(formData, 'reference') || `manual-${randomUUID().slice(0, 8)}`,
       authorId: user.id,
     })
+    const { data: p } = await supabase.from('projects').select('client_id').eq('id', projectId).single()
+    if (p) await notify({ userIds: [p.client_id], kind: 'payment', title: 'Payment received. Thank you!', body: 'We have recorded your payment for this project.', link: `/portal/invoices/${invoiceId}`, emailAlways: true })
   }
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}?saved=payment#billing`)
@@ -249,7 +261,7 @@ export async function recordManualPayment(projectId: string, invoiceId: string, 
 /* ─── Documents (file goes browser → storage; this records it) ──────────── */
 
 export async function addDocument(projectId: string, doc: { title: string; kind: DocumentKind; storagePath: string; size: number }) {
-  const { supabase, user } = await requireAdmin()
+  const { supabase, user } = await requireTeam()
   if (!doc.storagePath.startsWith(`${projectId}/`)) throw new Error('Invalid path')
   const { error } = await supabase.from('documents').insert({
     project_id: projectId,
@@ -260,11 +272,13 @@ export async function addDocument(projectId: string, doc: { title: string; kind:
     uploaded_by: user.id,
   })
   if (error) throw error
+  const { data: p } = await supabase.from('projects').select('client_id, title').eq('id', projectId).single()
+  if (p) await notify({ userIds: [p.client_id], kind: 'project', title: `New ${doc.kind === 'handover' ? 'handover document' : 'file'} · ${p.title}`, body: doc.title, link: `/portal/projects/${projectId}?tab=files` })
   revalidatePath(`/admin/projects/${projectId}`)
 }
 
 export async function deleteDocument(projectId: string, documentId: string) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const { data: doc } = await supabase.from('documents').select('storage_path').eq('id', documentId).single()
   if (doc) {
     await supabase.storage.from('project-files').remove([doc.storage_path])
@@ -272,4 +286,69 @@ export async function deleteDocument(projectId: string, documentId: string) {
   }
   revalidatePath(`/admin/projects/${projectId}`)
   redirect(`/admin/projects/${projectId}#files`)
+}
+
+async function notifyInvoice(invoiceId: string) {
+  const { supabase } = await requireAdmin()
+  const { data: inv } = await supabase.from('invoices').select('number, projects(client_id, title)').eq('id', invoiceId).single()
+  const project = inv?.projects as unknown as { client_id: string; title: string } | null
+  if (inv && project) {
+    await notify({ userIds: [project.client_id], kind: 'invoice', title: `Invoice ${inv.number} is ready`, body: project.title, link: `/portal/invoices/${invoiceId}`, emailAlways: true })
+  }
+}
+
+/* ─── Team (admin only) ─────────────────────────────────────────────────── */
+
+export async function createTeamMember(formData: FormData) {
+  await requireAdmin()
+  const email = z.string().trim().toLowerCase().email().safeParse(formData.get('email'))
+  if (!email.success) redirect('/admin/team?error=email')
+  const role = str(formData, 'role') === 'admin' ? 'admin' : 'staff'
+  const service = createServiceClient()
+  const { data, error } = await service.auth.admin.createUser({
+    email: email.data,
+    email_confirm: true,
+    user_metadata: { full_name: str(formData, 'full_name'), company: 'Eaglescroft' },
+  })
+  if (error || !data.user) redirect(`/admin/team?error=${error?.message.toLowerCase().includes('already') ? 'exists' : 'create'}`)
+  await service.from('profiles').update({ role, title: str(formData, 'title') || null, signature: str(formData, 'signature') || null }).eq('id', data.user.id)
+  if (formData.get('send_code') === 'on') {
+    await createAnonClient().auth.signInWithOtp({ email: email.data, options: { shouldCreateUser: false } })
+  }
+  revalidatePath('/admin/team')
+  redirect('/admin/team?saved=created')
+}
+
+export async function updateTeamMember(userId: string, formData: FormData) {
+  const { supabase, user } = await requireAdmin()
+  const role = str(formData, 'role')
+  await supabase
+    .from('profiles')
+    .update({
+      title: str(formData, 'title') || null,
+      signature: str(formData, 'signature') || null,
+      // an admin can't change their own role (avoids locking everyone out)
+      ...(userId !== user.id && ['admin', 'staff', 'client'].includes(role) ? { role } : {}),
+    })
+    .eq('id', userId)
+  revalidatePath('/admin/team')
+  redirect('/admin/team?saved=updated')
+}
+
+export async function setProjectMembers(projectId: string, formData: FormData) {
+  const { supabase } = await requireTeam()
+  const ids = formData.getAll('member').map(String)
+  await supabase.from('project_members').delete().eq('project_id', projectId)
+  if (ids.length) {
+    await supabase.from('project_members').insert(ids.map((user_id) => ({ project_id: projectId, user_id, role: str(formData, `role_${user_id}`) || null })))
+    await notify({ userIds: ids, kind: 'project', title: 'You have been added to a project', link: `/admin/projects/${projectId}` })
+  }
+  revalidatePath(`/admin/projects/${projectId}`)
+  redirect(`/admin/projects/${projectId}?saved=team#team`)
+}
+
+export async function listTeam() {
+  const { supabase } = await requireTeam()
+  const { data } = await supabase.from('profiles').select(personSelect).in('role', ['admin', 'staff']).order('full_name')
+  return data ?? []
 }

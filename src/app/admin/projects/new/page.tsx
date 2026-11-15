@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { requireAdmin } from '@/lib/portal/session'
+import { requireTeam } from '@/lib/portal/session'
 import { serviceTemplates } from '@/lib/portal/templates'
 import { createProject } from '../../actions'
 import SubmitButton from '@/components/portal/SubmitButton'
@@ -9,7 +9,7 @@ import type { Profile } from '@/lib/portal/types'
 export const metadata: Metadata = { title: 'New project' }
 
 export default async function NewProjectPage({ searchParams }: { searchParams: { error?: string } }) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const { data } = await supabase.from('profiles').select('*').eq('role', 'client').order('full_name')
   const clients = (data ?? []) as Profile[]
 

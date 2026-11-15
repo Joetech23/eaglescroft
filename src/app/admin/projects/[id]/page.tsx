@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ExternalLink, FileText, Star, Trash2 } from 'lucide-react'
-import { requireAdmin } from '@/lib/portal/session'
+import { requireTeam } from '@/lib/portal/session'
 import { getTemplate, serviceLabel } from '@/lib/portal/templates'
 import {
   formatDate, formatMoney, invoiceBalance, invoiceStatusLabel, invoiceTotal, milestoneStatusLabel,
@@ -10,13 +10,15 @@ import {
 } from '@/lib/portal/format'
 import {
   addMilestone, createInvoice, deleteDocument, deleteMilestone, postUpdate, recordManualPayment,
-  setInvoiceStatus, setMilestoneStatus, setTicketStatus, updateProject,
+  setInvoiceStatus, setMilestoneStatus, setProjectMembers, setTicketStatus, updateProject,
 } from '../../actions'
+import Avatar from '@/components/portal/Avatar'
+import { displayName, personSelect } from '@/lib/portal/people'
 import SubmitButton from '@/components/portal/SubmitButton'
 import DocumentUploader from '@/components/portal/DocumentUploader'
 import { Badge, Card, Empty, Field, Notice, PageHeader, inputClass, invoiceTone, statusTone, ticketTone } from '@/components/portal/ui'
 import type {
-  Invoice, Milestone, MilestoneStatus, Profile, Project, ProjectDocument, ProjectStatus, ProjectUpdate, Review, Ticket,
+  Invoice, Milestone, MilestoneStatus, Person, Profile, Project, ProjectDocument, ProjectStatus, ProjectUpdate, Review, Ticket,
 } from '@/lib/portal/types'
 
 export const metadata: Metadata = { title: 'Manage project' }
@@ -28,12 +30,14 @@ const messages: Record<string, { tone: 'green' | 'red'; text: string }> = {
   'saved=project': { tone: 'green', text: 'Project details saved.' },
   'saved=invoice': { tone: 'green', text: 'Invoice saved.' },
   'saved=payment': { tone: 'green', text: 'Payment recorded.' },
+  'saved=team': { tone: 'green', text: 'Project team updated — they’ll get notifications for this project.' },
   'error=update': { tone: 'red', text: 'Couldn’t save the project.' },
   'error=invoice': { tone: 'red', text: 'Add at least one line item with an amount.' },
 }
 
 export default async function AdminProjectPage({ params, searchParams }: { params: { id: string }; searchParams: Record<string, string> }) {
-  const { supabase } = await requireAdmin()
+  const { supabase, profile: viewer } = await requireTeam()
+  const isAdmin = viewer.role === 'admin'
   const { data: row } = await supabase.from('projects').select('*').eq('id', params.id).maybeSingle()
   if (!row) notFound()
   const project = row as Project
@@ -54,6 +58,12 @@ export default async function AdminProjectPage({ params, searchParams }: { param
   const invoices = (invs ?? []) as Invoice[]
   const documents = (docs ?? []) as ProjectDocument[]
   const review = rev as Review | null
+  const [{ data: teamRows }, { data: memberRows }] = await Promise.all([
+    supabase.from('profiles').select(personSelect).in('role', ['admin', 'staff']).order('full_name'),
+    supabase.from('project_members').select('user_id, role').eq('project_id', project.id),
+  ])
+  const team = (teamRows ?? []) as Person[]
+  const memberRole = new Map((memberRows ?? []).map((m) => [m.user_id as string, (m.role as string | null) ?? '']))
   const template = getTemplate(project.service)
   const money = (minor: number | null) => (minor ? (minor / 100).toFixed(2) : '')
   const msg = Object.entries(searchParams).map(([k, v]) => messages[`${k}=${v}`]).find(Boolean)
@@ -188,6 +198,24 @@ export default async function AdminProjectPage({ params, searchParams }: { param
         </div>
 
         <div className="min-w-0 space-y-6">
+          <div id="team" className="scroll-mt-6">
+            <Card title="Project team" action={<Link href={`/portal/messages/${project.id}`} className="text-[13px] font-semibold text-gold-600 hover:underline">Open chat</Link>}>
+              <form action={setProjectMembers.bind(null, project.id)} className="space-y-2">
+                {team.map((m) => (
+                  <label key={m.id} className="flex items-center gap-3 rounded-2xl border border-navy/[0.08] p-2.5">
+                    <input type="checkbox" name="member" value={m.id} defaultChecked={memberRole.has(m.id)} className="h-4 w-4 accent-[#2563EB]" />
+                    <Avatar person={m} size="sm" />
+                    <span className="min-w-0 flex-1"><span className="block truncate text-[13.5px] font-semibold text-navy">{displayName(m)}</span><span className="block truncate text-[11.5px] text-navy/45">{m.title || m.role}</span></span>
+                    <input name={`role_${m.id}`} defaultValue={memberRole.get(m.id) ?? ''} placeholder="Role on project" aria-label={`Role for ${displayName(m)}`} className="w-36 rounded-xl border border-navy/12 px-2.5 py-1.5 text-[12.5px]" />
+                  </label>
+                ))}
+                <p className="text-[12px] text-navy/45">Assigned members get this project&rsquo;s notifications. With nobody assigned, admins get them.</p>
+                <SubmitButton variant="ghost">Save project team</SubmitButton>
+              </form>
+            </Card>
+          </div>
+
+          {isAdmin && (
           <div id="billing" className="scroll-mt-6">
             <Card title="Billing">
               <div className="space-y-3">
@@ -248,6 +276,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
               </form>
             </Card>
           </div>
+          )}
 
           <div id="files" className="scroll-mt-6">
             <Card title="Files & handover">

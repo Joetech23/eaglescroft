@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { requireAdmin } from '@/lib/portal/session'
+import { requireTeam } from '@/lib/portal/session'
 import { formatDate } from '@/lib/portal/format'
 import { createClientAccount } from '../actions'
 import SubmitButton from '@/components/portal/SubmitButton'
@@ -17,7 +17,7 @@ const messages: Record<string, { tone: 'green' | 'red'; text: string }> = {
 }
 
 export default async function ClientsPage({ searchParams }: { searchParams: Record<string, string> }) {
-  const { supabase } = await requireAdmin()
+  const { supabase } = await requireTeam()
   const [{ data: cs }, { data: ps }] = await Promise.all([
     supabase.from('profiles').select('*').order('created_at', { ascending: false }),
     supabase.from('projects').select('client_id, status'),
