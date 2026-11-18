@@ -12,6 +12,8 @@ export const siteConfig = {
   whatsapp: '2348144848470',
   location: 'Lagos, Nigeria',
   calendly: process.env.NEXT_PUBLIC_CALENDLY_URL || '',
+  /** Shown on client invoices for bank-transfer payments */
+  bank: { accountName: 'Eaglescroft Limited', bank: 'Moniepoint', accountNumber: '8167808866' },
 }
 
 export const whatsappLink = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
