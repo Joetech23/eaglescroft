@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight, UserRound } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
@@ -92,8 +92,16 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <Link
+              href="/portal/login"
+              aria-label="Client portal login"
+              title="Client portal login"
+              className="group flex h-10 w-10 flex-none items-center justify-center rounded-full border border-navy/12 bg-white/80 text-navy transition-colors hover:border-navy/30 hover:bg-white"
+            >
+              <UserRound className="h-[18px] w-[18px] text-navy/70 group-hover:text-navy" />
+            </Link>
+            <Link
               href="/contact"
-              className="hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:inline-flex"
+              className="hidden items-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:inline-flex"
               style={{ background: 'linear-gradient(180deg,#3b76f0,#1d4ed8)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 4px rgba(37,99,235,0.25), 0 10px 24px -6px rgba(37,99,235,0.5)' }}
             >
               Book a Free Call <ArrowUpRight className="h-4 w-4" />
@@ -123,6 +131,11 @@ export default function Navbar() {
                   </li>
                 ))}
                 <li className="mt-2">
+                  <Link href="/portal/login" className="flex w-full items-center justify-center gap-2 rounded-full border border-navy/15 px-5 py-3.5 text-sm font-semibold text-navy">
+                    <UserRound className="h-4 w-4" /> Client portal login
+                  </Link>
+                </li>
+                <li>
                   <Link
                     href="/contact"
                     className="flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-white"
