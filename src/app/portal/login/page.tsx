@@ -62,7 +62,7 @@ export default function LoginPage({ searchParams }: { searchParams: { step?: str
           </h2>
           <p className="mt-2 text-[15px] text-[#48526e]">
             {codeStep
-              ? 'If that email has a portal account, we’ve sent it a 6-digit code. Enter it below.'
+              ? 'If that email has a portal account, we’ve sent it a sign-in code. Enter it below.'
               : 'Enter the email your project lead set up for you. We’ll send a one-time code. No password needed.'}
           </p>
 
@@ -75,13 +75,13 @@ export default function LoginPage({ searchParams }: { searchParams: { step?: str
                 name="code"
                 inputMode="numeric"
                 autoComplete="one-time-code"
-                pattern="[0-9]{6}"
-                maxLength={6}
+                pattern="[0-9]{6,10}"
+                maxLength={10}
                 required
                 autoFocus
-                placeholder="••••••"
-                aria-label="6-digit code"
-                className={`${inputClass} text-center font-mono text-2xl tracking-[0.6em]`}
+                placeholder="Enter code"
+                aria-label="Sign-in code"
+                className={`${inputClass} text-center font-mono text-2xl tracking-[0.4em] placeholder:text-base placeholder:tracking-normal`}
               />
               <SubmitButton pendingText="Checking…" className="w-full py-3">Sign in</SubmitButton>
               <p className="text-center text-[13px] text-navy/55">

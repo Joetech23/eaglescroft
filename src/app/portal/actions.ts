@@ -23,7 +23,7 @@ function origin() {
   return process.env.NEXT_PUBLIC_SITE_URL && !host?.startsWith('localhost') ? process.env.NEXT_PUBLIC_SITE_URL : `${proto}://${host}`
 }
 
-/* ─── Sign in: email → 6-digit code ─────────────────────────────────────── */
+/* ─── Sign in: email → one-time code (length set in Supabase: 6–10 digits) ─ */
 
 export async function sendLoginCode(formData: FormData) {
   const email = z.string().trim().toLowerCase().email().safeParse(formData.get('email'))
@@ -46,7 +46,7 @@ export async function verifyLoginCode(formData: FormData) {
   const email = cookies().get(LOGIN_EMAIL_COOKIE)?.value
   const token = String(formData.get('code') || '').replace(/\D/g, '')
   if (!email) redirect('/portal/login?error=expired')
-  if (token.length !== 6) redirect('/portal/login?step=code&error=code')
+  if (token.length < 6 || token.length > 10) redirect('/portal/login?step=code&error=code')
 
   const supabase = createClient()
   const { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' })
