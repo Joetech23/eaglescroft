@@ -22,7 +22,8 @@ const avatars = [
   'https://randomuser.me/api/portraits/women/32.jpg',
 ]
 
-function BrowserCard({ url, className, delay = 0 }: { url: string; className?: string; delay?: number }) {
+/** `image` = our own screenshot, for sites the live-capture service can't render. */
+function BrowserCard({ url, image, className, delay = 0 }: { url: string; image?: string; className?: string; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, rotate: 0 }}
@@ -43,7 +44,7 @@ function BrowserCard({ url, className, delay = 0 }: { url: string; className?: s
           </div>
         </div>
         <div className="relative aspect-[16/10.5] overflow-hidden bg-navy-50">
-          <img src={shot(url)} alt={`Live preview of ${url}`} loading="eager" className="absolute inset-0 h-full w-full object-cover object-top" />
+          <img src={image ?? shot(url)} alt={`Live preview of ${url}`} loading="eager" className={`absolute inset-0 h-full w-full object-cover ${image ? 'object-left-top' : 'object-top'}`} />
         </div>
       </div>
     </motion.div>
@@ -132,7 +133,7 @@ export default function Hero() {
 
         {/* live-site card stack */}
         <div className="relative hidden min-h-[520px] lg:block">
-          <BrowserCard url="enyobuilt.com.ng" delay={0.35} className="absolute left-0 top-4 w-[78%] rotate-[-3deg]" />
+          <BrowserCard url="lth.dgclgroup.com" image="/portfolio/lth-home.webp" delay={0.35} className="absolute left-0 top-4 w-[78%] rotate-[-3deg]" />
           <BrowserCard url="starhomes.com.ng" delay={0.55} className="absolute bottom-2 right-0 w-[78%] rotate-[2.5deg]" />
 
           {/* floating chips */}
