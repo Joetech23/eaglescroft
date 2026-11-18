@@ -121,6 +121,16 @@ body {
   }
 }
 
+/* Portal star rating — stars render 5→1 in reversed flex, so "~" reaches every lower star */
+.star-rating label:hover svg,
+.star-rating label:hover ~ label svg,
+.star-rating label:has(input:checked) svg,
+.star-rating label:has(input:checked) ~ label svg {
+  color: #2563eb;
+  fill: #2563eb;
+}
+.star-rating label:has(input:focus-visible) svg { outline: 2px solid #2563eb; outline-offset: 2px; border-radius: 4px; }
+
 /* Home reel — the progress bar doubles as the slide timer */
 @keyframes reel-progress {
   from { transform: scaleX(0); }

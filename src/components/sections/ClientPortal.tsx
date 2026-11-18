@@ -72,12 +72,12 @@ export default function ClientPortal() {
             >
               Start a project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <span
-              aria-disabled="true"
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/15 px-5 py-3.5 text-sm font-semibold text-white/45"
+            <Link
+              href="/portal/login"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:border-white/40 hover:text-white"
             >
-              <Lock className="h-4 w-4" /> Client login — coming soon
-            </span>
+              <Lock className="h-4 w-4" /> Client login
+            </Link>
           </div>
         </div>
 
