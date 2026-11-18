@@ -125,11 +125,23 @@ export default async function InvoicePage({ params, searchParams }: { params: { 
 
         {invoice.notes && <p className="mt-8 whitespace-pre-line rounded-2xl bg-[#f6f8fc] p-4 text-[13.5px] text-navy/70">{invoice.notes}</p>}
 
+        {invoice.status === 'sent' && balance > 0 && (
+          <div className="mt-8 rounded-2xl border border-navy/10 p-5">
+            <div className="font-mono text-[10.5px] uppercase tracking-wider text-navy/45">Pay by bank transfer</div>
+            <dl className="mt-3 grid gap-3 text-[14px] sm:grid-cols-3">
+              <div><dt className="text-[12px] text-navy/50">Account name</dt><dd className="font-semibold text-navy">{siteConfig.bank.accountName}</dd></div>
+              <div><dt className="text-[12px] text-navy/50">Bank</dt><dd className="font-semibold text-navy">{siteConfig.bank.bank}</dd></div>
+              <div><dt className="text-[12px] text-navy/50">Account number</dt><dd className="font-mono text-[15px] font-semibold tracking-wider text-navy">{siteConfig.bank.accountNumber}</dd></div>
+            </dl>
+            <p className="mt-3 text-[12.5px] text-navy/55">Use <strong className="text-navy">{invoice.number}</strong> as the payment reference. We&rsquo;ll mark it paid as soon as it lands.</p>
+          </div>
+        )}
+
         {canPay && (
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-gold-400/25 bg-gold-400/[0.06] p-5 print:hidden">
             <div>
               <div className="font-display text-[15px] font-semibold text-navy">Pay {formatMoney(balance, invoice.currency)} securely</div>
-              <div className="text-[13px] text-navy/60">{paystackEnabled() ? 'Card, bank or transfer via Paystack.' : 'Card payments are coming soon — bank transfer details are in the notes, or ask your project lead.'}</div>
+              <div className="text-[13px] text-navy/60">{paystackEnabled() ? 'Card, bank or transfer via Paystack.' : 'Card payments are coming soon. Pay by bank transfer using the details above.'}</div>
             </div>
             {paystackEnabled() && (
               <form action={payInvoice.bind(null, invoice.id)}>
