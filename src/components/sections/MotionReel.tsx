@@ -31,7 +31,7 @@ const slides: Slide[] = [
     icon: Clapperboard,
     tab: 'Motion graphics',
     title: 'Motion graphics for SaaS',
-    desc: 'Launch films, feature explainers and product demos — we animate your UI into stories that make people sign up. This is our own brand film.',
+    desc: 'Launch films, feature explainers and product demos. We animate your UI into stories that make people sign up. This is our own brand film.',
     tags: ['Launch films', 'Product demos', 'UI animation'],
     window: 'Eaglescroft · “Take Flight” brand film',
     href: '/portfolio/eaglescroft-take-flight',
@@ -45,7 +45,7 @@ const slides: Slide[] = [
     icon: Search,
     tab: 'Visibility (SEO)',
     title: 'Visibility that compounds',
-    desc: 'Technical SEO, content and local search that put you on page one — exactly where your buyers are already looking.',
+    desc: 'Technical SEO, content and local search that put you on page one, exactly where your buyers are already looking.',
     tags: ['Technical SEO', 'Local search', 'Core Web Vitals'],
     window: 'Search Console · organic growth',
     href: '/services#digital-marketing-seo',
@@ -57,7 +57,7 @@ const slides: Slide[] = [
     icon: Megaphone,
     tab: 'Social media',
     title: 'Social media that sells',
-    desc: 'Content systems, reels and paid boosts that grow reach — and route every interested DM straight into your pipeline.',
+    desc: 'Content systems, reels and paid boosts that grow reach and route every interested DM straight into your pipeline.',
     tags: ['Content calendar', 'Reels', 'Paid social'],
     window: 'Social dashboard · last 30 days',
     href: '/services#social-media',
@@ -69,7 +69,7 @@ const slides: Slide[] = [
     icon: Users,
     tab: 'CRM & GoHighLevel',
     title: 'CRM, funnels & GoHighLevel',
-    desc: 'Pipelines, funnels and full GoHighLevel setups — every lead captured, tracked, nurtured and closed in one view.',
+    desc: 'Pipelines, funnels and full GoHighLevel setups. Every lead captured, tracked, nurtured and closed in one view.',
     tags: ['Pipelines', 'Funnels', 'GoHighLevel'],
     window: 'CRM · sales pipeline',
     href: '/pricing/crm',
@@ -81,7 +81,7 @@ const slides: Slide[] = [
     icon: Bot,
     tab: 'AI automation',
     title: 'AI automation, around the clock',
-    desc: 'AI chatbots and workflows that reply, qualify and book on your site, WhatsApp and socials — 24/7, no task falls through.',
+    desc: 'AI chatbots and workflows that reply, qualify and book on your site, WhatsApp and socials, 24/7. No task falls through.',
     tags: ['AI chatbots', 'WhatsApp', 'Workflows'],
     window: 'AI assistant · live conversation',
     href: '/pricing/automation',
@@ -168,7 +168,7 @@ export default function MotionReel() {
               </span>
             </h2>
             <p className="mt-4 max-w-[600px] text-[16px] leading-relaxed text-white/60">
-              We animate SaaS products, put brands on page one, grow their socials — then wire up the
+              We animate SaaS products, put brands on page one, grow their socials, then wire up the
               CRM and AI that turn all that attention into customers.
             </p>
           </div>

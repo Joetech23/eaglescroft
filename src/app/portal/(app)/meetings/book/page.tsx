@@ -22,7 +22,7 @@ export default async function BookPage({ searchParams }: { searchParams: { error
   return (
     <>
       <PageHeader eyebrow="Book a meeting" title="Pick a time that works." intro="Choose who you'd like to speak with, then a day and time. You'll both get a notification and a video link." />
-      {searchParams.error === 'taken' && <div className="mb-5"><Notice tone="red">Someone just took that slot — please pick another time.</Notice></div>}
+      {searchParams.error === 'taken' && <div className="mb-5"><Notice tone="red">Someone just took that slot. Please pick another time.</Notice></div>}
       {searchParams.error === 'failed' && <div className="mb-5"><Notice tone="red">We couldn’t book that meeting. Please try again.</Notice></div>}
       {hosts.length ? (
         <BookingWidget hosts={hosts} projects={(projects ?? []).map((p) => ({ id: p.id, title: p.title, client_id: p.client_id }))} clients={(clients ?? []) as Person[]} isTeam={isTeam} initialHost={searchParams.host} />

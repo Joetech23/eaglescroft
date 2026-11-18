@@ -30,7 +30,7 @@ const messages: Record<string, { tone: 'green' | 'red'; text: string }> = {
   'saved=project': { tone: 'green', text: 'Project details saved.' },
   'saved=invoice': { tone: 'green', text: 'Invoice saved.' },
   'saved=payment': { tone: 'green', text: 'Payment recorded.' },
-  'saved=team': { tone: 'green', text: 'Project team updated — they’ll get notifications for this project.' },
+  'saved=team': { tone: 'green', text: 'Project team updated. They’ll get notifications for this project.' },
   'error=update': { tone: 'red', text: 'Couldn’t save the project.' },
   'error=invoice': { tone: 'red', text: 'Add at least one line item with an amount.' },
 }
@@ -97,7 +97,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
               <Field label="Progress %"><input name="progress" type="number" min={0} max={100} defaultValue={project.progress} className={inputClass} /></Field>
               <div className="sm:col-span-2"><Field label="Summary"><textarea name="summary" rows={2} defaultValue={project.summary ?? ''} className={inputClass} /></Field></div>
               <div className="sm:col-span-2">
-                <Field label="Goals & targets" hint="Goal | target — one per line">
+                <Field label="Goals & targets" hint="Goal | target, one per line">
                   <textarea name="goals" rows={3} defaultValue={project.goals.map((g) => (g.target ? `${g.title} | ${g.target}` : g.title)).join('\n')} className={inputClass} />
                 </Field>
               </div>

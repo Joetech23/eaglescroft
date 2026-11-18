@@ -56,7 +56,7 @@ export const projects: Project[] = [
     url: 'angeluscapitalpartners.com',
     industry: 'Finance · Investment Advisory',
     description:
-      'A corporate site for a financial advisory, capital solutions and investment management firm — three integrated platforms, sector transactions, leadership and insights, built to earn institutional trust.',
+      'A corporate site for a financial advisory, capital solutions and investment management firm: three integrated platforms, sector transactions, leadership and insights, built to earn institutional trust.',
     stack: ['WordPress', 'Custom Design', 'SEO'],
     featured: true,
     image: '/portfolio/angelus-home.webp',
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     url: 'fstremoval.co.uk',
     industry: 'Removals & Logistics (UK)',
     description:
-      'A removals, storage and pallet-delivery site for London and the South East — a two-minute postcode quote flow, WhatsApp photo quotes and live move tracking.',
+      'A removals, storage and pallet-delivery site for London and the South East, with a two-minute postcode quote flow, WhatsApp photo quotes and live move tracking.',
     stack: ['Custom Build', 'Quote Flow', 'Local SEO'],
     featured: true,
     image: '/portfolio/fasttrack-home.webp',
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     url: 'aehobbsltd.com',
     industry: 'Healthcare · Pharmacy (UK)',
     description:
-      'Royal Tunbridge Wells’ independent pharmacy, trusted since 1895 — rebuilt as a modern platform for NHS prescriptions, Pharmacy First, the travel clinic and vaccinations, all one tap away.',
+      'Royal Tunbridge Wells’ independent pharmacy, trusted since 1895, rebuilt as a modern platform for NHS prescriptions, Pharmacy First, the travel clinic and vaccinations, all one tap away.',
     stack: ['Next.js', 'TailwindCSS', 'Technical SEO'],
     featured: true,
   },
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     url: 'lrvlc.com',
     industry: 'Recruitment & Care (UK)',
     description:
-      'A UK site for Lineup Recruitment and Vine Lodge Care — healthcare staffing and personalised home care under one brand, with division pages, live proof points and call-first enquiry.',
+      'A UK site for Lineup Recruitment and Vine Lodge Care: healthcare staffing and personalised home care under one brand, with division pages, live proof points and call-first enquiry.',
     stack: ['Next.js', 'React', 'TailwindCSS'],
     featured: true,
     image: '/portfolio/lrvlc-home.webp',
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     url: 'techbridgedigital.co.uk',
     industry: 'IT Consultancy (UK)',
     description:
-      'A London IT consultancy site for AWS cloud architecture, cyber security, penetration testing, data & AI and managed IT — positioned to win public-sector and finance clients.',
+      'A London IT consultancy site for AWS cloud architecture, cyber security, penetration testing, data & AI and managed IT, positioned to win public-sector and finance clients.',
     stack: ['Next.js', 'TailwindCSS', 'Technical SEO'],
     featured: true,
   },
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     url: 'lth.dgclgroup.com',
     industry: 'EdTech · Cloud Training (UK)',
     description:
-      'A learning platform for DGCL Digital Cloud Academy — four tech courses, 140 narrated AWS lessons with a free start, and a learner dashboard with progress, points and weekly goals.',
+      'A learning platform for DGCL Digital Cloud Academy: four tech courses, 140 narrated AWS lessons with a free start, and a learner dashboard with progress, points and weekly goals.',
     stack: ['Next.js', 'Supabase', 'LMS'],
     featured: true,
     image: '/portfolio/lth-home.webp',
@@ -186,7 +186,7 @@ export const projects: Project[] = [
     url: 'arcmarshaldzine.com',
     industry: 'Design & Construction',
     description:
-      'A design and construction company site for Abuja — residential, commercial and industrial projects, renovations and interior finishing, built to turn bold ideas into enquiries.',
+      'A design and construction company site for Abuja: residential, commercial and industrial projects, renovations and interior finishing, built to turn bold ideas into enquiries.',
     stack: ['Next.js', 'TailwindCSS', 'SEO'],
     featured: true,
   },
@@ -198,12 +198,12 @@ export const projects: Project[] = [
     url: 'starhomes.com.ng',
     industry: 'Real Estate',
     description:
-      'A modern Nigerian real-estate platform with rich property listings, smart search and a conversion-focused enquiry flow — built for speed and trust.',
+      'A modern Nigerian real-estate platform with rich property listings, smart search and a conversion-focused enquiry flow, built for speed and trust.',
     stack: ['Next.js', 'React', 'TailwindCSS'],
     featured: true,
     caseStudy: {
       problem:
-        'Star Homes needed a fast, trustworthy platform where buyers could browse properties easily and enquire without friction — and rank against established real-estate portals.',
+        'Star Homes needed a fast, trustworthy platform where buyers could browse properties easily and enquire without friction, and rank against established real-estate portals.',
       solution:
         'We built a high-performance Next.js platform with rich listings, smart filtering and a streamlined enquiry flow, tuned for Core Web Vitals and technical SEO from day one.',
       process: [
@@ -228,7 +228,7 @@ export const projects: Project[] = [
     url: 'skyflixmedia.com.ng',
     industry: 'Media & Production',
     description:
-      'A production house site for photography, videography, livestreaming and broadcast work — with an Academy enrolment flow for aspiring creators.',
+      'A production house site for photography, videography, livestreaming and broadcast work, with an Academy enrolment flow for aspiring creators.',
     stack: ['Next.js', 'Resend', 'Google Sheets'],
     featured: true,
   },
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     url: 'heritagehospitals.com',
     industry: 'Healthcare',
     description:
-      'A healthcare website with appointment booking, detailed service pages, and a patient resource hub — designed to build trust and streamline care.',
+      'A healthcare website with appointment booking, detailed service pages, and a patient resource hub, designed to build trust and streamline care.',
     stack: ['WordPress', 'PHP', 'Custom Plugins', 'Booking System'],
   },
   {
@@ -306,11 +306,11 @@ export const projects: Project[] = [
   // ── Video editing (placeholders to replace with real reels) ──
   {
     slug: 'eaglescroft-take-flight',
-    title: 'Eaglescroft — “Take Flight”',
+    title: 'Eaglescroft: “Take Flight”',
     category: 'video',
     industry: 'Motion Graphics · Brand Film',
     description:
-      'Our own 47-second brand film: kinetic type, animated product UI, CRM and AI systems in motion and a closing logo reveal — the SaaS-style motion work we make for clients.',
+      'Our own 47-second brand film: kinetic type, animated product UI, CRM and AI systems in motion and a closing logo reveal. The SaaS-style motion work we make for clients.',
     stack: ['Motion Graphics', 'Kinetic Typography', 'Voiceover & Sound'],
     video: { src: '/reel/eaglescroft-advert.mp4', poster: '/reel/eaglescroft-advert-poster.jpg' },
   },
@@ -319,7 +319,7 @@ export const projects: Project[] = [
     title: 'Product Explainer',
     category: 'video',
     industry: 'Explainer',
-    description: 'An animated explainer breaking down a product in under 60 seconds. Sample reel — replace with your real video.',
+    description: 'An animated explainer breaking down a product in under 60 seconds. Sample reel: replace with your real video.',
     stack: ['After Effects', 'Illustration', 'Voiceover'],
   },
   {
@@ -327,7 +327,7 @@ export const projects: Project[] = [
     title: 'Social Ad Cut',
     category: 'video',
     industry: 'Advertising',
-    description: 'A punchy vertical ad edit optimised for social feeds and retention. Sample reel — replace with your real video.',
+    description: 'A punchy vertical ad edit optimised for social feeds and retention. Sample reel: replace with your real video.',
     stack: ['CapCut', 'Premiere Pro', 'Sound Design'],
   },
   // ── Social media (placeholders) ──
@@ -336,7 +336,7 @@ export const projects: Project[] = [
     title: 'Lifestyle Brand Campaign',
     category: 'social',
     industry: 'Social Media',
-    description: 'A 30-day content system that grew engagement and built community. Sample case — replace with real assets.',
+    description: 'A 30-day content system that grew engagement and built community. Sample case: replace with real assets.',
     stack: ['Content Strategy', 'Creative', 'Community'],
   },
   {
@@ -344,7 +344,7 @@ export const projects: Project[] = [
     title: 'Product Launch Grid',
     category: 'social',
     industry: 'Social Media',
-    description: 'A cohesive launch grid and reel series engineered for reach and conversion. Sample case — replace with real assets.',
+    description: 'A cohesive launch grid and reel series engineered for reach and conversion. Sample case: replace with real assets.',
     stack: ['Creative Direction', 'Reels', 'Paid Boost'],
   },
 ]

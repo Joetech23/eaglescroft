@@ -89,7 +89,7 @@ export default function Hero() {
 
           <motion.p custom={2} variants={rise} initial="hidden" animate="show"
             className="mt-7 max-w-[540px] leading-relaxed text-[#48526e]" style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)' }}>
-            From websites and branding to AI chatbots, automations, funnels and CRM systems — one
+            From websites and branding to AI chatbots, automations, funnels and CRM systems, delivered by one
             senior team partnering with ambitious businesses across the globe.
           </motion.p>
 

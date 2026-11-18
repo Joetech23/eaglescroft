@@ -44,7 +44,7 @@ export default function ConversationList({ rows, activeId }: { rows: Row[]; acti
               </span>
               <span className="flex items-center justify-between gap-2">
                 <span className={cn('truncate text-[12.5px]', r.id === activeId ? 'text-white/70' : r.unread ? 'font-semibold text-navy/80' : 'text-navy/50')}>
-                  {r.last ? `${r.last.mine ? 'You: ' : ''}${r.last.body}` : 'No messages yet — say hello'}
+                  {r.last ? `${r.last.mine ? 'You: ' : ''}${r.last.body}` : 'No messages yet. Say hello'}
                 </span>
                 {r.unread > 0 && r.id !== activeId && (
                   <span className="flex h-5 min-w-[20px] flex-none items-center justify-center rounded-full bg-gold-400 px-1.5 text-[10.5px] font-bold text-white">{r.unread}</span>

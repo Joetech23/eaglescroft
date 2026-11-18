@@ -4,12 +4,12 @@ import { motion } from 'framer-motion'
 import { Code2, PenTool, Cpu, Globe, LineChart, Workflow, type LucideIcon } from 'lucide-react'
 
 const reasons: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: Code2, title: 'Engineering Depth', body: 'Full-stack mastery across Next.js, React, Node and WordPress — systems that scale, not just sites that look good.' },
+  { icon: Code2, title: 'Engineering Depth', body: 'Full-stack mastery across Next.js, React, Node and WordPress: systems that scale, not just sites that look good.' },
   { icon: PenTool, title: 'Design Sensibility', body: 'Pixel-perfect, conversion-focused interfaces where aesthetics meet measurable performance.' },
   { icon: Cpu, title: 'AI & Automation', body: 'Chatbots, AI agent pipelines and automation workflows that cut overhead and unlock growth.' },
-  { icon: Globe, title: 'Global Reach', body: 'Trusted by businesses worldwide — global standard, on local time.' },
+  { icon: Globe, title: 'Global Reach', body: 'Trusted by businesses worldwide. Global standard, on local time.' },
   { icon: LineChart, title: 'SEO & ROI Focus', body: 'Technical SEO and Core Web Vitals baked into every build, so your investment compounds.' },
-  { icon: Workflow, title: 'End-to-End', body: 'From discovery to deployment and support — one accountable partner across the whole journey.' },
+  { icon: Workflow, title: 'End-to-End', body: 'From discovery to deployment and support: one accountable partner across the whole journey.' },
 ]
 
 export default function WhyEaglescroft() {

@@ -51,7 +51,7 @@ export const pricingCategories: PricingCategory[] = [
     title: 'Website Design & Development Pricing',
     headline: 'Websites built to win customers.',
     description:
-      'Transparent pricing for website design and development — from lean business sites to fully custom web platforms with dashboards, payments and API integrations.',
+      'Transparent pricing for website design and development, from lean business sites to fully custom web platforms with dashboards, payments and API integrations.',
     tiers: [
       {
         name: 'Basic Website',
@@ -118,7 +118,7 @@ export const pricingCategories: PricingCategory[] = [
     title: 'CRM Development Pricing',
     headline: 'Every lead captured, tracked and closed.',
     description:
-      'Pricing for Eaglescroft CRM systems — from simple pipelines to SaaS-level custom CRMs with role-based access, sales automation and deep API integrations.',
+      'Pricing for Eaglescroft CRM systems, from simple pipelines to SaaS-level custom CRMs with role-based access, sales automation and deep API integrations.',
     tiers: [
       {
         name: 'Basic CRM Setup',
@@ -182,7 +182,7 @@ export const pricingCategories: PricingCategory[] = [
     title: 'Business Automation Pricing',
     headline: 'Systems that work while you sleep.',
     description:
-      'Pricing for automation services — email and WhatsApp sequences, sales funnels, appointment booking, AI chatbots and full multi-department workflow automation.',
+      'Pricing for automation services: email and WhatsApp sequences, sales funnels, appointment booking, AI chatbots and full multi-department workflow automation.',
     tiers: [
       {
         name: 'Basic Automation',
@@ -244,7 +244,7 @@ export const pricingCategories: PricingCategory[] = [
     title: 'Video Editing & Production Pricing',
     headline: 'Content that stops the scroll.',
     description:
-      'Pricing for video editing and production — social reels, business promos and full brand commercials with motion graphics, scripting and ads-ready formats.',
+      'Pricing for video editing and production: social reels, business promos and full brand commercials with motion graphics, scripting and ads-ready formats.',
     tiers: [
       {
         name: 'Social Media Videos',

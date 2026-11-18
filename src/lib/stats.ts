@@ -9,11 +9,11 @@ export const stats: Stat[] = [
 export const whyChooseUs = [
   {
     title: 'Engineering Depth',
-    body: 'Full-stack mastery across Next.js, React, Node.js, and WordPress — we build systems that scale, not just sites that look good.',
+    body: 'Full-stack mastery across Next.js, React, Node.js, and WordPress. We build systems that scale, not just sites that look good.',
   },
   {
     title: 'Design Sensibility',
-    body: 'Pixel-perfect, conversion-focused interfaces crafted in Figma — where aesthetics meet measurable performance.',
+    body: 'Pixel-perfect, conversion-focused interfaces crafted in Figma, where aesthetics meet measurable performance.',
   },
   {
     title: 'AI & Automation',
@@ -21,7 +21,7 @@ export const whyChooseUs = [
   },
   {
     title: 'Global Reach',
-    body: 'Trusted by businesses worldwide — we operate at a global standard, on local time.',
+    body: 'Trusted by businesses worldwide. We operate at a global standard, on local time.',
   },
   {
     title: 'SEO & ROI Focus',
@@ -29,6 +29,6 @@ export const whyChooseUs = [
   },
   {
     title: 'End-to-End Delivery',
-    body: 'From discovery to deployment and support — one accountable partner across strategy, design, and engineering.',
+    body: 'From discovery to deployment and support: one accountable partner across strategy, design, and engineering.',
   },
 ]

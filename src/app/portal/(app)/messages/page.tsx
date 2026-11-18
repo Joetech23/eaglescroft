@@ -21,7 +21,7 @@ export default async function MessagesPage() {
         <div>
           <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-navy text-white shadow-navy"><MessagesSquare className="h-6 w-6" /></span>
           <p className="mt-4 font-display text-[17px] font-semibold text-navy">Pick a conversation.</p>
-          <p className="text-[13.5px] text-navy/50">Messages, files and decisions — all in one thread per project.</p>
+          <p className="text-[13.5px] text-navy/50">Messages, files and decisions, all in one thread per project.</p>
         </div>
       </section>
     </div>

@@ -21,7 +21,7 @@ import type { Invoice, Milestone, Person, Project, ProjectDocument, ProjectUpdat
 export const metadata: Metadata = { title: 'Project' }
 
 const notices: Record<string, { tone: 'green' | 'red'; text: string }> = {
-  'saved=brief': { tone: 'green', text: 'Thanks — your brief is with the team.' },
+  'saved=brief': { tone: 'green', text: 'Thanks! Your brief is with the team.' },
   'saved=review': { tone: 'green', text: 'Thank you for your feedback.' },
   'error=brief': { tone: 'red', text: 'We couldn’t save your brief. Please try again.' },
   'error=ticket': { tone: 'red', text: 'Please add a short title and a description of what you need.' },
@@ -166,7 +166,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
               >
                 {showBriefForm ? (
                   <form action={submitBrief.bind(null, project.id)} className="space-y-5">
-                    <p className="text-[14px] text-navy/60">A few questions so we build exactly what you need. Short answers are fine — we’ll talk it through at kick-off.</p>
+                    <p className="text-[14px] text-navy/60">A few questions so we build exactly what you need. Short answers are fine. We’ll talk it through at kick-off.</p>
                     {template.intake.map((q) => (
                       <Field key={q.id} label={q.label}>
                         {q.type === 'textarea' ? (
@@ -255,7 +255,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
                   <Field label="Title">
                     <input name="title" required minLength={3} maxLength={140} placeholder="e.g. Make the hero headline bigger" className={inputClass} />
                   </Field>
-                  <Field label="What do you need?" hint="Be as specific as you can — links and page names help.">
+                  <Field label="What do you need?" hint="Be as specific as you can. Links and page names help.">
                     <textarea name="body" required minLength={5} rows={4} className={inputClass} />
                   </Field>
                   <label className={`flex items-center gap-2.5 text-[14px] ${revisionsLeft ? 'text-navy/80' : 'text-navy/40'}`}>

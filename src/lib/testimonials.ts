@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
     img: 'https://randomuser.me/api/portraits/men/85.jpg', country: '🇳🇬 Nigeria',
   },
   {
-    quote: 'From brand identity to a fully booked fleet site — premium work, on time, no hand-holding.',
+    quote: 'From brand identity to a fully booked fleet site: premium work, on time, no hand-holding.',
     name: 'Marcus D.', role: 'Owner, Dash Limo', initials: 'MD',
     img: 'https://randomuser.me/api/portraits/men/33.jpg', country: '🇺🇸 USA',
   },

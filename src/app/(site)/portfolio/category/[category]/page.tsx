@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: { category: string } }): 
     title: cat.title,
     description: cat.description,
     alternates: { canonical: `/portfolio/category/${cat.slug}` },
-    openGraph: { title: `${cat.title} — ${siteConfig.name}`, description: cat.description },
+    openGraph: { title: `${cat.title} | ${siteConfig.name}`, description: cat.description },
   }
 }
 

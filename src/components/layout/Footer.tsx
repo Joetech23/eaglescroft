@@ -56,7 +56,7 @@ export default function Footer() {
               <span className="font-display text-[18px] font-semibold tracking-[0.14em] text-white">EAGLESCROFT</span>
             </div>
             <p className="text-[13.5px] leading-relaxed text-white/50">
-              We help businesses fly online — complete digital solutions: websites, branding, AI, automation and growth systems.
+              We help businesses fly online with complete digital solutions: websites, branding, AI, automation and growth systems.
             </p>
           </div>
 

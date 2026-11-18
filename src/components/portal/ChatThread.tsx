@@ -179,7 +179,7 @@ export default function ChatThread({
         {messages.length === 0 && (
           <div className="mx-auto mt-10 max-w-sm text-center">
             <p className="font-display text-[16px] font-semibold text-navy">Start the conversation.</p>
-            <p className="mt-1 text-[13.5px] text-navy/50">Everyone on this project will see it — and get a notification.</p>
+            <p className="mt-1 text-[13.5px] text-navy/50">Everyone on this project will see it and get a notification.</p>
           </div>
         )}
         {rendered.map(({ m, newDay, grouped, lastInGroup }) => {
@@ -235,9 +235,9 @@ export default function ChatThread({
                   )}
                   {lastInGroup && (
                     <div className={cn('mt-1 px-1 text-[11px] text-navy/40', mine && 'text-right')}>
-                      {m.failed ? <span className="font-semibold text-[#c2262b]">Not sent — check your connection</span> : m.pending ? 'Sending…' : `${time(m.created_at)}${m.edited_at ? ' · edited' : ''}`}
+                      {m.failed ? <span className="font-semibold text-[#c2262b]">Not sent. Check your connection</span> : m.pending ? 'Sending…' : `${time(m.created_at)}${m.edited_at ? ' · edited' : ''}`}
                       {team && !mine && !m.deleted_at && (author?.signature || author?.title) && (
-                        <div className="mt-0.5 italic text-navy/45">— {author?.signature || `${displayName(author)}, ${author?.title}, Eaglescroft`}</div>
+                        <div className="mt-0.5 italic text-navy/45">{author?.signature || `${displayName(author)}, ${author?.title}, Eaglescroft`}</div>
                       )}
                     </div>
                   )}

@@ -51,7 +51,7 @@ export default function TaskBoard({
                     {showProject && t.projects && <div className="mb-1 truncate font-mono text-[10px] uppercase tracking-wider text-navy/40">{t.projects.title}</div>}
                     <div className="flex items-start gap-2">
                       <p className={cn('min-w-0 flex-1 text-[14px] font-semibold leading-snug text-navy', t.status === 'done' && 'text-navy/45 line-through')}>{t.title}</p>
-                      {!t.client_visible && <span title="Internal — clients can't see this"><EyeOff className="mt-0.5 h-3.5 w-3.5 flex-none text-navy/35" /></span>}
+                      {!t.client_visible && <span title="Internal: clients can't see this"><EyeOff className="mt-0.5 h-3.5 w-3.5 flex-none text-navy/35" /></span>}
                     </div>
                     {t.description && <p className="mt-1 line-clamp-2 text-[12.5px] text-navy/55">{t.description}</p>}
                     <div className="mt-3 flex flex-wrap items-center gap-1.5">

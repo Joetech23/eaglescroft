@@ -7,7 +7,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Selected work by Eaglescroft — websites, video editing, and social media campaigns delivered for clients across 9+ industries for businesses worldwide.',
+    'Selected work by Eaglescroft: websites, video editing, and social media campaigns delivered for clients across 9+ industries for businesses worldwide.',
 }
 
 export default function PortfolioPage() {
@@ -16,7 +16,7 @@ export default function PortfolioPage() {
       <PageHeader
         eyebrow="Selected Work"
         title={<>Work that <span className="text-gold-300">speaks for itself.</span></>}
-        intro="Real projects across websites, video, and social — engineered for performance and built to convert."
+        intro="Real projects across websites, video, and social, engineered for performance and built to convert."
       />
       <Section>
         <PortfolioGrid />

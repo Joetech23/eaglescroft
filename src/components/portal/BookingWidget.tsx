@@ -123,7 +123,7 @@ export default function BookingWidget({
             ))}
           </div>
         ) : (
-          <p className="rounded-2xl bg-[#f6f8fc] px-4 py-6 text-center text-[13.5px] text-navy/55">No free times that day — try another day.</p>
+          <p className="rounded-2xl bg-[#f6f8fc] px-4 py-6 text-center text-[13.5px] text-navy/55">No free times that day. Try another day.</p>
         )}
 
         <div className="mt-6 border-t border-navy/[0.07] pt-5">

@@ -6,7 +6,7 @@ import { getViewer } from '@/lib/portal/session'
 import { buildNav } from '@/lib/portal/nav'
 
 export const metadata: Metadata = {
-  title: { default: 'Client portal', template: '%s — Eaglescroft portal' },
+  title: { default: 'Client portal', template: '%s | Eaglescroft portal' },
   robots: { index: false, follow: false },
   manifest: '/portal.webmanifest',
   appleWebApp: { capable: true, title: 'Eaglescroft', statusBarStyle: 'default' },

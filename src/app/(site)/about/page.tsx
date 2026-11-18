@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const values = [
   { icon: Target, title: 'Results First', body: 'Every pixel and line of code serves a measurable business outcome.' },
-  { icon: Layers, title: 'Craft & Depth', body: 'Engineering rigour meets genuine design taste — no shortcuts.' },
+  { icon: Layers, title: 'Craft & Depth', body: 'Engineering rigour meets genuine design taste. No shortcuts.' },
   { icon: Rocket, title: 'Built to Scale', body: 'Architecture that grows with you, from startup to enterprise.' },
   { icon: Globe, title: 'Global Standard', body: 'We deliver world-class work for businesses around the globe.' },
 ]
@@ -60,7 +60,7 @@ export default function AboutPage() {
               </p>
               <p>
                 From e-commerce platforms and healthcare systems to AI chatbots, automations and full
-                CRM setups, we’ve delivered digital solutions across 9+ industries — always on
+                CRM setups, we’ve delivered digital solutions across 9+ industries, always on
                 time, always built to perform.
               </p>
             </div>

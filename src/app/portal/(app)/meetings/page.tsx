@@ -81,11 +81,11 @@ export default async function MeetingsPage({ searchParams }: { searchParams: { b
       <PageHeader
         eyebrow="Meetings"
         title="Calls with your team."
-        intro="Book a time that suits you — every meeting gets its own video room. Times shown in Lagos time (WAT)."
+        intro="Book a time that suits you. Every meeting gets its own video room. Times shown in Lagos time (WAT)."
         actions={<ButtonLink href="/portal/meetings/book">Book a meeting</ButtonLink>}
       />
       {searchParams.booked && <div className="mb-5"><Notice tone="green">You’re booked. We’ve sent a notification to everyone invited.</Notice></div>}
-      {searchParams.cancelled && <div className="mb-5"><Notice tone="blue">Meeting cancelled — everyone has been notified.</Notice></div>}
+      {searchParams.cancelled && <div className="mb-5"><Notice tone="blue">Meeting cancelled. Everyone has been notified.</Notice></div>}
 
       <h2 className="mb-3 font-display text-[17px] font-semibold text-navy">Upcoming</h2>
       {upcoming.length ? <ul className="space-y-3">{upcoming.map((m) => <Card key={m.id} m={m} live />)}</ul> : <Empty>No upcoming meetings.</Empty>}

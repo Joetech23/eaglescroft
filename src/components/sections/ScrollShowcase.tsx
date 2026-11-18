@@ -15,7 +15,7 @@ export default function ScrollShowcase() {
                 <span aria-hidden className="flight-marker" /> Built to perform
               </div>
               <h2 className="mt-4 font-display font-semibold leading-[1.04] tracking-tightest text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
-                Solutions that look the part —<br />
+                Solutions that look the part,<br />
                 <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#001e60,#2a3f8f)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
                   and pull their weight.
                 </span>
@@ -25,7 +25,7 @@ export default function ScrollShowcase() {
         >
           <img
             src={shot('starhomes.com.ng')}
-            alt="Star Homes — a live Eaglescroft project"
+            alt="Star Homes, a live Eaglescroft project"
             className="mx-auto h-full w-full rounded-2xl object-cover object-left-top"
             draggable={false}
           />

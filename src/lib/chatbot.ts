@@ -25,7 +25,7 @@ export function getReply(raw: string): Reply {
 
   if (has('start', 'project', 'build', 'hire', 'quote', 'get started', 'begin'))
     return {
-      text: "Love it. The fastest way to start is a quick brief — tell us your goal and timeline and we reply within 24 hours. Want to send it now?",
+      text: "Love it. The fastest way to start is a quick brief. Tell us your goal and timeline and we reply within 24 hours. Want to send it now?",
       quick: ['Open contact form', 'Chat on WhatsApp', 'Pricing & timelines'],
     }
 
@@ -37,31 +37,31 @@ export function getReply(raw: string): Reply {
 
   if (has('web', 'website', 'next', 'react', 'app', 'develop'))
     return {
-      text: "We build high-performance sites & apps in Next.js, React and Node — from marketing sites to multi-vendor e-commerce. Fast, SEO-ready, built to scale. Want a quote?",
+      text: "We build high-performance sites & apps in Next.js, React and Node, from marketing sites to multi-vendor e-commerce. Fast, SEO-ready, built to scale. Want a quote?",
       quick: ['Start a project', 'See our work', 'Pricing & timelines'],
     }
 
   if (has('brand', 'logo', 'identity', 'design', 'ui', 'ux'))
     return {
-      text: "From brand strategy and identity to pixel-perfect UI/UX in Figma — we make businesses unforgettable and easy to use. Shall we talk specifics?",
+      text: "From brand strategy and identity to pixel-perfect UI/UX in Figma. We make businesses unforgettable and easy to use. Shall we talk specifics?",
       quick: ['Start a project', 'Talk to a human', 'See our work'],
     }
 
   if (has('seo', 'marketing', 'rank', 'traffic', 'growth', 'ads'))
     return {
-      text: "Technical SEO, Core Web Vitals and data-driven campaigns that compound your ROI. We can audit your current site for free — interested?",
+      text: "Technical SEO, Core Web Vitals and data-driven campaigns that compound your ROI. We can audit your current site for free. Interested?",
       quick: ['Request an audit', 'Start a project', 'Chat on WhatsApp'],
     }
 
   if (has('price', 'cost', 'budget', 'how much', 'pricing', 'rate', 'timeline', 'how long', 'when'))
     return {
-      text: `We publish clear pricing for every service — websites from ${startingPrice('websites', true)}, CRM systems from ${startingPrice('crm', true)}, automation from ${startingPrice('automation', true)} and video from ${startingPrice('video', true)} per clip. Most projects launch in 2–6 weeks. Want the full breakdown?`,
+      text: `We publish clear pricing for every service: websites from ${startingPrice('websites', true)}, CRM systems from ${startingPrice('crm', true)}, automation from ${startingPrice('automation', true)} and video from ${startingPrice('video', true)} per clip. Most projects launch in 2–6 weeks. Want the full breakdown?`,
       quick: ['See pricing', 'Open contact form', 'Chat on WhatsApp'],
     }
 
   if (has('human', 'person', 'call', 'phone', 'talk', 'speak', 'agent'))
     return {
-      text: "Of course — Joshua and the team are one tap away. Pick whatever's easiest:",
+      text: "Of course! Joshua and the team are one tap away. Pick whatever's easiest:",
       quick: ['Chat on WhatsApp', 'Call us', 'Email us'],
     }
 

@@ -5,7 +5,7 @@ import {
 
 const features = [
   { icon: CalendarDays, title: 'Day-by-day timeline', desc: 'See exactly what’s happening on your project, every single day.' },
-  { icon: Target, title: 'Goals & targets', desc: 'Your brief, features and success targets — set up for your service.' },
+  { icon: Target, title: 'Goals & targets', desc: 'Your brief, features and success targets, set up for your service.' },
   { icon: MessageSquareText, title: 'Reviews & revisions', desc: 'Raise a ticket on any review round and track every revision.' },
   { icon: Receipt, title: 'Invoices & payments', desc: 'Deposits, balances, retainers and your full transaction history.' },
   { icon: FileCheck2, title: 'Handover documents', desc: 'Logins, guides and assets delivered in one secure place.' },
@@ -15,7 +15,7 @@ const features = [
 const timeline = [
   { day: 'Day 1', label: 'Brief approved', done: true },
   { day: 'Day 4', label: 'Design review', done: true },
-  { day: 'Day 9', label: 'Build — revision 1', done: false, active: true },
+  { day: 'Day 9', label: 'Build: revision 1', done: false, active: true },
   { day: 'Day 14', label: 'Launch & handover', done: false },
 ]
 
@@ -46,7 +46,7 @@ export default function ClientPortal() {
             </span>
           </h2>
           <p className="mt-4 max-w-[540px] text-[16px] leading-relaxed text-white/60">
-            We&rsquo;re building a private portal for every Eaglescroft client — so you can follow progress, review work,
+            We&rsquo;re building a private portal for every Eaglescroft client, so you can follow progress, review work,
             pay invoices and collect your handover without chasing a single email.
           </p>
 
@@ -158,7 +158,7 @@ export default function ClientPortal() {
 
               <div className="mt-3 flex items-center gap-2.5 rounded-xl border border-gold-400/25 bg-gold-400/[0.06] px-3.5 py-2.5">
                 <MessageSquareText className="h-4 w-4 flex-none text-gold-500" />
-                <span className="truncate text-[12px] text-navy/75">Ticket #12 · “Make the hero headline bigger” — <span className="font-semibold text-gold-600">in progress</span></span>
+                <span className="truncate text-[12px] text-navy/75">Ticket #12 · “Make the hero headline bigger” · <span className="font-semibold text-gold-600">in progress</span></span>
               </div>
             </div>
 

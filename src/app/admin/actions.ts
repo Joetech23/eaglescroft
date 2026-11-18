@@ -98,7 +98,7 @@ export async function createProject(formData: FormData) {
   await supabase.from('project_updates').insert({
     project_id: project.id,
     author_id: user.id,
-    body: 'Welcome aboard. Your project is set up — please complete your brief so we can get moving.',
+    body: 'Welcome aboard. Your project is set up. Please complete your brief so we can get moving.',
   })
 
   if (formData.get('deposit_invoice') === 'on' && project.budget_minor > 0) {
@@ -110,7 +110,7 @@ export async function createProject(formData: FormData) {
     if (inv) {
       await supabase.from('invoice_items').insert({
         invoice_id: inv.id,
-        description: `${title} — ${project.deposit_percent}% deposit`,
+        description: `${title}: ${project.deposit_percent}% deposit`,
         quantity: 1,
         unit_minor: Math.round((project.budget_minor * project.deposit_percent) / 100),
       })

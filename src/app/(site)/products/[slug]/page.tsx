@@ -18,10 +18,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const p = getProduct(params.slug)
   if (!p) return { title: 'Products' }
   return {
-    title: `${p.name} — ${p.tagline.replace(/\.$/, '')}`,
+    title: `${p.name}: ${p.tagline.replace(/\.$/, '')}`,
     description: p.summary,
     alternates: { canonical: `/products/${p.slug}` },
-    openGraph: { title: `${p.name} — ${siteConfig.name}`, description: p.summary },
+    openGraph: { title: `${p.name} | ${siteConfig.name}`, description: p.summary },
   }
 }
 
@@ -177,7 +177,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <ul className="mt-3 space-y-2">
                     {p.partners.map((pt) => (
                       <li key={pt.name} className="text-[14px] text-navy/80">
-                        <span className="font-semibold">{pt.name}</span> — {pt.role}
+                        <span className="font-semibold">{pt.name}</span>, {pt.role}
                       </li>
                     ))}
                   </ul>

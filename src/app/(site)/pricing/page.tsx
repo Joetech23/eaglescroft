@@ -9,7 +9,7 @@ import { pricingCategories, offerPriceJsonLd, currencyName } from '@/lib/pricing
 import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Websites, CRM, Automation & Video',
+  title: 'Pricing: Websites, CRM, Automation & Video',
   description:
     `Transparent Eaglescroft pricing for website design, CRM development, business automation and video production. Clear packages in ${currencyName}, with a free consultation before every quote.`,
   alternates: { canonical: '/pricing' },
@@ -30,7 +30,7 @@ const pricingJsonLd = {
       name: t.name,
       description: t.features.join('; '),
       ...offerPriceJsonLd(t.price, t.billing),
-      itemOffered: { '@type': 'Service', name: `${c.label} — ${t.name}`, provider: { '@id': `${siteConfig.url}/#organization` } },
+      itemOffered: { '@type': 'Service', name: `${c.label}: ${t.name}`, provider: { '@id': `${siteConfig.url}/#organization` } },
     })),
   })),
 }
@@ -42,7 +42,7 @@ export default function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title={<>Digital solutions, <span className="text-gold-300">priced with clarity.</span></>}
-        intro="From websites and CRM platforms to automation, content and digital experiences — explore our solutions and pricing."
+        intro="From websites and CRM platforms to automation, content and digital experiences. Explore our solutions and pricing."
       />
       <Section className="pb-8">
         <PricingTabs initial="websites" />

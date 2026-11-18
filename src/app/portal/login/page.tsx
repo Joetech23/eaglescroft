@@ -14,7 +14,7 @@ export const metadata: Metadata = { title: 'Client portal sign in', robots: { in
 
 const errors: Record<string, string> = {
   email: 'Please enter a valid email address.',
-  code: 'That code didn’t work. Check the latest email and try again — codes expire after an hour.',
+  code: 'That code didn’t work. Check the latest email and try again. Codes expire after an hour.',
   expired: 'Your sign-in session timed out. Enter your email to get a new code.',
   profile: 'We couldn’t load your account. Please contact your project lead.',
   link: 'That sign-in link has expired. Request a new code below.',
@@ -43,7 +43,7 @@ export default function LoginPage({ searchParams }: { searchParams: { step?: str
           <h1 className="mt-4 font-display text-[2.6rem] font-semibold leading-[1.05]">
             Your whole project, <span className="text-gold-300">in one place.</span>
           </h1>
-          <p className="mt-4 text-white/60">Timeline, reviews, revisions, invoices and handover — all in one place, updated as we build.</p>
+          <p className="mt-4 text-white/60">Timeline, reviews, revisions, invoices and handover, all in one place, updated as we build.</p>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export default function LoginPage({ searchParams }: { searchParams: { step?: str
           <p className="mt-2 text-[15px] text-[#48526e]">
             {codeStep
               ? 'If that email has a portal account, we’ve sent it a 6-digit code. Enter it below.'
-              : 'Enter the email your project lead set up for you. We’ll send a one-time code — no password needed.'}
+              : 'Enter the email your project lead set up for you. We’ll send a one-time code. No password needed.'}
           </p>
 
           {error && <div className="mt-5"><Notice tone="red">{error}</Notice></div>}

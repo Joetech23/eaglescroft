@@ -37,10 +37,10 @@ export default async function TeamPage({ searchParams }: { searchParams: Record<
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Job title"><input name="title" list="titles" placeholder="e.g. Customer Representative" className={inputClass} /></Field>
               <Field label="Access">
-                <select name="role" className={inputClass}><option value="staff">Staff — projects, chat, tasks</option><option value="admin">Admin — everything incl. billing & team</option></select>
+                <select name="role" className={inputClass}><option value="staff">Staff: projects, chat, tasks</option><option value="admin">Admin: everything incl. billing & team</option></select>
               </Field>
             </div>
-            <Field label="Signature (optional)"><input name="signature" maxLength={280} placeholder="Ada — Customer Success, Eaglescroft" className={inputClass} /></Field>
+            <Field label="Signature (optional)"><input name="signature" maxLength={280} placeholder="Ada, Customer Success · Eaglescroft" className={inputClass} /></Field>
             <label className="flex items-center gap-2.5 text-[14px] text-navy/80"><input type="checkbox" name="send_code" defaultChecked className="h-4 w-4 accent-[#2563EB]" /> Email them a sign-in code now</label>
             <SubmitButton pendingText="Adding…">Add team member</SubmitButton>
           </form>

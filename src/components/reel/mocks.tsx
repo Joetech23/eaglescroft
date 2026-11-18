@@ -122,8 +122,8 @@ export function MotionMock() {
 
 export function SeoMock() {
   const results = [
-    { domain: 'eaglescroft.com.ng', title: 'Web Design Agency — Fast, SEO-Ready Business Sites', ours: true },
-    { domain: 'directory.example', title: 'Top Web Design Agencies — 2026 Listings' },
+    { domain: 'eaglescroft.com.ng', title: 'Web Design Agency | Fast, SEO-Ready Business Sites', ours: true },
+    { domain: 'directory.example', title: 'Top Web Design Agencies | 2026 Listings' },
     { domain: 'blog.example', title: 'How to Choose a Web Designer in Nigeria' },
   ]
   const chart = 'M0,70 L30,66 L60,68 L90,58 L120,52 L150,44 L180,34 L210,26 L240,14 L270,8'
@@ -158,7 +158,7 @@ export function SeoMock() {
 
       <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
         <div className="mb-1.5 flex items-center justify-between">
-          <span className="text-[11px] font-medium text-white/60">Organic clicks — 6 months</span>
+          <span className="text-[11px] font-medium text-white/60">Organic clicks · 6 months</span>
           <span className="font-mono text-[10.5px] text-[#5ee08a]">+214%</span>
         </div>
         <svg viewBox="0 0 270 76" className="h-[64px] w-full" preserveAspectRatio="none" aria-hidden>
@@ -323,10 +323,10 @@ export function CrmMock() {
 export function ChatbotMock() {
   const msgs = [
     { from: 'bot', text: 'Hi, welcome to Star Homes. Looking to buy or rent?' },
-    { from: 'user', text: 'Buying — 3 bedroom in Abuja.' },
+    { from: 'user', text: 'Buying, 3 bedroom in Abuja.' },
     { from: 'bot', text: 'Great choice! Budget range?' },
     { from: 'user', text: '$50k – $80k' },
-    { from: 'bot', text: '6 matches found. I can book you a viewing — does tomorrow at 2pm work?' },
+    { from: 'bot', text: '6 matches found. I can book you a viewing. Does tomorrow at 2pm work?' },
   ]
   return (
     <div className="flex h-full flex-col justify-center gap-2.5 p-5 sm:p-6">
@@ -353,7 +353,7 @@ export function ChatbotMock() {
         transition={{ delay: 0.25 + msgs.length * 0.45 }}
         className="mt-1 flex items-center gap-2 self-start rounded-full border border-[#28c840]/40 bg-[#28c840]/10 px-3 py-1.5 font-mono text-[10px] text-[#5ee08a]"
       >
-        <CheckCircle2 className="h-3.5 w-3.5 flex-none" /> Qualified, booked & synced to CRM — while you slept
+        <CheckCircle2 className="h-3.5 w-3.5 flex-none" /> Qualified, booked & synced to CRM while you slept
       </motion.div>
     </div>
   )

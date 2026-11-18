@@ -58,7 +58,7 @@ export default function FAQSection() {
               <MessageCircle className="h-5 w-5" />
             </div>
             <h3 className="mt-4 font-display text-lg font-semibold text-navy">Have a different question?</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-[#5a6685]">Chat with us directly — a real answer, fast.</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-[#5a6685]">Chat with us directly for a real answer, fast.</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-5 py-2.5 text-sm font-semibold text-white shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-500">
                 WhatsApp us

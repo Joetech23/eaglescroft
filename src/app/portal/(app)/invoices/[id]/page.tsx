@@ -16,11 +16,11 @@ import type { Invoice, Profile } from '@/lib/portal/types'
 export const metadata: Metadata = { title: 'Invoice' }
 
 const notices: Record<string, { tone: 'green' | 'red' | 'blue'; text: string }> = {
-  paid: { tone: 'green', text: 'Payment received — thank you. A receipt is in your transaction history.' },
+  paid: { tone: 'green', text: 'Payment received. Thank you! A receipt is in your transaction history.' },
   pending: { tone: 'blue', text: 'We’re confirming your payment with the bank. This page will update shortly.' },
   'payments-off': { tone: 'blue', text: 'Card payments are being set up. Please pay by bank transfer using the details below.' },
   'payment-start': { tone: 'red', text: 'We couldn’t start the payment. Please try again or contact us.' },
-  failed: { tone: 'red', text: 'The payment didn’t go through. No money was taken — please try again.' },
+  failed: { tone: 'red', text: 'The payment didn’t go through. No money was taken, so please try again.' },
 }
 
 export default async function InvoicePage({ params, searchParams }: { params: { id: string }; searchParams: { status?: string; error?: string } }) {

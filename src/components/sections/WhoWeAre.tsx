@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 const points = [
-  'A senior team across engineering, design and growth — no juniors learning on your budget',
+  'A senior team across engineering, design and growth. No juniors learning on your budget',
   'Every build tuned for speed, SEO and conversion from day one',
   'AI automation baked in, so your business works while you sleep',
   'One accountable partner from strategy to launch and beyond',
@@ -21,10 +21,10 @@ export default function WhoWeAre() {
             <span aria-hidden className="flight-marker" /> Who we are
           </div>
           <h2 className="mt-[18px] font-display font-semibold leading-[1.05] tracking-tight text-navy" style={{ fontSize: 'clamp(2rem,4.5vw,3.1rem)' }}>
-            More than an agency — a serious growth partner.
+            More than an agency. A serious growth partner.
           </h2>
           <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-[#48526e]">
-            Eaglescroft is a founder-led team partnering with businesses worldwide —
+            Eaglescroft is a founder-led team partnering with businesses worldwide on
             websites, brands, AI chatbots, automations and CRM systems that work as one
             engine. We don&rsquo;t hand over a project and disappear; we stay invested in your growth.
           </p>

@@ -62,7 +62,7 @@ export default async function ClientsPage({ searchParams }: { searchParams: Reco
                   {people.map((c) => (
                     <tr key={c.id}>
                       <td className="px-6 py-3.5">
-                        <div className="font-semibold text-navy">{c.full_name || '—'}{c.role === 'admin' && <span className="ml-2 font-mono text-[10px] uppercase text-gold-600">admin</span>}</div>
+                        <div className="font-semibold text-navy">{c.full_name || 'Unnamed'}{c.role === 'admin' && <span className="ml-2 font-mono text-[10px] uppercase text-gold-600">admin</span>}</div>
                         <div className="text-[12px] text-navy/50">{c.company}</div>
                       </td>
                       <td className="px-3 py-3.5 text-navy/65">{c.email}</td>

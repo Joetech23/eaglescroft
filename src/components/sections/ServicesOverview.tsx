@@ -18,7 +18,7 @@ export default function ServicesOverview() {
             </h2>
           </div>
           <p className="max-w-[380px] text-base leading-relaxed text-[#4a5578]">
-            Strategy, design, engineering and growth under one accountable roof — so nothing falls through the cracks between teams.
+            Strategy, design, engineering and growth under one accountable roof, so nothing falls through the cracks between teams.
           </p>
         </div>
 

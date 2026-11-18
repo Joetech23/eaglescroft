@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     quote:
-      'Sharp engineering with genuine design taste. Our site loads instantly and converts far better than the old one — the numbers speak for themselves.',
+      'Sharp engineering with genuine design taste. Our site loads instantly and converts far better than the old one. The numbers speak for themselves.',
     name: 'James Whitfield',
     designation: 'Director, Oval Sports Australia',
     src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
@@ -26,7 +26,7 @@ const testimonials = [
   },
   {
     quote:
-      'From brand identity to a fully booked fleet site — premium work, on time, no hand-holding. Eaglescroft raised our entire image.',
+      'From brand identity to a fully booked fleet site: premium work, on time, no hand-holding. Eaglescroft raised our entire image.',
     name: 'Sophie Laurent',
     designation: 'CMO, Distinct News',
     src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',

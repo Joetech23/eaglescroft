@@ -50,7 +50,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: { m
       <PageHeader
         eyebrow="Calendar"
         title={first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}
-        intro="Meetings, milestones and task deadlines — all in one view."
+        intro="Meetings, milestones and task deadlines, all in one view."
         actions={
           <>
             <Link href={`/portal/calendar?m=${prev}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/12 bg-white text-navy" aria-label="Previous month"><ChevronLeft className="h-4 w-4" /></Link>

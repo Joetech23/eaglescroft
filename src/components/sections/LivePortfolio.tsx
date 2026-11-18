@@ -23,7 +23,7 @@ export default function LivePortfolio() {
             </h2>
           </div>
           <p className="max-w-[360px] text-[15px] leading-relaxed text-white/60">
-            Every site below is rendered live from its production URL. Hover to explore — click to visit.
+            Every site below is rendered live from its production URL. Hover to explore, click to visit.
           </p>
         </div>
 

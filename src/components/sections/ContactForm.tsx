@@ -30,10 +30,10 @@ export default function ContactForm() {
 
   const onSubmit = (data: FormValues) => {
     // No backend yet — open the user's mail client with a prefilled message.
-    const subject = encodeURIComponent(`New project enquiry — ${data.service}`)
+    const subject = encodeURIComponent(`New project enquiry: ${data.service}`)
     const body = encodeURIComponent(
-      `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || '—'}\n` +
-      `Service: ${data.service}\nBudget: ${data.budget || '—'}\n\n${data.message}`,
+      `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'N/A'}\n` +
+      `Service: ${data.service}\nBudget: ${data.budget || 'N/A'}\n\n${data.message}`,
     )
     window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`
     setSent(true)

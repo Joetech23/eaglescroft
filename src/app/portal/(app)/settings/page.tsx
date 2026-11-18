@@ -13,7 +13,7 @@ export const metadata: Metadata = { title: 'Settings' }
 
 const notices: Record<string, { tone: 'green' | 'red'; text: string }> = {
   'saved=profile': { tone: 'green', text: 'Profile saved.' },
-  'saved=availability': { tone: 'green', text: 'Availability saved — clients can now book these times.' },
+  'saved=availability': { tone: 'green', text: 'Availability saved. Clients can now book these times.' },
   'error=profile': { tone: 'red', text: 'Couldn’t save your profile. Please try again.' },
 }
 
@@ -85,7 +85,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Rec
 
         <div className="space-y-6">
           <Card title="Notifications">
-            <p className="mb-4 text-[13.5px] text-navy/60">Get instant alerts for new messages, tasks, meetings and invoices — even when the portal is closed.</p>
+            <p className="mb-4 text-[13.5px] text-navy/60">Get instant alerts for new messages, tasks, meetings and invoices, even when the portal is closed.</p>
             <PushToggle />
           </Card>
           <Card title="Install the app">

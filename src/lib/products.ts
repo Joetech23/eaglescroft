@@ -54,7 +54,7 @@ export const products: Product[] = [
     category: 'AI · Voice receptionist',
     appCategory: 'BusinessApplication',
     summary:
-      'CallCapture AI answers every call your team can’t — qualifying the job, booking it into your calendar and sending reminders — so plumbers, electricians and HVAC teams stop losing work to whoever picks up first.',
+      'CallCapture AI answers every call your team can’t: qualifying the job, booking it into your calendar and sending reminders, so plumbers, electricians and HVAC teams stop losing work to whoever picks up first.',
     audience: 'Plumbers, electricians, HVAC and other home-service teams',
     status: 'beta',
     progress: 70,
@@ -72,7 +72,7 @@ export const products: Product[] = [
     pricing: {
       price: { currency: 'USD', min: 297 },
       billing: 'one-time · from',
-      note: '30-day money-back guarantee — no results, pay nothing.',
+      note: '30-day money-back guarantee: no results, pay nothing.',
     },
     releases: [
       {
@@ -83,7 +83,7 @@ export const products: Product[] = [
     ],
     docs: [
       { title: 'How it works', body: 'Forward your business line (or missed calls) to your CallCapture number. The AI answers in your business name, captures the caller’s job details and books them into your calendar.' },
-      { title: 'Onboarding', body: 'We configure your services, service area, hours and booking rules with you on a dedicated onboarding call — most teams are live within days.' },
+      { title: 'Onboarding', body: 'We configure your services, service area, hours and booking rules with you on a dedicated onboarding call. Most teams are live within days.' },
       { title: 'Integrations', body: 'Bookings sync to your calendar and confirmations go out automatically. CRM integrations are rolling out during the beta.' },
     ],
     partners: [],
@@ -96,7 +96,7 @@ export const products: Product[] = [
     category: 'EdTech · CBT platform',
     appCategory: 'EducationalApplication',
     summary:
-      'GradeIt runs computer-based exams end to end — question banks, timed sittings, live monitoring and instant results. Its exam engine already powers real post-UTME screening at a Nigerian college, and we’re now turning it into a hosted, multi-school platform.',
+      'GradeIt runs computer-based exams end to end: question banks, timed sittings, live monitoring and instant results. Its exam engine already powers real post-UTME screening at a Nigerian college, and we’re now turning it into a hosted, multi-school platform.',
     audience: 'Schools, colleges and exam bodies across Africa',
     status: 'building',
     progress: 55,
@@ -106,17 +106,17 @@ export const products: Product[] = [
     features: [
       { title: 'Question banks with bulk import', status: 'shipped' },
       { title: 'Timed exams with windows & attempt limits', status: 'shipped' },
-      { title: 'Live monitor — pause, resume, extend, terminate', status: 'shipped' },
+      { title: 'Live monitor: pause, resume, extend, terminate', status: 'shipped' },
       { title: 'Full-screen exam runner with question dock', status: 'shipped' },
       { title: 'Instant marking & result exports', status: 'shipped' },
       { title: 'Runs offline on a school LAN', status: 'shipped' },
       { title: 'Multi-school hosting (multi-tenancy)', status: 'building' },
-      { title: 'AI proctoring — lockdown + in-browser webcam checks', status: 'planned' },
+      { title: 'AI proctoring: lockdown + in-browser webcam checks', status: 'planned' },
     ],
     pricing: 'coming-soon',
     releases: [
       { version: 'v0.6', date: '2026-09-22', notes: ['GradeIt split out as a standalone product', 'New white + blue product UI and landing page'] },
-      { version: 'v0.5', date: '2026-08-27', notes: ['First live high-stakes sitting — 100-question screening exam', 'Re-grade tooling and auditable results'] },
+      { version: 'v0.5', date: '2026-08-27', notes: ['First live high-stakes sitting: 100-question screening exam', 'Re-grade tooling and auditable results'] },
       { version: 'v0.3', date: '2026-07-26', notes: ['Live monitor with pause / terminate / time extension', 'In-exam calculator, dark mode and candidate profiles'] },
     ],
     docs: [
@@ -135,7 +135,7 @@ export const products: Product[] = [
     category: 'Faith · Mobile app (PWA)',
     appCategory: 'LifestyleApplication',
     summary:
-      'A swipeable Bible memory-verse app with 122 KJV verses across 16 themes — each with highlighted key phrases and a short preacher’s note on the verse’s basis. Installs to your home screen and works fully offline.',
+      'A swipeable Bible memory-verse app with 122 KJV verses across 16 themes, each with highlighted key phrases and a short preacher’s note on the verse’s basis. Installs to your home screen and works fully offline.',
     audience: 'Believers, Bible-study groups and churches',
     status: 'beta',
     progress: 85,
@@ -152,7 +152,7 @@ export const products: Product[] = [
     pricing: 'free',
     releases: [
       { version: 'v0.9', date: '2026-08-03', notes: ['Expanded to 122 verses and 16 themes', 'Preacher’s notes on every verse'] },
-      { version: 'v0.5', date: '2026-07-26', notes: ['First build — swipe deck, categories, offline PWA'] },
+      { version: 'v0.5', date: '2026-07-26', notes: ['First build: swipe deck, categories, offline PWA'] },
     ],
     docs: [
       { title: 'Install', body: 'Open the app in your phone’s browser and choose “Add to Home Screen”. It then works offline like a native app.' },

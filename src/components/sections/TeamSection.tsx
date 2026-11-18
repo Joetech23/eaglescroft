@@ -25,7 +25,7 @@ export default function TeamSection() {
             </h2>
           </div>
           <p className="max-w-[360px] text-base leading-relaxed text-[#4a5578]">
-            A tight, senior team of engineers, designers and strategists — no juniors learning on your budget.
+            A tight, senior team of engineers, designers and strategists. No juniors learning on your budget.
           </p>
         </div>
 

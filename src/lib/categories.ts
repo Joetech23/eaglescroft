@@ -16,7 +16,7 @@ export const portfolioCategories: PortfolioCategory[] = [
     label: 'Websites',
     title: 'Website Design & Development Projects',
     description:
-      'High-performance websites and web platforms built by Eaglescroft — e-commerce, real estate, healthcare, education and more, engineered for speed, SEO and conversion.',
+      'High-performance websites and web platforms built by Eaglescroft: e-commerce, real estate, healthcare, education and more, engineered for speed, SEO and conversion.',
   },
   {
     slug: 'video-editing',
@@ -24,7 +24,7 @@ export const portfolioCategories: PortfolioCategory[] = [
     label: 'Video Editing',
     title: 'Video Editing & Motion Design Projects',
     description:
-      'Cinematic edits, promo reels and motion graphics by Eaglescroft — crafted to capture attention and drive engagement across every platform.',
+      'Cinematic edits, promo reels and motion graphics by Eaglescroft, crafted to capture attention and drive engagement across every platform.',
   },
   {
     slug: 'social-media',

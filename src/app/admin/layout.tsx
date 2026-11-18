@@ -6,7 +6,7 @@ import { requireTeam } from '@/lib/portal/session'
 import { buildNav } from '@/lib/portal/nav'
 
 export const metadata: Metadata = {
-  title: { default: 'Team', template: '%s — Eaglescroft team' },
+  title: { default: 'Team', template: '%s | Eaglescroft team' },
   robots: { index: false, follow: false },
   manifest: '/portal.webmanifest',
   appleWebApp: { capable: true, title: 'Eaglescroft', statusBarStyle: 'default' },

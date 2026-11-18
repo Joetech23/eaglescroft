@@ -30,7 +30,7 @@ export default async function NewProjectPage({ searchParams }: { searchParams: {
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Client">
                 <select name="client_id" required className={inputClass}>
-                  {clients.map((c) => <option key={c.id} value={c.id}>{c.company ? `${c.company} — ${c.full_name ?? c.email}` : c.full_name ?? c.email}</option>)}
+                  {clients.map((c) => <option key={c.id} value={c.id}>{c.company ? `${c.company} · ${c.full_name ?? c.email}` : c.full_name ?? c.email}</option>)}
                 </select>
               </Field>
               <Field label="Service template">

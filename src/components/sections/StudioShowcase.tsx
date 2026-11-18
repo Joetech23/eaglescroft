@@ -26,7 +26,7 @@ export default function StudioShowcase() {
             One team. Every discipline.
           </h2>
           <p className="mt-5 max-w-[440px] text-[15.5px] leading-relaxed text-[#5a6685]">
-            Engineers, designers and strategists working side by side — so your brand, product and growth all pull
+            Engineers, designers and strategists working side by side, so your brand, product and growth all pull
             in the same direction, with no gaps between hand-offs.
           </p>
           <a href="/about" className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-navy/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/60 hover:shadow-soft">

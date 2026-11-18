@@ -39,8 +39,8 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Digital Solutions for Business Growth`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name} | Digital Solutions for Business Growth`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
@@ -79,13 +79,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Digital Solutions for Business Growth`,
+    title: `${siteConfig.name} | Digital Solutions for Business Growth`,
     description: siteConfig.description,
-    images: [{ url: '/brand/logo-a.png', width: 1200, height: 630, alt: `${siteConfig.legalName} — ${siteConfig.tagline}` }],
+    images: [{ url: '/brand/logo-a.png', width: 1200, height: 630, alt: `${siteConfig.legalName}: ${siteConfig.tagline}` }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} — Digital Solutions for Business Growth`,
+    title: `${siteConfig.name} | Digital Solutions for Business Growth`,
     description: siteConfig.description,
     images: ['/brand/logo-a.png'],
   },

@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const p = getProject(params.slug)
   if (!p) return { title: 'Case Study' }
-  return { title: `${p.title} — Case Study`, description: p.description }
+  return { title: `${p.title} | Case Study`, description: p.description }
 }
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
@@ -30,7 +30,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const caseJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
-    name: `${project.title} — ${project.industry}`,
+    name: `${project.title} | ${project.industry}`,
     description: project.description,
     url: `${siteConfig.url}/portfolio/${project.slug}`,
     ...(project.url ? { mainEntityOfPage: `https://${project.url}` } : {}),
@@ -95,7 +95,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             />
           ) : (
             <div className="flex aspect-[16/9] items-center justify-center bg-brand-deep">
-              <span className="text-2xl font-semibold text-white/30">{project.title} — preview coming soon</span>
+              <span className="text-2xl font-semibold text-white/30">{project.title}: preview coming soon</span>
             </div>
           )}
         </div>
@@ -108,7 +108,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <div className="grid gap-5 md:grid-cols-2">
               {project.gallery.map((src, i) => (
                 <div key={src} className="overflow-hidden rounded-[24px] border border-navy/10 bg-white shadow-medium">
-                  <Image src={src} alt={`${project.title} — screen ${i + 2}`} width={1600} height={1000} unoptimized className="h-auto w-full" />
+                  <Image src={src} alt={`${project.title}, screen ${i + 2}`} width={1600} height={1000} unoptimized className="h-auto w-full" />
                 </div>
               ))}
             </div>

@@ -10,9 +10,9 @@ import { products, productPriceLabel, formatProductDate } from '@/lib/products'
 import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Products — Software We Build & Ship',
+  title: 'Products: Software We Build & Ship',
   description:
-    'The products Eaglescroft builds in-house — CallCapture AI, GradeIt and Hidden in My Heart. Live progress, features, documentation, pricing and release notes for each.',
+    'The products Eaglescroft builds in-house: CallCapture AI, GradeIt and Hidden in My Heart. Live progress, features, documentation, pricing and release notes for each.',
   alternates: { canonical: '/products' },
 }
 
@@ -36,7 +36,7 @@ export default function ProductsPage() {
       <PageHeader
         eyebrow="Products"
         title={<>Products we build, <span className="text-gold-300">and ship.</span></>}
-        intro="Alongside client work, we build our own software. Here is everything in our studio — with honest progress, what's shipped, what's next and how to get early access."
+        intro="Alongside client work, we build our own software. Here is everything in our studio, with honest progress, what's shipped, what's next and how to get early access."
       />
 
       <Section className="pb-10">
@@ -101,7 +101,7 @@ export default function ProductsPage() {
                   Build, pilot or distribute with us.
                 </h2>
                 <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-white/65">
-                  We partner with schools, exam bodies, service businesses and technology companies — as pilot
+                  We partner with schools, exam bodies, service businesses and technology companies as pilot
                   customers, resellers or integration partners. If one of our products fits your market, let&rsquo;s talk.
                 </p>
               </div>

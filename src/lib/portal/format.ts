@@ -30,7 +30,7 @@ export function invoiceBalance(inv: Pick<Invoice, 'invoice_items' | 'payments'>)
 }
 
 export function formatDate(iso: string | null | undefined, withTime = false) {
-  if (!iso) return '—'
+  if (!iso) return 'Not set'
   const d = new Date(iso.length === 10 ? `${iso}T00:00:00Z` : iso)
   return d.toLocaleDateString('en-GB', {
     day: 'numeric',

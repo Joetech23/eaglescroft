@@ -32,7 +32,7 @@ export default async function TasksPage({ searchParams }: { searchParams: { view
       <PageHeader
         eyebrow="Tasks"
         title="Tasks & progress."
-        intro={isTeam ? 'Your assignments across every project. Switch to all tasks to see the whole board.' : 'Things we need from you, and anything you’ve asked of us — in one board.'}
+        intro={isTeam ? 'Your assignments across every project. Switch to all tasks to see the whole board.' : 'Things we need from you, and anything you’ve asked of us, in one board.'}
         actions={
           <div className="flex rounded-full border border-navy/10 bg-white p-1 shadow-soft">
             {(['mine', 'all'] as const).map((v) => (

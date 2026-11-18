@@ -19,7 +19,7 @@ export default async function AdminHome() {
   const unpaid = ((is ?? []) as (Invoice & { projects: { title: string } | null })[]).filter((i) => invoiceBalance(i) > 0)
   const clientName = (id: string) => {
     const c = clients.find((x) => x.id === id)
-    return c?.company || c?.full_name || c?.email || '—'
+    return c?.company || c?.full_name || c?.email || 'Unknown'
   }
   const owed = unpaid.reduce<Record<string, number>>((acc, i) => ({ ...acc, [i.currency]: (acc[i.currency] ?? 0) + invoiceBalance(i) }), {})
   const owedText = Object.entries(owed).map(([c, v]) => formatMoney(v, c as Currency)).join(' + ') || formatMoney(0, 'USD')
@@ -73,7 +73,7 @@ export default async function AdminHome() {
                 </tbody>
               </table>
             </div>
-          ) : <div className="p-6"><Empty>No projects yet — create a client, then a project.</Empty></div>}
+          ) : <div className="p-6"><Empty>No projects yet. Create a client, then a project.</Empty></div>}
         </Card>
 
         <div className="space-y-6">

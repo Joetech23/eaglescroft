@@ -23,7 +23,7 @@ export const services: Service[] = [
     title: 'Web Development',
     short: 'Scalable, high-performance web applications.',
     description:
-      'Full-stack apps in Next.js, React & Node — engineered for speed, scale and conversion.',
+      'Full-stack apps in Next.js, React & Node, engineered for speed, scale and conversion.',
     icon: Code2,
     color: 'oklch(0.62 0.16 75)',
     tint: 'oklch(0.95 0.05 85)',
@@ -36,7 +36,7 @@ export const services: Service[] = [
     title: 'UI/UX Design',
     short: 'Interfaces that feel effortless.',
     description:
-      'Research-driven product design in Figma — interfaces that feel effortless and convert.',
+      'Research-driven product design in Figma: interfaces that feel effortless and convert.',
     icon: PenTool,
     color: 'oklch(0.58 0.18 300)',
     tint: 'oklch(0.95 0.04 300)',

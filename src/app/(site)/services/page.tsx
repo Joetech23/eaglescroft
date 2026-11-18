@@ -9,7 +9,7 @@ import { services } from '@/lib/services'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Web development, UI/UX design, branding, video & motion, social media, digital marketing & SEO, and IT management — delivered by Eaglescroft.',
+    'Web development, UI/UX design, branding, video & motion, social media, digital marketing & SEO, and IT management, delivered by Eaglescroft.',
 }
 
 export default function ServicesPage() {
@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Our Services"
         title={<>Everything you need to <span className="text-gold-300">win online.</span></>}
-        intro="Seven disciplines, one accountable partner. We engineer, design, and grow — so your business performs at every touchpoint."
+        intro="Seven disciplines, one accountable partner. We engineer, design, and grow, so your business performs at every touchpoint."
       />
 
       <Section>

@@ -12,7 +12,7 @@ const points: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: ReceiptText,
     title: 'No hidden fees',
-    body: 'Everything is written into the proposal up front — deliverables, timeline and total cost.',
+    body: 'Everything is written into the proposal up front: deliverables, timeline and total cost.',
   },
   {
     icon: CalendarClock,

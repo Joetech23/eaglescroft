@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Compass, PenTool, Rocket, LifeBuoy, type LucideIcon } from 'lucide-react'
 
 const steps: { icon: LucideIcon; k: string; title: string; body: string }[] = [
-  { icon: Compass, k: '01', title: 'Discover', body: 'We dig into your goals, audience and market — then map the route to measurable results.' },
+  { icon: Compass, k: '01', title: 'Discover', body: 'We dig into your goals, audience and market, then map the route to measurable results.' },
   { icon: PenTool, k: '02', title: 'Design', body: 'Strategy becomes interface: wireframes, brand systems and prototypes built to convert.' },
   { icon: Rocket, k: '03', title: 'Build & Launch', body: 'Engineered in Next.js & modern stacks, tuned for Core Web Vitals, shipped on time.' },
   { icon: LifeBuoy, k: '04', title: 'Grow & Support', body: 'SEO, automation and ongoing care keep you climbing long after launch day.' },
@@ -53,7 +53,7 @@ export default function ProcessSection() {
             From idea to lift-off.
           </h2>
           <p className="mt-4 max-w-[460px] text-[15.5px] leading-relaxed text-[#5a6685]">
-            A clear, proven flight plan — so you always know where the project is and where it&rsquo;s headed.
+            A clear, proven flight plan, so you always know where the project is and where it&rsquo;s headed.
           </p>
 
           <div className="mt-9 flex flex-col gap-2">

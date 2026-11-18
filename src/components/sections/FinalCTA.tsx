@@ -19,7 +19,7 @@ export default function FinalCTA() {
           </span>
         </h2>
         <p className="mx-auto mt-6 max-w-[520px] text-[17px] leading-relaxed text-white/70">
-          Tell us where you want to go. We&rsquo;ll map the route, build the system, and get you climbing — fast.
+          Tell us where you want to go. We&rsquo;ll map the route, build the system, and get you climbing, fast.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
