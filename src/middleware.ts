@@ -21,9 +21,13 @@ export async function middleware(request: NextRequest) {
     },
   })
 
+  // getSession reads the cookie locally (and refreshes the token only when it has expired), so
+  // routing costs no network call. It is only used to decide redirects: every portal page still
+  // verifies the user with the Auth server in getViewer() before showing any data.
   const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    data: { session },
+  } = await supabase.auth.getSession()
+  const user = Boolean(session)
 
   const path = request.nextUrl.pathname
   const onLogin = path.startsWith('/portal/login')
