@@ -8,10 +8,13 @@ export const isTeamRole = (role: Profile['role']) => role === 'admin' || role ==
 /** The signed-in user + profile for this request (cached). Redirects to login when signed out. */
 export const getViewer = cache(async () => {
   const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) redirect('/portal/login')
+  // getClaims verifies the access token's signature locally against the project's public
+  // signing key (ES256, cached), so there is no Auth-server round trip per page. Tokens signed
+  // with the legacy HS256 secret (e.g. the local dev stack) fall back to a getUser() call.
+  const { data } = await supabase.auth.getClaims()
+  const claims = data?.claims
+  if (!claims?.sub) redirect('/portal/login')
+  const user = { id: claims.sub, email: claims.email as string | undefined }
 
   const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
   if (!profile) redirect('/portal/login?error=profile')

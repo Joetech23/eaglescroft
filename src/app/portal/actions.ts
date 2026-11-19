@@ -178,7 +178,7 @@ export async function payInvoice(invoiceId: string) {
   let authorizationUrl: string
   try {
     const tx = await initializeTransaction({
-      email: profile.email || user.email!,
+      email: profile.email || user.email || '',
       amountMinor: amount,
       currency: invoice.currency,
       reference: `${invoice.number}-${randomUUID().slice(0, 8)}`,

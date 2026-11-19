@@ -65,6 +65,7 @@ export function DesktopSidebar({ links, name, roleLine }: { links: AppLink[]; na
                     <Link
                       key={l.href}
                       href={l.href}
+                      prefetch={l.primary ? true : undefined}
                       className={cn(
                         'flex items-center gap-3 rounded-2xl px-3 py-2.5 text-[14px] font-medium transition-colors',
                         active ? 'bg-navy text-white shadow-navy' : 'text-navy/70 hover:bg-navy/[0.05] hover:text-navy',
@@ -118,7 +119,7 @@ export function MobileTabBar({ links }: { links: AppLink[] }) {
             const Icon = icons[l.icon]
             const active = isActive(path, l)
             return (
-              <Link key={l.href} href={l.href} className="relative flex flex-col items-center gap-1 py-2.5">
+              <Link key={l.href} href={l.href} prefetch={l.primary ? true : undefined} className="relative flex flex-col items-center gap-1 py-2.5">
                 <span className={cn('relative flex h-8 w-12 items-center justify-center rounded-full transition-colors', active && 'bg-navy')}>
                   <Icon className={cn('h-5 w-5', active ? 'text-white' : 'text-navy/50')} />
                   {l.badge ? <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-gold-400" /> : null}
