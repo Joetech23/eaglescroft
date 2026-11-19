@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 export const metadata: Metadata = { title: 'Calendar' }
 
 type Event = { date: string; label: string; kind: 'meeting' | 'milestone' | 'task'; href: string; time?: string }
-const kindStyle = { meeting: 'bg-navy text-white', milestone: 'bg-gold-400/15 text-gold-600', task: 'bg-[#2A3F8F]/10 text-[#2A3F8F]' }
+const kindStyle = { meeting: 'bg-navy text-white', milestone: 'bg-gold-400/15 text-gold-600', task: 'bg-indigo-ink/10 text-indigo-ink' }
 const lagosDate = (iso: string) => new Date(new Date(iso).getTime() + 60 * 60_000).toISOString().slice(0, 10)
 
 export default async function CalendarPage({ searchParams }: { searchParams: { m?: string } }) {
@@ -53,9 +53,9 @@ export default async function CalendarPage({ searchParams }: { searchParams: { m
         intro="Meetings, milestones and task deadlines, all in one view."
         actions={
           <>
-            <Link href={`/portal/calendar?m=${prev}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/12 bg-white text-navy" aria-label="Previous month"><ChevronLeft className="h-4 w-4" /></Link>
-            <Link href="/portal/calendar" className="rounded-full border border-navy/12 bg-white px-4 py-2 text-[13px] font-semibold text-navy">Today</Link>
-            <Link href={`/portal/calendar?m=${next}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/12 bg-white text-navy" aria-label="Next month"><ChevronRight className="h-4 w-4" /></Link>
+            <Link href={`/portal/calendar?m=${prev}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/12 bg-surface text-navy" aria-label="Previous month"><ChevronLeft className="h-4 w-4" /></Link>
+            <Link href="/portal/calendar" className="rounded-full border border-navy/12 bg-surface px-4 py-2 text-[13px] font-semibold text-navy">Today</Link>
+            <Link href={`/portal/calendar?m=${next}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/12 bg-surface text-navy" aria-label="Next month"><ChevronRight className="h-4 w-4" /></Link>
             <ButtonLink href="/portal/meetings/book">Book</ButtonLink>
           </>
         }
@@ -63,19 +63,19 @@ export default async function CalendarPage({ searchParams }: { searchParams: { m
 
       <div className="flex flex-wrap gap-3 pb-4 text-[12px] text-navy/60">
         {(['meeting', 'milestone', 'task'] as const).map((k) => (
-          <span key={k} className="inline-flex items-center gap-1.5 capitalize"><span className={cn('h-2.5 w-2.5 rounded-full', k === 'meeting' ? 'bg-navy' : k === 'milestone' ? 'bg-gold-400' : 'bg-[#2A3F8F]')} />{k === 'task' ? 'Task due' : k}</span>
+          <span key={k} className="inline-flex items-center gap-1.5 capitalize"><span className={cn('h-2.5 w-2.5 rounded-full', k === 'meeting' ? 'bg-navy' : k === 'milestone' ? 'bg-gold-400' : 'bg-indigo-ink')} />{k === 'task' ? 'Task due' : k}</span>
         ))}
       </div>
 
-      <section className="hidden overflow-hidden rounded-[24px] border border-navy/[0.07] bg-white shadow-soft md:block">
-        <div className="grid grid-cols-7 border-b border-navy/[0.07] bg-[#f7f9fd]">
+      <section className="hidden overflow-hidden rounded-[24px] border border-navy/[0.07] bg-surface shadow-soft md:block">
+        <div className="grid grid-cols-7 border-b border-navy/[0.07] bg-subtle">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => <div key={d} className="px-3 py-2.5 font-mono text-[10.5px] uppercase tracking-wider text-navy/45">{d}</div>)}
         </div>
         <div className="grid grid-cols-7">
           {cells.map((d, i) => {
             const items = d ? byDay.get(d) ?? [] : []
             return (
-              <div key={i} className={cn('min-h-[112px] border-b border-r border-navy/[0.05] p-2', !d && 'bg-[#fafbfe]', (i + 1) % 7 === 0 && 'border-r-0')}>
+              <div key={i} className={cn('min-h-[112px] border-b border-r border-navy/[0.05] p-2', !d && 'bg-subtle', (i + 1) % 7 === 0 && 'border-r-0')}>
                 {d && (
                   <>
                     <div className={cn('mb-1 flex h-7 w-7 items-center justify-center rounded-full text-[12.5px] font-semibold', d === todayIso ? 'bg-gold-400 text-white' : 'text-navy/60')}>{Number(d.slice(8))}</div>
@@ -95,7 +95,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: { m
         </div>
       </section>
 
-      <section className="mt-5 rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft md:mt-6">
+      <section className="mt-5 rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft md:mt-6">
         <h2 className="mb-3 font-display text-[16px] font-semibold text-navy">Agenda</h2>
         {agenda.length ? (
           <ol className="space-y-4">

@@ -6,6 +6,8 @@ import { saveAvailability, updateProfile } from '@/app/portal/collab'
 import AvatarUploader from '@/components/portal/AvatarUploader'
 import { InstallButton, PushToggle } from '@/components/portal/Pwa'
 import SubmitButton from '@/components/portal/SubmitButton'
+import { ThemePicker } from '@/components/portal/Theme'
+import { TakeTourButton } from '@/components/portal/Onboarding'
 import { Card, Field, Notice, PageHeader, inputClass } from '@/components/portal/ui'
 import type { AvailabilityBlock } from '@/lib/portal/types'
 
@@ -36,9 +38,9 @@ export default async function SettingsPage({ searchParams }: { searchParams: Rec
             <form action={updateProfile} className="mt-6 grid gap-4 sm:grid-cols-2">
               <Field label="Full name"><input name="full_name" defaultValue={profile.full_name ?? ''} className={inputClass} /></Field>
               <Field label="Phone"><input name="phone" defaultValue={profile.phone ?? ''} className={inputClass} /></Field>
-              <Field label="Email" hint="Contact us to change your sign-in email."><input value={profile.email} disabled className={`${inputClass} bg-[#f6f8fc] text-navy/50`} /></Field>
+              <Field label="Email" hint="Contact us to change your sign-in email."><input value={profile.email} disabled className={`${inputClass} bg-subtle text-navy/50`} /></Field>
               {isTeam ? (
-                <Field label="Job title" hint="Set by an admin."><input value={profile.title ?? ''} disabled className={`${inputClass} bg-[#f6f8fc] text-navy/50`} /></Field>
+                <Field label="Job title" hint="Set by an admin."><input value={profile.title ?? ''} disabled className={`${inputClass} bg-subtle text-navy/50`} /></Field>
               ) : (
                 <Field label="Company"><input name="company" defaultValue={profile.company ?? ''} className={inputClass} /></Field>
               )}
@@ -84,6 +86,10 @@ export default async function SettingsPage({ searchParams }: { searchParams: Rec
         </div>
 
         <div className="space-y-6">
+          <Card title="Appearance">
+            <p className="mb-4 text-[13.5px] text-navy/60">Choose light or dark, or follow your device setting. Saved on this device.</p>
+            <ThemePicker />
+          </Card>
           <Card title="Notifications">
             <p className="mb-4 text-[13.5px] text-navy/60">Get instant alerts for new messages, tasks, meetings and invoices, even when the portal is closed.</p>
             <PushToggle />
@@ -91,7 +97,11 @@ export default async function SettingsPage({ searchParams }: { searchParams: Rec
           <Card title="Install the app">
             <p className="mb-4 text-[13.5px] text-navy/60">Add the Eaglescroft portal to your home screen or desktop for one-tap access and reliable notifications.</p>
             <InstallButton />
-            <p className="mt-3 text-[12.5px] text-navy/45">On iPhone: open in Safari → Share → Add to Home Screen.</p>
+            <p className="mt-3 text-[12.5px] text-navy/45">On iPhone: open in Safari, tap Share, then Add to Home Screen.</p>
+          </Card>
+          <Card title="Need a refresher?">
+            <p className="mb-3 text-[13.5px] text-navy/60">Walk through the portal again: projects, messages, meetings, the app and notifications.</p>
+            <TakeTourButton />
           </Card>
         </div>
       </div>

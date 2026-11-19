@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { CheckCircle2, Circle, CircleDot, Download, FileText, MessageSquare, MessagesSquare, Star, Target } from 'lucide-react'
+import { CheckCircle2, Circle, CircleDot, Download, FileText, MessageSquare, MessagesSquare, Star, Target, Settings2 } from 'lucide-react'
 import TaskBoard, { NewTaskForm } from '@/components/portal/TaskBoard'
 import { personSelect } from '@/lib/portal/people'
 import { cn } from '@/lib/utils'
@@ -83,6 +83,11 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
         actions={
           <>
             <Badge tone={statusTone[project.status]}>{projectStatusLabel[project.status]}</Badge>
+            {isTeam && (
+              <Link href={`/admin/projects/${project.id}`} className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-surface px-4 py-2 text-sm font-semibold text-navy hover:border-navy/30">
+                <Settings2 className="h-4 w-4" /> Manage project
+              </Link>
+            )}
             <Link href={`/portal/messages/${project.id}`} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-[#3b76f0] to-[#1d4ed8] px-4 py-2 text-sm font-semibold text-white shadow-gold">
               <MessagesSquare className="h-4 w-4" /> Message the team
             </Link>
@@ -92,10 +97,10 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
 
       {notice && <div className="mb-6"><Notice tone={notice.tone}>{notice.text}</Notice></div>}
 
-      <div className="mb-6 rounded-[22px] border border-navy/10 bg-white p-5 shadow-soft sm:p-6">
+      <div className="mb-6 rounded-[22px] border border-navy/10 bg-surface p-5 shadow-soft sm:p-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#7a86a3]">Overall progress</div>
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-navy/50">Overall progress</div>
             <div className="mt-1 font-display text-[2rem] font-semibold leading-none text-navy">{project.progress}%</div>
           </div>
           <div className="flex gap-6 text-[13px] text-navy/60">
@@ -106,7 +111,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
         <ProgressBar value={project.progress} className="mt-4 h-2.5" />
       </div>
 
-      <nav className="mb-6 flex gap-1 overflow-x-auto rounded-full border border-navy/[0.07] bg-white p-1 shadow-soft [scrollbar-width:none] sm:inline-flex">
+      <nav className="mb-6 flex gap-1 overflow-x-auto rounded-full border border-navy/[0.07] bg-surface p-1 shadow-soft [scrollbar-width:none] sm:inline-flex">
         {([['overview', 'Overview'], ['tasks', 'Tasks']] as const).map(([key, label]) => (
           <Link key={key} href={`/portal/projects/${project.id}${key === 'tasks' ? '?tab=tasks' : ''}`} className={cn('flex-none rounded-full px-5 py-2 text-[13.5px] font-semibold', tab === key ? 'bg-navy text-white' : 'text-navy/60 hover:text-navy')}>{label}</Link>
         ))}
@@ -203,7 +208,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
               <ol className="relative space-y-5 border-l border-navy/10 pl-6">
                 {milestones.map((m) => (
                   <li key={m.id} className="relative">
-                    <span className="absolute -left-[33px] top-0.5 rounded-full bg-white">
+                    <span className="absolute -left-[33px] top-0.5 rounded-full bg-surface">
                       {m.status === 'done' ? (
                         <CheckCircle2 className="h-[18px] w-[18px] text-[#28c840]" />
                       ) : m.status === 'in_progress' ? (
@@ -250,7 +255,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
               ) : null}
 
               {project.status !== 'completed' && (
-                <form action={createTicket.bind(null, project.id)} className="space-y-4 rounded-2xl bg-[#f6f8fc] p-4 sm:p-5">
+                <form action={createTicket.bind(null, project.id)} className="space-y-4 rounded-2xl bg-subtle p-4 sm:p-5">
                   <h3 className="font-display text-[15px] font-semibold text-navy">Raise a ticket</h3>
                   <Field label="Title">
                     <input name="title" required minLength={3} maxLength={140} placeholder="e.g. Make the hero headline bigger" className={inputClass} />
@@ -317,7 +322,7 @@ export default async function ProjectPage({ params, searchParams }: { params: { 
               <div className="flex justify-between"><dt className="text-navy/60">Project fee</dt><dd className="font-semibold text-navy">{formatMoney(project.budget_minor, project.currency)}</dd></div>
               <div className="flex justify-between"><dt className="text-navy/60">Deposit ({project.deposit_percent}%)</dt><dd className="font-semibold text-navy">{formatMoney(deposit, project.currency)}</dd></div>
               <div className="flex justify-between"><dt className="text-navy/60">Invoiced</dt><dd className="font-semibold text-navy">{formatMoney(invoiced, project.currency)}</dd></div>
-              <div className="flex justify-between"><dt className="text-navy/60">Paid</dt><dd className="font-semibold text-[#178a3c]">{formatMoney(paid, project.currency)}</dd></div>
+              <div className="flex justify-between"><dt className="text-navy/60">Paid</dt><dd className="font-semibold text-success">{formatMoney(paid, project.currency)}</dd></div>
               {project.retainer_minor ? (
                 <div className="flex justify-between border-t border-navy/[0.07] pt-2.5"><dt className="text-navy/60">Monthly retainer</dt><dd className="font-semibold text-navy">{formatMoney(project.retainer_minor, project.currency)}/mo</dd></div>
               ) : null}

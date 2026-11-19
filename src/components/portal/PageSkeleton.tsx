@@ -12,13 +12,13 @@ export default function PageSkeleton() {
       <div className={`${bar} mt-3 h-4 w-96 max-w-full`} />
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded-2xl border border-navy/[0.06] bg-white p-5">
+          <div key={i} className="rounded-2xl border border-navy/[0.06] bg-surface p-5">
             <div className={`${bar} h-3 w-20`} />
             <div className={`${bar} mt-3 h-7 w-16`} />
           </div>
         ))}
       </div>
-      <div className="mt-6 rounded-2xl border border-navy/[0.06] bg-white p-5">
+      <div className="mt-6 rounded-2xl border border-navy/[0.06] bg-surface p-5">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="flex items-center gap-4 border-b border-navy/[0.05] py-4 last:border-0">
             <div className={`${bar} h-10 w-10 shrink-0 rounded-full`} />

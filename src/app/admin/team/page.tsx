@@ -48,7 +48,7 @@ export default async function TeamPage({ searchParams }: { searchParams: Record<
 
         <div className="space-y-3">
           {team.map((m) => (
-            <details key={m.id} className="group rounded-[22px] border border-navy/[0.07] bg-white shadow-soft">
+            <details key={m.id} className="group rounded-[22px] border border-navy/[0.07] bg-surface shadow-soft">
               <summary className="flex cursor-pointer list-none items-center gap-3 p-4">
                 <Avatar person={m} size="md" />
                 <div className="min-w-0 flex-1">

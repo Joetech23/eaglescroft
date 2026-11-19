@@ -175,7 +175,7 @@ export default function ChatThread({
 
   return (
     <>
-      <div ref={scroller} className="flex-1 overflow-y-auto bg-[#f7f9fd] px-3 py-4 sm:px-5">
+      <div ref={scroller} className="flex-1 overflow-y-auto bg-subtle px-3 py-4 sm:px-5">
         {messages.length === 0 && (
           <div className="mx-auto mt-10 max-w-sm text-center">
             <p className="font-display text-[16px] font-semibold text-navy">Start the conversation.</p>
@@ -212,13 +212,13 @@ export default function ChatThread({
                     <div className="rounded-2xl border border-dashed border-navy/15 px-3.5 py-2 text-[13px] italic text-navy/40">Message deleted</div>
                   ) : (
                     <div className={cn('relative rounded-[18px] px-3.5 py-2.5 text-[14.5px] leading-relaxed shadow-sm',
-                      mine ? 'rounded-tr-md bg-navy text-white' : team ? 'rounded-tl-md border border-gold-400/20 bg-white text-navy/90' : 'rounded-tl-md bg-white text-navy/90',
+                      mine ? 'rounded-tr-md bg-navy text-white' : team ? 'rounded-tl-md border border-gold-400/20 bg-surface text-navy/90' : 'rounded-tl-md bg-surface text-navy/90',
                       m.pending && 'opacity-70', m.failed && 'ring-2 ring-[#e5484d]/50')}>
                       {m.body && <p className="whitespace-pre-wrap break-words">{m.body}</p>}
                       {m.attachments?.length > 0 && (
                         <div className={cn('flex flex-col gap-1.5', m.body && 'mt-2')}>
                           {m.attachments.map((a, i) => (
-                            <button key={i} type="button" onClick={() => openAttachment(a)} className={cn('flex items-center gap-2 rounded-xl px-2.5 py-2 text-left text-[12.5px]', mine ? 'bg-white/10 hover:bg-white/15' : 'bg-[#f1f4fa] hover:bg-[#e8edf7]')}>
+                            <button key={i} type="button" onClick={() => openAttachment(a)} className={cn('flex items-center gap-2 rounded-xl px-2.5 py-2 text-left text-[12.5px]', mine ? 'bg-surface/10 hover:bg-surface/15' : 'bg-canvas hover:bg-canvas')}>
                               <FileText className="h-4 w-4 flex-none" />
                               <span className="min-w-0 flex-1 truncate font-semibold">{a.name}</span>
                               <span className="flex-none opacity-60">{sizeLabel(a.size)}</span>
@@ -227,7 +227,7 @@ export default function ChatThread({
                         </div>
                       )}
                       {mine && !m.pending && !m.id.startsWith('temp-') && (
-                        <button onClick={() => remove(m.id)} className="absolute -left-8 top-1/2 hidden -translate-y-1/2 rounded-full p-1.5 text-navy/30 hover:bg-white hover:text-[#c2262b] group-hover:block" aria-label="Delete message">
+                        <button onClick={() => remove(m.id)} className="absolute -left-8 top-1/2 hidden -translate-y-1/2 rounded-full p-1.5 text-navy/30 hover:bg-surface hover:text-danger group-hover:block" aria-label="Delete message">
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       )}
@@ -235,7 +235,7 @@ export default function ChatThread({
                   )}
                   {lastInGroup && (
                     <div className={cn('mt-1 px-1 text-[11px] text-navy/40', mine && 'text-right')}>
-                      {m.failed ? <span className="font-semibold text-[#c2262b]">Not sent. Check your connection</span> : m.pending ? 'Sending…' : `${time(m.created_at)}${m.edited_at ? ' · edited' : ''}`}
+                      {m.failed ? <span className="font-semibold text-danger">Not sent. Check your connection</span> : m.pending ? 'Sending…' : `${time(m.created_at)}${m.edited_at ? ' · edited' : ''}`}
                       {team && !mine && !m.deleted_at && (author?.signature || author?.title) && (
                         <div className="mt-0.5 italic text-navy/45">{author?.signature || `${displayName(author)}, ${author?.title}, Eaglescroft`}</div>
                       )}
@@ -248,21 +248,21 @@ export default function ChatThread({
         })}
       </div>
 
-      <div className="border-t border-navy/[0.07] bg-white px-3 py-3 sm:px-4" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)' }}>
+      <div className="border-t border-navy/[0.07] bg-surface px-3 py-3 sm:px-4" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)' }}>
         <div className="h-4 px-2 text-[11.5px] text-navy/45">{typingNames.length ? `${typingNames.join(', ')} ${typingNames.length > 1 ? 'are' : 'is'} typing…` : ''}</div>
         {files.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-2">
             {files.map((f, i) => (
-              <span key={i} className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f4fa] py-1 pl-3 pr-1.5 text-[12px] text-navy">
+              <span key={i} className="inline-flex items-center gap-1.5 rounded-full bg-canvas py-1 pl-3 pr-1.5 text-[12px] text-navy">
                 <FileText className="h-3.5 w-3.5" /> <span className="max-w-[160px] truncate">{f.name}</span>
                 <button onClick={() => setFiles((l) => l.filter((_, j) => j !== i))} className="rounded-full p-0.5 hover:bg-navy/10" aria-label="Remove file"><X className="h-3 w-3" /></button>
               </span>
             ))}
           </div>
         )}
-        <div className="flex items-end gap-2 rounded-[22px] border border-navy/12 bg-[#f7f9fd] p-1.5 focus-within:border-gold-400 focus-within:ring-2 focus-within:ring-gold-400/15">
+        <div className="flex items-end gap-2 rounded-[22px] border border-navy/12 bg-subtle p-1.5 focus-within:border-gold-400 focus-within:ring-2 focus-within:ring-gold-400/15">
           <input ref={fileInput} type="file" multiple hidden onChange={(e) => { setFiles((l) => [...l, ...Array.from(e.target.files ?? [])].slice(0, 10)); e.target.value = '' }} />
-          <button type="button" onClick={() => fileInput.current?.click()} className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-navy/50 hover:bg-white hover:text-navy" aria-label="Attach files">
+          <button type="button" onClick={() => fileInput.current?.click()} className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-navy/50 hover:bg-surface hover:text-navy" aria-label="Attach files">
             <Paperclip className="h-[18px] w-[18px]" />
           </button>
           <textarea

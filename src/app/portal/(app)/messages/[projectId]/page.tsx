@@ -32,14 +32,14 @@ export default async function ThreadPage({ params }: { params: { projectId: stri
 
   return (
     <div className="grid gap-5 lg:h-[calc(100dvh-140px)] lg:grid-cols-[340px_1fr]">
-      <section className="hidden overflow-y-auto rounded-[24px] border border-navy/[0.07] bg-white shadow-soft lg:block">
+      <section className="hidden overflow-y-auto rounded-[24px] border border-navy/[0.07] bg-surface shadow-soft lg:block">
         <div className="border-b border-navy/[0.07] px-5 py-4">
           <h1 className="font-display text-[20px] font-semibold text-navy">Messages</h1>
         </div>
         <ConversationList rows={rows.map((r) => (r.id === project.id ? { ...r, unread: 0 } : r))} activeId={project.id} />
       </section>
 
-      <section className="-mx-4 -mt-4 flex h-[calc(100dvh-64px-76px)] flex-col overflow-hidden bg-white sm:mx-0 sm:mt-0 sm:rounded-[24px] sm:border sm:border-navy/[0.07] sm:shadow-soft lg:h-auto">
+      <section className="-mx-4 -mt-4 flex h-[calc(100dvh-64px-76px)] flex-col overflow-hidden bg-surface sm:mx-0 sm:mt-0 sm:rounded-[24px] sm:border sm:border-navy/[0.07] sm:shadow-soft lg:h-auto">
         <header className="flex items-center gap-3 border-b border-navy/[0.07] px-4 py-3 sm:px-5">
           <Link href="/portal/messages" className="rounded-full p-1.5 text-navy/60 hover:bg-navy/5 lg:hidden" aria-label="All conversations"><ArrowLeft className="h-5 w-5" /></Link>
           <div className="min-w-0 flex-1">

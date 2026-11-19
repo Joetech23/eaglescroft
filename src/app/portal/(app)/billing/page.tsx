@@ -38,7 +38,7 @@ export default async function BillingPage() {
                   {invoices.map((inv) => {
                     const settled = inv.status === 'paid' || (inv.status === 'sent' && invoiceBalance(inv) === 0)
                     return (
-                      <tr key={inv.id} className="hover:bg-[#f6f8fc]">
+                      <tr key={inv.id} className="hover:bg-subtle">
                         <td className="px-6 py-3.5"><Link href={`/portal/invoices/${inv.id}`} className="font-semibold text-navy hover:text-gold-600">{inv.number}</Link></td>
                         <td className="px-3 py-3.5 text-navy/65">{inv.projects?.title}</td>
                         <td className="px-3 py-3.5 text-navy/65">{formatDate(inv.due_date)}</td>
@@ -62,7 +62,7 @@ export default async function BillingPage() {
                     <div className="text-[14px] font-semibold text-navy">{p.invoices?.number}</div>
                     <div className="text-[12.5px] capitalize text-navy/50">{p.provider === 'manual' ? 'Bank transfer' : p.provider} · {formatDate(p.paid_at, true)}</div>
                   </div>
-                  <span className="font-display text-[15px] font-semibold text-[#178a3c]">{formatMoney(p.amount_minor, p.currency)}</span>
+                  <span className="font-display text-[15px] font-semibold text-success">{formatMoney(p.amount_minor, p.currency)}</span>
                 </li>
               ))}
             </ul>

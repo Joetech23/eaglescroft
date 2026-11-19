@@ -32,9 +32,9 @@ export default function ConversationList({ rows, activeId }: { rows: Row[]; acti
         <li key={r.id}>
           <Link
             href={`/portal/messages/${r.id}`}
-            className={cn('flex items-center gap-3 rounded-2xl px-3 py-3 transition-colors', r.id === activeId ? 'bg-navy text-white' : 'hover:bg-[#f4f6fb]')}
+            className={cn('flex items-center gap-3 rounded-2xl px-3 py-3 transition-colors', r.id === activeId ? 'bg-navy text-white' : 'hover:bg-canvas')}
           >
-            <span className={cn('flex h-11 w-11 flex-none items-center justify-center rounded-2xl font-display text-[15px] font-semibold', r.id === activeId ? 'bg-white/15 text-white' : 'bg-gold-400/12 text-gold-600')}>
+            <span className={cn('flex h-11 w-11 flex-none items-center justify-center rounded-2xl font-display text-[15px] font-semibold', r.id === activeId ? 'bg-surface/15 text-white' : 'bg-gold-400/12 text-gold-600')}>
               {r.title.slice(0, 1).toUpperCase()}
             </span>
             <span className="min-w-0 flex-1">

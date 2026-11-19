@@ -52,7 +52,7 @@ export default function BookingWidget({
       <input type="hidden" name="starts_at" value={slot ?? ''} />
 
       <div className="space-y-6">
-        <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft">
+        <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft">
           <h2 className="mb-3 font-display text-[16px] font-semibold text-navy">Who would you like to meet?</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {hosts.map((h) => (
@@ -75,7 +75,7 @@ export default function BookingWidget({
           </div>
         </section>
 
-        <section className="space-y-4 rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft">
+        <section className="space-y-4 rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft">
           <Field label="Meeting title"><input name="title" required maxLength={140} defaultValue="Project check-in" className={inputClass} /></Field>
           <Field label="Project (optional)">
             <select name="project_id" className={inputClass}>
@@ -95,7 +95,7 @@ export default function BookingWidget({
         </section>
       </div>
 
-      <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft">
+      <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft">
         <h2 className="mb-3 font-display text-[16px] font-semibold text-navy">Choose a day</h2>
         <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:thin]">
           {days.map((d) => {
@@ -123,7 +123,7 @@ export default function BookingWidget({
             ))}
           </div>
         ) : (
-          <p className="rounded-2xl bg-[#f6f8fc] px-4 py-6 text-center text-[13.5px] text-navy/55">No free times that day. Try another day.</p>
+          <p className="rounded-2xl bg-subtle px-4 py-6 text-center text-[13.5px] text-navy/55">No free times that day. Try another day.</p>
         )}
 
         <div className="mt-6 border-t border-navy/[0.07] pt-5">

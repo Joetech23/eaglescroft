@@ -17,8 +17,16 @@ export function PwaRegister() {
       deferred = e as InstallEvent
       window.dispatchEvent(new Event('es-install-ready'))
     }
+    // Remember installs made from our prompt, for the "Get set up" checklist.
+    const onInstalled = () => {
+      try { localStorage.setItem('es-installed', '1') } catch {}
+    }
     window.addEventListener('beforeinstallprompt', onPrompt)
-    return () => window.removeEventListener('beforeinstallprompt', onPrompt)
+    window.addEventListener('appinstalled', onInstalled)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onPrompt)
+      window.removeEventListener('appinstalled', onInstalled)
+    }
   }, [])
   return null
 }
@@ -64,7 +72,7 @@ export function InstallButton({ compact }: { compact?: boolean }) {
         <Download className="h-3.5 w-3.5" /> Install app
       </button>
       {iosHelp && (
-        <div className="absolute bottom-full left-0 z-10 mb-2 w-64 rounded-2xl border border-navy/10 bg-white p-3 text-[12.5px] text-navy/70 shadow-large">
+        <div className="absolute bottom-full left-0 z-10 mb-2 w-64 rounded-2xl border border-navy/10 bg-surface p-3 text-[12.5px] text-navy/70 shadow-large">
           Tap <Share className="inline h-3.5 w-3.5" /> <strong>Share</strong> in Safari, then <strong>Add to Home Screen</strong>. Notifications work once it&rsquo;s installed.
         </div>
       )}
@@ -120,7 +128,7 @@ export function PushToggle() {
     return <p className="text-[13px] text-navy/55">Notifications are blocked for this site. Allow them in your browser settings, then come back.</p>
 
   return state === 'on' ? (
-    <button onClick={disable} className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-4 py-2.5 text-sm font-semibold text-navy">
+    <button onClick={disable} className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-surface px-4 py-2.5 text-sm font-semibold text-navy">
       <BellOff className="h-4 w-4" /> Turn off on this device
     </button>
   ) : (

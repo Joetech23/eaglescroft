@@ -15,7 +15,7 @@ export const taskColumns: { status: TaskStatus; label: string }[] = [
   { status: 'done', label: 'Done' },
 ]
 const order: TaskStatus[] = taskColumns.map((c) => c.status)
-const priorityStyle = { high: 'bg-[#e5484d]/10 text-[#c2262b]', medium: 'bg-gold-400/10 text-gold-600', low: 'bg-navy/[0.05] text-navy/50' }
+const priorityStyle = { high: 'bg-[#e5484d]/10 text-danger', medium: 'bg-gold-400/10 text-gold-600', low: 'bg-navy/[0.05] text-navy/50' }
 
 type Row = Task & { projects?: { title: string } | null }
 
@@ -35,10 +35,10 @@ export default function TaskBoard({
       {taskColumns.map((col) => {
         const items = tasks.filter((t) => t.status === col.status).sort((a, b) => (a.due_date ?? '9999').localeCompare(b.due_date ?? '9999'))
         return (
-          <section key={col.status} className="min-w-0 rounded-[22px] bg-[#eef2f9] p-3">
+          <section key={col.status} className="min-w-0 rounded-[22px] bg-canvas p-3">
             <div className="mb-3 flex items-center justify-between px-1.5">
               <h3 className="font-display text-[14px] font-semibold text-navy">{col.label}</h3>
-              <span className="rounded-full bg-white px-2 py-0.5 text-[11.5px] font-semibold text-navy/55">{items.length}</span>
+              <span className="rounded-full bg-surface px-2 py-0.5 text-[11.5px] font-semibold text-navy/55">{items.length}</span>
             </div>
             <div className="space-y-2.5">
               {items.length === 0 && <p className="rounded-2xl border border-dashed border-navy/15 px-3 py-5 text-center text-[12.5px] text-navy/40">Nothing here</p>}
@@ -47,7 +47,7 @@ export default function TaskBoard({
                 const canMove = isTeam || t.assignee_id === viewerId || t.created_by === viewerId
                 const idx = order.indexOf(t.status)
                 return (
-                  <article key={t.id} className="rounded-2xl border border-navy/[0.07] bg-white p-3.5 shadow-soft">
+                  <article key={t.id} className="rounded-2xl border border-navy/[0.07] bg-surface p-3.5 shadow-soft">
                     {showProject && t.projects && <div className="mb-1 truncate font-mono text-[10px] uppercase tracking-wider text-navy/40">{t.projects.title}</div>}
                     <div className="flex items-start gap-2">
                       <p className={cn('min-w-0 flex-1 text-[14px] font-semibold leading-snug text-navy', t.status === 'done' && 'text-navy/45 line-through')}>{t.title}</p>
@@ -56,7 +56,7 @@ export default function TaskBoard({
                     {t.description && <p className="mt-1 line-clamp-2 text-[12.5px] text-navy/55">{t.description}</p>}
                     <div className="mt-3 flex flex-wrap items-center gap-1.5">
                       <span className={cn('rounded-full px-2 py-0.5 text-[10.5px] font-semibold capitalize', priorityStyle[t.priority])}>{t.priority}</span>
-                      {t.due_date && <span className={cn('rounded-full bg-navy/[0.05] px-2 py-0.5 text-[10.5px] font-semibold', t.due_date < today && t.status !== 'done' ? 'text-[#c2262b]' : 'text-navy/55')}>{formatDate(t.due_date)}</span>}
+                      {t.due_date && <span className={cn('rounded-full bg-navy/[0.05] px-2 py-0.5 text-[10.5px] font-semibold', t.due_date < today && t.status !== 'done' ? 'text-danger' : 'text-navy/55')}>{formatDate(t.due_date)}</span>}
                       <span className="ml-auto flex items-center gap-1.5" title={assignee ? displayName(assignee) : 'Unassigned'}>
                         {assignee ? <Avatar person={assignee} size="xs" /> : <span className="text-[11px] text-navy/35">Unassigned</span>}
                       </span>
@@ -77,7 +77,7 @@ export default function TaskBoard({
                         )}
                         {(isTeam || t.created_by === viewerId) && (
                           <form action={deleteTask.bind(null, t.id)} className="ml-auto">
-                            <button className="rounded-full p-1.5 text-navy/30 hover:bg-[#e5484d]/10 hover:text-[#c2262b]" aria-label="Delete task"><Trash2 className="h-3.5 w-3.5" /></button>
+                            <button className="rounded-full p-1.5 text-navy/30 hover:bg-[#e5484d]/10 hover:text-danger" aria-label="Delete task"><Trash2 className="h-3.5 w-3.5" /></button>
                           </form>
                         )}
                       </div>
@@ -104,7 +104,7 @@ export function NewTaskForm({
 }) {
   if (!projects.length) return null
   return (
-    <form action={createTask} className="grid gap-3 rounded-[22px] border border-navy/[0.07] bg-white p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_auto] lg:items-end">
+    <form action={createTask} className="grid gap-3 rounded-[22px] border border-navy/[0.07] bg-surface p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_auto] lg:items-end">
       <input type="hidden" name="back" value={back} />
       {fixedProjectId ? <input type="hidden" name="project_id" value={fixedProjectId} /> : null}
       <div className="sm:col-span-2 lg:col-span-1"><Field label="New task"><input name="title" required maxLength={200} placeholder={isTeam ? 'e.g. Send homepage draft for review' : 'e.g. Upload our logo files'} className={inputClass} /></Field></div>

@@ -59,7 +59,7 @@ export default async function InvoicePage({ params, searchParams }: { params: { 
 
       {notice && <div className="mb-6 print:hidden"><Notice tone={notice.tone}>{notice.text}</Notice></div>}
 
-      <article className="mx-auto max-w-3xl rounded-[24px] border border-navy/10 bg-white p-6 shadow-medium sm:p-10 print:border-0 print:shadow-none">
+      <article className="mx-auto max-w-3xl rounded-[24px] border border-navy/10 bg-surface p-6 shadow-medium sm:p-10 print:border-0 print:shadow-none">
         <header className="flex flex-wrap items-start justify-between gap-6 border-b border-navy/[0.08] pb-8">
           <div>
             <div className="flex items-center gap-2.5">
@@ -119,11 +119,11 @@ export default async function InvoicePage({ params, searchParams }: { params: { 
 
         <dl className="ml-auto mt-6 max-w-xs space-y-2 text-[14px]">
           <div className="flex justify-between"><dt className="text-navy/60">Total</dt><dd className="font-semibold text-navy">{formatMoney(total, invoice.currency)}</dd></div>
-          <div className="flex justify-between"><dt className="text-navy/60">Paid</dt><dd className="font-semibold text-[#178a3c]">{formatMoney(paid, invoice.currency)}</dd></div>
+          <div className="flex justify-between"><dt className="text-navy/60">Paid</dt><dd className="font-semibold text-success">{formatMoney(paid, invoice.currency)}</dd></div>
           <div className="flex justify-between border-t border-navy/[0.08] pt-2 text-[16px]"><dt className="font-semibold text-navy">Balance due</dt><dd className="font-display font-semibold text-navy">{formatMoney(balance, invoice.currency)}</dd></div>
         </dl>
 
-        {invoice.notes && <p className="mt-8 whitespace-pre-line rounded-2xl bg-[#f6f8fc] p-4 text-[13.5px] text-navy/70">{invoice.notes}</p>}
+        {invoice.notes && <p className="mt-8 whitespace-pre-line rounded-2xl bg-subtle p-4 text-[13.5px] text-navy/70">{invoice.notes}</p>}
 
         {invoice.status === 'sent' && balance > 0 && (
           <div className="mt-8 rounded-2xl border border-navy/10 p-5">

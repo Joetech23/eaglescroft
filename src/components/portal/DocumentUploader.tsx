@@ -41,7 +41,7 @@ export default function DocumentUploader({ projectId }: { projectId: string }) {
   }
 
   return (
-    <form onSubmit={upload} className="space-y-3 rounded-2xl bg-[#f6f8fc] p-4">
+    <form onSubmit={upload} className="space-y-3 rounded-2xl bg-subtle p-4">
       <input ref={fileRef} type="file" required aria-label="File" className="block w-full text-[13px] text-navy/70 file:mr-3 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-[13px] file:font-semibold file:text-white" />
       <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title (defaults to file name)" aria-label="Title" className={inputClass} />
@@ -58,7 +58,7 @@ export default function DocumentUploader({ projectId }: { projectId: string }) {
       >
         <Upload className="h-4 w-4" /> {state === 'uploading' ? 'Uploading…' : 'Upload file'}
       </button>
-      {state === 'error' && <p className="text-[13px] text-[#c2262b]">Upload failed. Check the file and try again.</p>}
+      {state === 'error' && <p className="text-[13px] text-danger">Upload failed. Check the file and try again.</p>}
     </form>
   )
 }

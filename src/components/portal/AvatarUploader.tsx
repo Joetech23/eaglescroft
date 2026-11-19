@@ -36,14 +36,14 @@ export default function AvatarUploader({ person }: { person: Person }) {
     <div className="flex items-center gap-4">
       <div className="relative">
         <Avatar person={person} size="xl" />
-        <button type="button" onClick={() => input.current?.click()} className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-gold-400 text-white shadow-gold" aria-label="Change photo">
+        <button type="button" onClick={() => input.current?.click()} className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-gold-400 text-white shadow-gold" aria-label="Change photo">
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Camera className="h-4 w-4" />}
         </button>
       </div>
       <div>
         <button type="button" onClick={() => input.current?.click()} className="text-[14px] font-semibold text-gold-600 hover:underline">Upload a photo</button>
         <p className="text-[12.5px] text-navy/50">Square images look best. Max 5 MB.</p>
-        {error && <p className="text-[12.5px] text-[#c2262b]">{error}</p>}
+        {error && <p className="text-[12.5px] text-danger">{error}</p>}
       </div>
       <input ref={input} type="file" accept="image/*" hidden onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
     </div>

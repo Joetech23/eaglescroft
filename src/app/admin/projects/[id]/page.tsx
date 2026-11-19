@@ -133,7 +133,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
                           </button>
                         </form>
                         <form action={deleteMilestone.bind(null, project.id, m.id)}>
-                          <button title="Delete milestone" className="p-1 text-navy/30 hover:text-[#c2262b]"><Trash2 className="h-4 w-4" /></button>
+                          <button title="Delete milestone" className="p-1 text-navy/30 hover:text-danger"><Trash2 className="h-4 w-4" /></button>
                         </form>
                       </div>
                     </li>
@@ -206,7 +206,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
                     <input type="checkbox" name="member" value={m.id} defaultChecked={memberRole.has(m.id)} className="h-4 w-4 accent-[#2563EB]" />
                     <Avatar person={m} size="sm" />
                     <span className="min-w-0 flex-1"><span className="block truncate text-[13.5px] font-semibold text-navy">{displayName(m)}</span><span className="block truncate text-[11.5px] text-navy/45">{m.title || m.role}</span></span>
-                    <input name={`role_${m.id}`} defaultValue={memberRole.get(m.id) ?? ''} placeholder="Role on project" aria-label={`Role for ${displayName(m)}`} className="w-36 rounded-xl border border-navy/12 px-2.5 py-1.5 text-[12.5px]" />
+                    <input name={`role_${m.id}`} defaultValue={memberRole.get(m.id) ?? ''} placeholder="Role on project" aria-label={`Role for ${displayName(m)}`} className="w-36 rounded-xl border border-navy/12 bg-surface px-2.5 py-1.5 text-[12.5px]" />
                   </label>
                 ))}
                 <p className="text-[12px] text-navy/45">Assigned members get this project&rsquo;s notifications. With nobody assigned, admins get them.</p>
@@ -250,7 +250,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
                 }) : <Empty>No invoices yet.</Empty>}
               </div>
 
-              <form action={createInvoice.bind(null, project.id)} className="mt-5 space-y-3 rounded-2xl bg-[#f6f8fc] p-4">
+              <form action={createInvoice.bind(null, project.id)} className="mt-5 space-y-3 rounded-2xl bg-subtle p-4">
                 <h3 className="font-display text-[15px] font-semibold text-navy">New invoice ({project.currency})</h3>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <select name="kind" aria-label="Invoice type" className={inputClass}>
@@ -271,7 +271,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
                 <textarea name="notes" rows={2} placeholder="Notes / bank transfer details (shown on the invoice)" aria-label="Notes" className={inputClass} />
                 <div className="flex flex-wrap gap-2">
                   <button name="intent" value="send" className="rounded-full bg-gradient-to-b from-[#3b76f0] to-[#1d4ed8] px-5 py-2.5 text-sm font-semibold text-white shadow-gold">Create & send</button>
-                  <button name="intent" value="draft" className="rounded-full border border-navy/15 bg-white px-5 py-2.5 text-sm font-semibold text-navy">Save draft</button>
+                  <button name="intent" value="draft" className="rounded-full border border-navy/15 bg-surface px-5 py-2.5 text-sm font-semibold text-navy">Save draft</button>
                 </div>
               </form>
             </Card>
@@ -288,7 +288,7 @@ export default async function AdminProjectPage({ params, searchParams }: { param
                       <a href={`/portal/documents/${d.id}`} className="min-w-0 flex-1 truncate text-[14px] font-semibold text-navy hover:text-gold-600">{d.title}</a>
                       <span className="text-[11px] capitalize text-navy/45">{d.kind}</span>
                       <form action={deleteDocument.bind(null, project.id, d.id)}>
-                        <button title="Delete file" className="p-1 text-navy/30 hover:text-[#c2262b]"><Trash2 className="h-4 w-4" /></button>
+                        <button title="Delete file" className="p-1 text-navy/30 hover:text-danger"><Trash2 className="h-4 w-4" /></button>
                       </form>
                     </li>
                   ))}

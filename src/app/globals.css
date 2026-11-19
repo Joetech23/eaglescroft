@@ -20,6 +20,49 @@
   --muted-foreground: #5a6685;
   --secondary-foreground: #2a3550;
   --border: #e7eaf3;
+
+  /* Theme colours as RGB channels (used by tailwind.config.ts with <alpha-value>). These light
+     values apply everywhere; the client portal swaps them for its dark theme below. */
+  --c-navy: 0 30 96;
+  --c-gold-500: 29 78 216;
+  --c-gold-600: 30 64 175;
+  --c-surface: 255 255 255;
+  --c-canvas: 244 246 251;
+  --c-subtle: 246 248 252;
+  --c-danger: 194 38 43;
+  --c-success: 23 138 60;
+  --c-indigo-ink: 42 63 143;
+  --portal-glow: radial-gradient(120% 90% at 80% 0%, #ffffff 0%, #eef2fb 42%, #dfe7f7 100%);
+  --portal-name-gradient: linear-gradient(100deg, #1d4ed8, #2563eb 60%, #3b82f6);
+}
+
+/* ─── Client portal dark theme ───────────────────────────────────────────
+   <html data-portal-theme="dark"> is set by the portal's theme script and ThemeSync. It only
+   affects the portal shell (.portal-theme), so the marketing site always stays light. */
+html[data-portal-theme='dark'] .portal-theme {
+  color-scheme: dark;
+  --c-navy: 226 232 246;
+  --c-gold-500: 96 165 250;
+  --c-gold-600: 147 197 253;
+  --c-surface: 19 27 51;
+  --c-canvas: 9 14 32;
+  --c-subtle: 26 35 64;
+  --c-danger: 248 113 113;
+  --c-success: 74 222 128;
+  --c-indigo-ink: 165 180 252;
+  --portal-glow: radial-gradient(120% 90% at 80% 0%, #1a2a5c 0%, #0f1838 45%, #090e20 100%);
+  --portal-name-gradient: linear-gradient(100deg, #60a5fa, #93c5fd 60%, #bfdbfe);
+}
+/* Solid navy fills (active pills, avatars, my chat bubbles) become brand blue, keeping white text readable. */
+html[data-portal-theme='dark'] .portal-theme .bg-navy { background-color: #1e40af; }
+html[data-portal-theme='dark'] .portal-theme .border-navy { border-color: #1e40af; }
+html[data-portal-theme='dark'] .portal-theme .shadow-soft,
+html[data-portal-theme='dark'] .portal-theme .shadow-medium,
+html[data-portal-theme='dark'] .portal-theme .shadow-large { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -12px rgba(0, 0, 0, 0.55); }
+html[data-portal-theme='dark'] .portal-theme img[src*='eagle-gold'] { filter: brightness(1.6) saturate(0.9); }
+@media print {
+  html[data-portal-theme='dark'] .portal-theme { color-scheme: light; --c-navy: 0 30 96; --c-surface: 255 255 255; --c-canvas: 255 255 255; --c-subtle: 246 248 252; --c-gold-500: 29 78 216; --c-gold-600: 30 64 175; --c-danger: 194 38 43; --c-success: 23 138 60; --c-indigo-ink: 42 63 143; }
+  html[data-portal-theme='dark'] .portal-theme .bg-navy { background-color: #001e60; }
 }
 
 * {

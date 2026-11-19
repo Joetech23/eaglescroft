@@ -38,7 +38,7 @@ export default async function MeetingsPage({ searchParams }: { searchParams: { b
     const other = people.get(m.host_id === profile.id ? m.client_id ?? '' : m.host_id)
     const startsSoon = new Date(m.starts_at).getTime() - now < 15 * 60_000
     return (
-      <li className="flex flex-col gap-4 rounded-[22px] border border-navy/[0.07] bg-white p-4 shadow-soft sm:flex-row sm:items-center sm:p-5">
+      <li className="flex flex-col gap-4 rounded-[22px] border border-navy/[0.07] bg-surface p-4 shadow-soft sm:flex-row sm:items-center sm:p-5">
         <div className="flex h-16 w-16 flex-none flex-col items-center justify-center rounded-2xl bg-navy text-white shadow-navy">
           <span className="text-[10.5px] font-semibold uppercase text-gold-300">{new Date(m.starts_at).toLocaleDateString('en-GB', { month: 'short', timeZone: 'Africa/Lagos' })}</span>
           <span className="font-display text-[22px] font-semibold leading-none">{new Date(m.starts_at).toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Africa/Lagos' })}</span>
@@ -46,7 +46,7 @@ export default async function MeetingsPage({ searchParams }: { searchParams: { b
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-display text-[16px] font-semibold text-navy">{m.title}</span>
-            {m.status === 'cancelled' && <span className="rounded-full bg-[#e5484d]/10 px-2 py-0.5 text-[10.5px] font-semibold text-[#c2262b]">Cancelled</span>}
+            {m.status === 'cancelled' && <span className="rounded-full bg-[#e5484d]/10 px-2 py-0.5 text-[10.5px] font-semibold text-danger">Cancelled</span>}
           </div>
           <div className="mt-0.5 text-[13px] text-navy/55">{formatDay(m.starts_at)} · {formatTime(m.starts_at)}–{formatTime(m.ends_at)} WAT</div>
           {other && (

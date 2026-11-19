@@ -7,6 +7,7 @@ import { displayName, personSelect, roleLine } from '@/lib/portal/people'
 import { formatDay, formatTime } from '@/lib/portal/slots'
 import { setTaskStatus } from '@/app/portal/collab'
 import Avatar from '@/components/portal/Avatar'
+import { GettingStarted } from '@/components/portal/Onboarding'
 import { Badge, Empty, statusTone } from '@/components/portal/ui'
 import { cn } from '@/lib/utils'
 import type { Currency, Invoice, Meeting, Message, Milestone, Person, Project, ProjectDocument, Task } from '@/lib/portal/types'
@@ -27,7 +28,7 @@ export default async function PortalHome() {
   const { supabase, profile, isTeam } = await getViewer()
   const nowIso = new Date().toISOString()
 
-  const [projectsQ, invoicesQ, milestonesQ, tasksQ, messagesQ, meetingsQ, docsQ] = await Promise.all([
+  const [projectsQ, invoicesQ, milestonesQ, tasksQ, messagesQ, meetingsQ, docsQ, availabilityQ] = await Promise.all([
     supabase.from('projects').select('*').order('updated_at', { ascending: false }),
     supabase.from('invoices').select('*, invoice_items(quantity, unit_minor), payments(amount_minor, status), projects(title)').eq('status', 'sent').order('due_date'),
     supabase.from('milestones').select('*').order('sort'),
@@ -37,6 +38,7 @@ export default async function PortalHome() {
     supabase.from('messages').select('*, projects(title)').is('deleted_at', null).order('created_at', { ascending: false }).limit(4),
     supabase.from('meetings').select('*').eq('status', 'scheduled').gte('ends_at', nowIso).order('starts_at').limit(3),
     supabase.from('documents').select('*, projects(title)').order('created_at', { ascending: false }).limit(4),
+    isTeam ? supabase.from('availability').select('weekday', { count: 'exact', head: true }).eq('user_id', profile.id) : Promise.resolve({ count: 0 }),
   ])
   const projects = (projectsQ.data ?? []) as Project[]
   const invoices = ((invoicesQ.data ?? []) as (Invoice & { projects: { title: string } | null })[]).filter((i) => invoiceBalance(i) > 0)
@@ -56,6 +58,7 @@ export default async function PortalHome() {
   const focus = active[0] ?? projects[0]
   const focusSteps = focus ? milestones.filter((m) => m.project_id === focus.id) : []
   const firstName = displayName(profile).split(' ')[0]
+  const needsBrief = isTeam ? null : projects.find((p) => !p.brief_submitted_at && p.status !== 'completed')
 
   return (
     <div className="space-y-6">
@@ -65,17 +68,25 @@ export default async function PortalHome() {
           <span aria-hidden className="flight-marker" /> {isTeam ? 'Team workspace' : 'Client portal'}
         </div>
         <h1 className="mt-3 font-display font-semibold leading-[1.08] tracking-tight text-navy" style={{ fontSize: 'clamp(1.9rem,4.2vw,3rem)' }}>
-          {greeting()}, <span className="text-transparent" style={{ background: 'linear-gradient(100deg,#1d4ed8,#2563EB 60%,#3b82f6)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>{firstName}.</span>
+          {greeting()}, <span className="text-transparent" style={{ background: 'var(--portal-name-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>{firstName}.</span>
         </h1>
-        <p className="mx-auto mt-2 max-w-xl text-[15px] text-[#48526e]">
+        <p className="mx-auto mt-2 max-w-xl text-[15px] text-navy/70">
           {active.length ? `You have ${active.length} active project${active.length === 1 ? '' : 's'}${tasks.length ? ` and ${tasks.length} open task${tasks.length === 1 ? '' : 's'}` : ''}.` : 'Everything you need for your projects, in one place.'}
         </p>
       </section>
 
+      <GettingStarted
+        isTeam={isTeam}
+        hasPhoto={Boolean(profile.avatar_url)}
+        signatureSet={Boolean(profile.signature)}
+        availabilitySet={(availabilityQ.count ?? 0) > 0}
+        briefHref={needsBrief ? `/portal/projects/${needsBrief.id}#brief` : null}
+      />
+
       {/* quick actions */}
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {tiles.map((t) => (
-          <Link key={t.href} href={t.href} className="group flex flex-col items-center gap-3 rounded-[22px] border border-navy/[0.07] bg-white p-5 text-center shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-medium">
+          <Link key={t.href} href={t.href} className="group flex flex-col items-center gap-3 rounded-[22px] border border-navy/[0.07] bg-surface p-5 text-center shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-medium">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy text-white shadow-navy transition-colors group-hover:bg-gold-500">
               <t.icon className="h-5 w-5" />
             </span>
@@ -100,7 +111,7 @@ export default async function PortalHome() {
               ['Open tasks', tasks.length],
               ['Upcoming meetings', meetings.length],
             ].map(([label, value]) => (
-              <div key={label} className="rounded-[22px] border border-navy/[0.07] bg-white p-5 shadow-soft">
+              <div key={label} className="rounded-[22px] border border-navy/[0.07] bg-surface p-5 shadow-soft">
                 <div className="text-[13px] text-navy/55">{label}</div>
                 <div className="mt-3 font-display text-[1.7rem] font-semibold leading-none text-navy">{value}</div>
               </div>
@@ -108,7 +119,7 @@ export default async function PortalHome() {
           </div>
 
           {/* project progress */}
-          <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft sm:p-6">
+          <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0">
                 <h2 className="font-display text-[18px] font-semibold text-navy">Project progress</h2>
@@ -126,7 +137,7 @@ export default async function PortalHome() {
                       <li key={m.id} className="relative flex min-w-[96px] flex-1 flex-col items-center text-center">
                         {i > 0 && <span className={cn('absolute right-1/2 top-[13px] h-[3px] w-full', done || current ? 'bg-navy' : 'bg-navy/10')} />}
                         <span className={cn('relative z-10 flex h-7 w-7 items-center justify-center rounded-full border-2 text-[11px] font-bold',
-                          done ? 'border-navy bg-navy text-white' : current ? 'border-gold-400 bg-white text-gold-600 ring-4 ring-gold-400/15' : 'border-navy/15 bg-white text-navy/40')}>
+                          done ? 'border-navy bg-navy text-white' : current ? 'border-gold-400 bg-surface text-gold-600 ring-4 ring-gold-400/15' : 'border-navy/15 bg-surface text-navy/40')}>
                           {done ? <Check className="h-3.5 w-3.5" /> : i + 1}
                         </span>
                         <span className={cn('mt-2 px-1 text-[12px] leading-tight', done ? 'text-navy/70' : current ? 'font-semibold text-navy' : 'text-navy/40')}>{m.title}</span>
@@ -148,7 +159,7 @@ export default async function PortalHome() {
           </section>
 
           {/* tasks */}
-          <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft sm:p-6">
+          <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft sm:p-6">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="font-display text-[18px] font-semibold text-navy">{isTeam ? 'My tasks' : 'Your tasks'}</h2>
               <Link href="/portal/tasks" className="text-[13px] font-semibold text-gold-600 hover:underline">All tasks</Link>
@@ -167,7 +178,7 @@ export default async function PortalHome() {
                       <div className="truncate text-[12px] text-navy/45">{t.projects?.title}</div>
                     </div>
                     {t.priority === 'high' && <Badge tone="red">High</Badge>}
-                    <span className={cn('flex-none text-[12px]', t.due_date && t.due_date < nowIso.slice(0, 10) ? 'font-semibold text-[#c2262b]' : 'text-navy/45')}>{t.due_date ? formatDate(t.due_date) : ''}</span>
+                    <span className={cn('flex-none text-[12px]', t.due_date && t.due_date < nowIso.slice(0, 10) ? 'font-semibold text-danger' : 'text-navy/45')}>{t.due_date ? formatDate(t.due_date) : ''}</span>
                   </li>
                 ))}
               </ul>
@@ -177,7 +188,7 @@ export default async function PortalHome() {
 
         <div className="min-w-0 space-y-6">
           {/* chat preview */}
-          <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft sm:p-6">
+          <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft sm:p-6">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="font-display text-[18px] font-semibold text-navy">Chat</h2>
               <Link href="/portal/messages" className="text-[13px] font-semibold text-gold-600 hover:underline">Open messages</Link>
@@ -192,7 +203,7 @@ export default async function PortalHome() {
                       <Link href={`/portal/messages/${m.project_id}`} className={cn('flex gap-2.5', mine && 'flex-row-reverse')}>
                         <Avatar person={author} size="sm" />
                         <div className={cn('min-w-0 max-w-[80%]', mine && 'text-right')}>
-                          <div className={cn('inline-block rounded-2xl px-3.5 py-2 text-left text-[13.5px] leading-snug', mine ? 'rounded-tr-md bg-navy text-white' : 'rounded-tl-md bg-[#f1f4fa] text-navy/85')}>
+                          <div className={cn('inline-block rounded-2xl px-3.5 py-2 text-left text-[13.5px] leading-snug', mine ? 'rounded-tr-md bg-navy text-white' : 'rounded-tl-md bg-canvas text-navy/85')}>
                             {m.body || 'Sent a file'}
                           </div>
                           <div className="mt-1 truncate text-[11px] text-navy/45">{mine ? 'You' : `${displayName(author)} · ${roleLine(author)}`} · {timeAgo(m.created_at)}</div>
@@ -206,7 +217,7 @@ export default async function PortalHome() {
           </section>
 
           {/* meetings */}
-          <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft sm:p-6">
+          <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft sm:p-6">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="font-display text-[18px] font-semibold text-navy">Upcoming meetings</h2>
               <Link href="/portal/meetings/book" className="text-[13px] font-semibold text-gold-600 hover:underline">Book</Link>
@@ -216,8 +227,8 @@ export default async function PortalHome() {
                 {meetings.map((m) => {
                   const host = people.get(m.host_id)
                   return (
-                    <li key={m.id} className="flex items-center gap-3 rounded-2xl bg-[#f6f8fc] p-3">
-                      <div className="flex h-12 w-12 flex-none flex-col items-center justify-center rounded-xl bg-white text-navy shadow-soft">
+                    <li key={m.id} className="flex items-center gap-3 rounded-2xl bg-subtle p-3">
+                      <div className="flex h-12 w-12 flex-none flex-col items-center justify-center rounded-xl bg-surface text-navy shadow-soft">
                         <span className="text-[10px] font-semibold uppercase text-gold-600">{new Date(m.starts_at).toLocaleDateString('en-GB', { month: 'short', timeZone: 'Africa/Lagos' })}</span>
                         <span className="font-display text-[17px] font-semibold leading-none">{new Date(m.starts_at).toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Africa/Lagos' })}</span>
                       </div>
@@ -238,7 +249,7 @@ export default async function PortalHome() {
           </section>
 
           {/* docs + invoices */}
-          <section className="rounded-[24px] border border-navy/[0.07] bg-white p-5 shadow-soft sm:p-6">
+          <section className="rounded-[24px] border border-navy/[0.07] bg-surface p-5 shadow-soft sm:p-6">
             <h2 className="mb-4 font-display text-[18px] font-semibold text-navy">Latest files</h2>
             {docs.length ? (
               <ul className="space-y-2">

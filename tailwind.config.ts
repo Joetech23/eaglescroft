@@ -9,8 +9,9 @@ const config: Config = {
     extend: {
       colors: {
         // Deep corporate blue — brand primary
+        // DEFAULT reads a CSS variable so the client portal can switch to dark mode (see globals.css).
         navy: {
-          DEFAULT: '#001e60',
+          DEFAULT: 'rgb(var(--c-navy) / <alpha-value>)',
           50:  '#e6ebf5',
           100: '#c0cde6',
           200: '#8da7d1',
@@ -39,9 +40,16 @@ const config: Config = {
           200: '#bfdbfe',
           300: '#93c5fd',
           400: '#2563EB',
-          500: '#1d4ed8',
-          600: '#1e40af',
+          500: 'rgb(var(--c-gold-500) / <alpha-value>)',
+          600: 'rgb(var(--c-gold-600) / <alpha-value>)',
         },
+        // Portal theme tokens (light values on :root, dark values under the portal dark theme).
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        canvas: 'rgb(var(--c-canvas) / <alpha-value>)',
+        subtle: 'rgb(var(--c-subtle) / <alpha-value>)',
+        danger: 'rgb(var(--c-danger) / <alpha-value>)',
+        success: 'rgb(var(--c-success) / <alpha-value>)',
+        'indigo-ink': 'rgb(var(--c-indigo-ink) / <alpha-value>)',
         // shadcn-style tokens (for imported 21st.dev components)
         border: 'var(--border)',
         background: 'var(--background)',

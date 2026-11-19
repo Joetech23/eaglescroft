@@ -50,7 +50,7 @@ export default async function TicketPage({ params }: { params: { id: string; tic
           const mine = m.author_id === user.id
           return (
             <div key={m.id} id={i === thread.length - 1 ? 'latest' : undefined} className={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[85%] rounded-[20px] px-5 py-4 ${mine ? 'bg-navy text-white' : 'border border-navy/10 bg-white text-navy/85 shadow-soft'}`}>
+              <div className={`max-w-[85%] rounded-[20px] px-5 py-4 ${mine ? 'bg-navy text-white' : 'border border-navy/10 bg-surface text-navy/85 shadow-soft'}`}>
                 <div className={`mb-1 font-mono text-[10.5px] uppercase tracking-wider ${mine ? 'text-white/50' : 'text-navy/45'}`}>
                   {who(m.author_id)} · {formatDate(m.created_at, true)}
                 </div>

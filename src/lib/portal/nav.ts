@@ -18,13 +18,15 @@ export async function buildNav(supabase: SupabaseClient, profile: Profile, isTea
     { href: '/portal', label: 'Home', icon: 'Home', exact: true, group: 'main', primary: true },
     { href: '/portal/messages', label: 'Messages', icon: 'MessagesSquare', badge: unreadMessages, group: 'main', primary: true },
     { href: '/portal/tasks', label: 'Tasks', icon: 'ListChecks', badge: myTasks ?? 0, group: 'main', primary: true },
-    { href: '/portal/meetings', label: 'Meetings', icon: 'CalendarClock', badge: upcoming ?? 0, group: 'main', primary: true },
+    // Phone bottom bar holds 4 items: clients get Meetings there, the team gets Projects instead.
+    { href: '/portal/meetings', label: 'Meetings', icon: 'CalendarClock', badge: upcoming ?? 0, group: 'main', primary: !isTeam },
     { href: '/portal/calendar', label: 'Calendar', icon: 'CalendarDays', group: 'main' },
     { href: '/portal/billing', label: 'Billing', icon: 'Receipt', group: 'account' },
     { href: '/portal/settings', label: 'Settings', icon: 'Settings', group: 'account' },
   ]
   if (isTeam) {
     links.push(
+      { href: '/admin/projects', label: 'Projects', icon: 'FolderKanban', group: 'team', primary: true },
       { href: '/admin', label: 'Overview', icon: 'LayoutDashboard', exact: true, group: 'team' },
       { href: '/admin/clients', label: 'Clients', icon: 'Users', group: 'team' },
       { href: '/admin/projects/new', label: 'New project', icon: 'PlusCircle', group: 'team' },

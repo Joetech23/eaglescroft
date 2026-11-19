@@ -34,7 +34,7 @@ export default async function TasksPage({ searchParams }: { searchParams: { view
         title="Tasks & progress."
         intro={isTeam ? 'Your assignments across every project. Switch to all tasks to see the whole board.' : 'Things we need from you, and anything you’ve asked of us, in one board.'}
         actions={
-          <div className="flex rounded-full border border-navy/10 bg-white p-1 shadow-soft">
+          <div className="flex rounded-full border border-navy/10 bg-surface p-1 shadow-soft">
             {(['mine', 'all'] as const).map((v) => (
               <Link key={v} href={`/portal/tasks${v === 'all' ? '?view=all' : ''}`} className={cn('rounded-full px-4 py-1.5 text-[13px] font-semibold', view === v ? 'bg-navy text-white' : 'text-navy/60')}>
                 {v === 'mine' ? 'My tasks' : 'All tasks'}

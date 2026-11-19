@@ -96,19 +96,19 @@ export default function NotificationBell({ userId, initialUnread }: { userId: st
     <div ref={box} className="relative">
       <button
         onClick={toggle}
-        className="relative flex h-11 w-11 items-center justify-center rounded-full border border-navy/10 bg-white text-navy shadow-soft transition-colors hover:border-navy/25"
+        className="relative flex h-11 w-11 items-center justify-center rounded-full border border-navy/10 bg-surface text-navy shadow-soft transition-colors hover:border-navy/25"
         aria-label={`Notifications${unread ? ` (${unread} unread)` : ''}`}
       >
         <Bell className="h-[19px] w-[19px]" />
         {unread > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-white bg-gold-400 px-1 text-[10px] font-bold text-white">
+          <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-surface bg-gold-400 px-1 text-[10px] font-bold text-white">
             {unread > 9 ? '9+' : unread}
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-[calc(100%+10px)] z-50 w-[min(92vw,380px)] overflow-hidden rounded-[22px] border border-navy/10 bg-white shadow-large">
+        <div className="absolute right-0 top-[calc(100%+10px)] z-50 w-[min(92vw,380px)] overflow-hidden rounded-[22px] border border-navy/10 bg-surface shadow-large">
           <div className="flex items-center justify-between border-b border-navy/[0.07] px-4 py-3">
             <span className="font-display text-[15px] font-semibold text-navy">Notifications</span>
             {unread > 0 && (
@@ -126,7 +126,7 @@ export default function NotificationBell({ userId, initialUnread }: { userId: st
               items.map((n) => {
                 const Icon = kindIcon[n.kind] ?? Sparkles
                 return (
-                  <button key={n.id} onClick={() => openItem(n)} className={cn('flex w-full gap-3 border-b border-navy/[0.05] px-4 py-3 text-left hover:bg-[#f6f8fc]', !n.read_at && 'bg-gold-400/[0.05]')}>
+                  <button key={n.id} onClick={() => openItem(n)} className={cn('flex w-full gap-3 border-b border-navy/[0.05] px-4 py-3 text-left hover:bg-subtle', !n.read_at && 'bg-gold-400/[0.05]')}>
                     <span className={cn('mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-xl', n.read_at ? 'bg-navy/[0.05] text-navy/50' : 'bg-gold-400 text-white')}>
                       <Icon className="h-4 w-4" />
                     </span>
@@ -146,7 +146,7 @@ export default function NotificationBell({ userId, initialUnread }: { userId: st
       {toast && !open && (
         <button
           onClick={() => openItem(toast)}
-          className="fixed left-1/2 top-4 z-[60] flex w-[min(92vw,380px)] -translate-x-1/2 items-start gap-3 rounded-[20px] border border-navy/10 bg-white p-3.5 text-left shadow-large lg:left-auto lg:right-6 lg:translate-x-0"
+          className="fixed left-1/2 top-4 z-[60] flex w-[min(92vw,380px)] -translate-x-1/2 items-start gap-3 rounded-[20px] border border-navy/10 bg-surface p-3.5 text-left shadow-large lg:left-auto lg:right-6 lg:translate-x-0"
         >
           <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gold-400 text-white"><Bell className="h-4 w-4" /></span>
           <span className="min-w-0">
